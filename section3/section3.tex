@@ -1,6 +1,11 @@
 %\tablesofcontent
 
 \section{Some Results}
+
+
+% ============================================
+% ====== Frame : 1D Preliminary tests 1 ======
+% ============================================
 \subsection{1D Preliminary tests}
 \begin{frame}{1D Preliminary tests}
     \begin{figure}
@@ -80,7 +85,12 @@
 \end{frame}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% ============================================
+% ====== Frame : Preliminary tests 2 =========
+% ============================================
+
 \begin{frame}{1D Preliminary tests :}
   \begin{multicols}{2}
     \normalsize
@@ -125,10 +135,15 @@ Gradient expression :
 %------------------------------------\\
 \end{multicols}
 \end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+% ============================================
+% ====== Frame : 1D Reconstruction 1 =========
+% ============================================
+
 \begin{frame}{1D Velocity Model Reconstructions}
   \setlength{\plotwidth} {10.3cm}
   \setlength{\plotheight}{6cm}
@@ -159,12 +174,14 @@ Gradient expression :
   \begin{center}
     $\velocity$ Model at the 100th FWI iteration
   \end{center}
-
-
 \end{frame}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% ============================================
+% ====== Frame : 1D Reconstructions 2 ========
+% ============================================
 \begin{frame}{1D Velocity Model Reconstructions}
 
   \begin{minipage}[top]{0.5\linewidth}
@@ -239,7 +256,14 @@ Gradient expression :
 
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+% ============================================
+% ====== Frame : 2D Results Intro ============
+% ============================================
+
 \subsection{2D Time Domain FWI Results}
 \begin{frame}{2D Time Domain Reconstruction}
 
@@ -255,12 +279,6 @@ Discretize Then Adjoint strategy not implemented :
 \begin{itemize}
 \item Tremendous task in a complex industrial code
 \end{itemize}
-%% \columnbreak
-%% \uncover<2->{
-%% Gradient expression :
-%%   \begin{equation}
-%%      \nabla_{{\velocity}}J=-\int_0^{T} \int_{\Omega} \frac{2}{\density \velocity^3} \frac{\partial \contP}{\partial t}\Lbdun d\Omega dt.
-%%   \end{equation}
 \end{frame}
 
 
@@ -280,6 +298,15 @@ Discretize Then Adjoint strategy not implemented :
   \end{equation}
    $\velocity$, $\density$ and  $\boldsymbol{\textcolor{\mygreen}{\kappa}}$  Constant per elements
 \end{frame}
+
+
+
+
+
+
+% ============================================
+% ====== Frame : 2D Results RK/vsAB3 =========
+% ============================================
 
 \newlength{\modelwidth}
 \setlength{\modelwidth}{10.8cm}
@@ -329,7 +356,6 @@ Discretize Then Adjoint strategy not implemented :
   \end{figure}
 \end{frame}
 
-
 \begin{frame}[noframenumbering]{2D Time Domain FWI Reconstructions}{Time-schemes comparison}
   \vspace{-0.5cm}
   \renewcommand{\modelfile}{fig/marmousi_noise_ab3}
@@ -344,6 +370,13 @@ Discretize Then Adjoint strategy not implemented :
        \input{fig/skeleton_cp} \hfill
    \end{figure}
 \end{frame}
+
+
+
+
+% ============================================
+% ====== Frame : 2D Results ModalvsNodal =====
+% ============================================
 
 \begin{frame}{2D Time Domain FWI Reconstructions}{Nodal/Modal Comparison}
 
@@ -396,8 +429,15 @@ Discretize Then Adjoint strategy not implemented :
     \newblock GPU-Accelerated Bernstein Bézier Discontinuous Galerkin Methods for Wave Problems
     \newblock SIAM Journal on Scientific Computing 2017
   \end{thebibliography}
-
 \end{frame}
+
+
+
+
+
+% ============================================
+% ====== Frame : 2D Results Multiscale 1 =====
+% ============================================
 
 \subsection{2D Multiscale Reconstruction}
 \begin{frame}{2D Multiscale Reconstructions}{Reconstruction with an initial smooth model}
@@ -431,6 +471,12 @@ Discretize Then Adjoint strategy not implemented :
 \end{frame}
 
 
+
+
+
+% ============================================
+% ====== Frame : Multiscale principle=========
+% ============================================
 
 \begin{frame}{2D Multiscale Reconstructions}{Multiscale Principle}
 
@@ -488,6 +534,15 @@ Discretize Then Adjoint strategy not implemented :
   \end{figure}
 
 \end{frame}
+
+
+
+
+
+
+% ===============================================
+% ====== Frame : 2D Multiscale reconstruction ===
+% ===============================================
 
 
 \begin{frame}{2D Multiscale Reconstructions}{Reconstruction with an initial smooth model}
@@ -565,6 +620,11 @@ Discretize Then Adjoint strategy not implemented :
    \end{figure}
 \end{frame}
 
+
+
+% ===============================================
+% ====== Frame : Multiscale Reconstruction 2 ====
+% ===============================================
 
 \begin{frame}{2D Multiscale Reconstructions}
 
@@ -751,6 +811,11 @@ Discretize Then Adjoint strategy not implemented :
     \end{figure}
   \end{multicols}
 \end{frame}
+
+
+% ============================================
+% ====== Frame : Conclusion ==================
+% ============================================
 
 \begin{frame}{Conclusion}
 conclusion

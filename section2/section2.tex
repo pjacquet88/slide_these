@@ -1,16 +1,20 @@
 \section{Adjoint Studies}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 0 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \renewcommand\tikzscale{1.3}
+
+% ============================================
+% ====== Frame : Adjoint Scheme      =========
+% ============================================
 \input{images/adjoint_scheme.tex}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+% ============================================
+% ====== Frame : Adjoint then discretize 1 ===
+% ============================================
 
 \begin{frame}{AtD : Adjoint then Discretized Strategy}
 
@@ -46,7 +50,13 @@
     \end{equation}
 \end{frame}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+% ============================================
+% ====== Frame : Adjoint then discretize 2 ===
+% ============================================
 
 \subsection{Adjoint then Discretized}
 \begin{frame}{AtD : Adjoint then Discretized Strategy}
@@ -83,12 +93,18 @@ Time-steps going Forward
     \end{figure}
   \end{multicols}
 \end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
 \subsection{Discretize then Adjoint}
+
+% ============================================
+% ====== Frame : Discretize then Adjoint 1 ===
+% ============================================
 \begin{frame}{DtA : Discretize then Adjoint Strategy}{RK4 example}
 
   All time scheme can be summed-up such as :
@@ -133,7 +149,10 @@ Time-steps going Forward
 \end{frame}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% ============================================
+% ====== Frame : Discretize then Adjoint 2 ===
+% ============================================
 \begin{frame}{DtA : Discretize then Adjoint Strategy}
 
     All time scheme can be summed-up such as :
@@ -159,59 +178,14 @@ Time-steps going Forward
       \end{center}
       }
 \end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% \begin{frame}{DtA : Discretize then Adjoint Strategy}{Example with RK4}
-%% \small
-%%       RK4 time-scheme leads to :
-%%     \begin{equation}
-%%       \discreteU^{n+1}=B\discreteU^n+C_0\discreteF^n+C_{\frac{1}{2}}\discreteF^{n+\frac{1}{2}}+C_1\discreteF^{n+1}
-%%     \end{equation}
 
-%% \begin{equation}
-%%   L\discreteU=E\discreteF=\discreteG
-%% \end{equation}
-%% \begin{equation}
-%%   \begin{pmatrix}
-%%     I & & & & \\
-%%     -B&I & & & \\
-%%     & -B&I  & & \\
-%%     & & \ddots & \ddots   & \\
-%%     & &  & -B &I \\
-%%     %% \vdots & \ddots & \vdots \\
-%%     %% 0      & \cdots & 1
-%%   \end{pmatrix}
-%%   \begin{pmatrix}
-%%     \discreteU^0 \\
-%%     \discreteU^1 \\
-%%     \discreteU^2 \\
-%%     \vdots \\
-%%     \discreteU^n \\
-%%   \end{pmatrix}=
-%%   \begin{pmatrix}
-%%     \discreteG^0 \\
-%%     \discreteG^1 \\
-%%     \discreteG^2 \\
-%%     \vdots \\
-%%     \discreteG^n \\
-%%   \end{pmatrix}
-%% \end{equation}
 
-%% So :
 
-%% \begin{equation}
-%%   L^*=\begin{pmatrix}
-%%   I &-B^* & & & \\
-%%   &I &-B^* & & \\
-%%   & &\ddots  &\ddots & \\
-%%   & &  & I   &-B^* \\
-%%   & &  &  &I \\
-%%   %% \vdots & \ddots & \vdots \\
-%%   %% 0      & \cdots & 1
-%%   \end{pmatrix}
-%% \end{equation}
-%% \end{frame}
+
+% ================================================
+% ====== Frame : Adjoint Strategies Comparison ===
+% ================================================
 
 \begin{frame}{Adjoint Strategies Comparison}
   \begin{columns}
