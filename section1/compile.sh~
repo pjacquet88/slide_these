@@ -1,4 +1,0 @@
-cd ..
-sh compile.sh
-cd chapter1
-rm -rf main.aux main.log main.out
