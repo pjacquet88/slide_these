@@ -1,5 +1,8 @@
+{
+  \AtBeginSection[]{}
+  \section{Time Domain Full Waveform Inversion}
+}
 
-\section*{Time Domain Full Waveform Inversion}
 \subsection{Seismic Acquisition}
 
 % ============================================
@@ -64,11 +67,11 @@
   \uncover<2->{
     Cost function to minimize :
     \begin{equation}
-      \CF(m) = \frac{1}{2}||\textcolor{blue}{d_{obs}}-\textcolor{red}{\mathcal{F}(m)}||^2dt
+      \CF(\model) = \frac{1}{2}||\textcolor{blue}{d_{obs}}-\textcolor{red}{\mathcal{F}(\model)}||^2dt
     \end{equation}
  \begin{itemize}
-   \item $\mathcal{F}(m)$ is the restriction on the receivers of the simulated waves in the media $m$. (With $m = \velocity, \density, \bulkmodulus$...)
-   \item FWI iterates until $\CF(m) \longrightarrow 0$
+   \item $\mathcal{F}(m)$ is the restriction on the receivers of the simulated waves in the media $\model$. (With $\model = \velocity, \density, \bulkmodulus$...)
+   \item FWI iterates until $\CF(\model) \longrightarrow 0$
  \end{itemize}
   }
 \end{frame}
@@ -120,7 +123,7 @@
   \begin{multicols}{2}
   \begin{empheq}[left=\empheqlbrace]{align}
     & \frac{1}{\density \velocity^2}\frac{\partial \contP}{\partial t}+\nabla \cdot \contV=f_p \text{~~ on $\boldsymbol{\Omega}$}\\
-    & \density\frac{\partial \contV}{\partial t}+\nabla\contP=f_v  \text{~~ on $\boldsymbol{\Omega}$}\\
+    & \density\frac{\partial \contV}{\partial t}+\nabla\contP=0  \text{~~ on $\boldsymbol{\Omega}$}\\
     & \contP=0 \text{~~ on $\textcolor{red}{\boldsymbol{\Gamma_1}}$} \\
     & \frac{\partial \contP}{\partial t}+\velocity \nabla \contP \cdot \normal=0 \text{~~ on $\textcolor{blue}{\boldsymbol{\Gamma_2}}$}
   \end{empheq}
@@ -131,7 +134,7 @@
     \renewcommand\tikzscale{1.0}
     \begin{figure}[H]
     \input{images/domain2.tex}
-    \caption{Domain with Absorbing Boundary Conditions}
+    \small{Domain with Absorbing Boundary Conditions}
     \end{figure}
   \end{center}
 
@@ -152,8 +155,8 @@
 
     Space Discretization : Discontinuous Galerkin Elements
     \begin{itemize}
-      \item Nodal (Lagrangian / Jacobian)
-      \item Modal (Bernstein-Bézier)
+      \item Nodal \small{(Lagrangian / Jacobian)}
+      \item \normalsize{Modal} \small{(Bernstein-Bézier)}
     \end{itemize}
     \vspace{1cm}
     \uncover<3->{
@@ -208,6 +211,7 @@
   \end{itemize}
 
   \begin{figure}[H]
+    \centering
     \subfigure[h-adaptivity]{
       \input{images/hadaptivity.tex}
 }

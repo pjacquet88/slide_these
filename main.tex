@@ -100,19 +100,19 @@
 \newcommand\discreteQV{\bar{q_v}}
 \newcommand\discreteQ{\bar{q}}
 %\newcommand\discreteD{\bar{d}}
-\newcommand\Lag{\mathcal{L}}
+\newcommand\Lag{\boldsymbol{\mathcal{L}}}
 
 \newcommand\contP{\boldsymbol{\textcolor{\myred}{p}}}
 \newcommand\contV{\boldsymbol{\textcolor{\myred}{v}}}
 %\newcommand\contP{p}
 %\newcommand\contV{\textbf{v}}
 %\newcommand\contV{v}
-\newcommand\contU{\textbf{u}}
-\newcommand\qcqU{\widehat{\textbf{u}}}
+\newcommand\contU{\boldsymbol{\textcolor{\myred}{u}}}
+\newcommand\qcqU{\textcolor{\myred}{\widehat{\boldsymbol{{u}}}}}
 \newcommand\qcqP{\widehat{p}}
 \newcommand\qcqV{\widehat{\textbf{v}}}
-\newcommand\contLbd{\boldsymbol{\lambda}}
-\newcommand\qcqLbd{\boldsymbol{\widehat{\lambda}}}
+\newcommand\contLbd{\boldsymbol{\textcolor{\myblue}{\lambda}}}
+\newcommand\qcqLbd{\boldsymbol{\textcolor{\myblue}{\widehat{\lambda}}}}
 \newcommand\Lbdun{\boldsymbol{\textcolor{\myred}{\lambda_1}}}
 \newcommand\Lbdeux{\boldsymbol{\textcolor{\myred}{\lambda_2}}}
 \newcommand\qcqLbdun{\widehat{\lambda_1}}
@@ -124,6 +124,10 @@
 \newcommand\discreteD{\boldsymbol{\bar{D}}}
 
 \newcommand\CF{\mathcal{J}}
+\newcommand\CFF{\mathcal{G}}
+\newcommand\DP{Forward_{\model}}
+
+\newcommand{\model}{\boldsymbol{\textcolor{\mygreen}{m}}}
 
 \newcommand\contAl{\boldsymbol{\alpha}}
 \newcommand\normal{\boldsymbol{n}}
@@ -193,8 +197,8 @@
   Pau, FRANCE}
 ] % optional - is placed in the bottom of the sidebar on every slide
 {% is placed on the bottom of the title page
-  \textbf{ Barucq Hélène, Diaz Julien, Calandra Henri \\
-    First year PhD Student\\
+  \textbf{ Andreas Atle, Barucq Hélène, Calandra Henri, Diaz Julien \\
+    Second year PhD Student\\
    Inria - Magique 3D - DIP\\
   Pau, FRANCE}
   %there must be an empty line above this line - otherwise some unwanted space is added between the university and the country (I do not know why;( )
@@ -223,8 +227,8 @@
 %% \end{frame}
 %%%%%%%%%%%%%%%%
 
-\input{section1/section1.tex}  %% Model + Bernstein
-\input{section2/section2.tex}  %% AtD and DtA
+%\input{section1/section1.tex}  %% intro FWI
+%\input{section2/section2.tex}  %% AtD and DtA
 \input{section3/section3.tex}  %% Some results
 
 

@@ -161,13 +161,13 @@ Gradient expression :
           mark size=2pt]
         table[x=monx,y=mony]
         {images/VP_ATD.dat};
-        \addlegendentry{Adjoint Then Discretize\footnote{With Bernstein-Bézier elements}}
+        \addlegendentry{Adjoint Then Discretize\footnote{With Bernstein-Bézier elements and AB3 time scheme}}
         \addplot[color=blue!90!black,mark options={solid},
           line width=1pt,
           mark size=2pt]
         table[x=monx,y=mony]
         {images/VP_DTA.dat};
-        \addlegendentry{Discretize Then Adjoint\footnote{With canonical scalar product}}
+        \addlegendentry{Discretize Then Adjoint$^{1,}$\footnote{With canonical scalar product}}
       \end{axis}
     \end{tikzpicture}
   \end{figure}
@@ -478,65 +478,108 @@ Discretize Then Adjoint strategy not implemented :
 % ====== Frame : Multiscale principle=========
 % ============================================
 
-\begin{frame}{2D Multiscale Reconstructions}{Multiscale Principle}
+\begin{frame}{2D Multiscale Reconstructions}{Multiscale Principle \cite{bunks}}
+  \vspace{-0.5cm}
+  \begin{multicols}{2}
 
+    \begin{center}
+    ~
+    \vspace{0.8cm}
 
-  \setlength{\plotwidth} {6.0cm}
-  \setlength{\plotheight}{3cm}
-  \begin{figure}
-    \begin{tikzpicture}
-      \begin{axis}[width=\plotwidth,
-          height=\plotheight,
-          %              ymode = log,
-          xlabel={FWI Iterations},
-          ymin=-5,ymax=29
-        ]
-        \addplot[color=red!90!black,mark options={solid},
-          line width=1pt,
-          mark size=2pt]
-        table[x=monx,y=mony]
-        {fig/file1.txt};
-      \end{axis}
-    \end{tikzpicture}
-  \end{figure}
+    Low Frequencies \\ $\Longleftrightarrow$ \\ Reconstruct \textbf{coarse} models
 
-  \begin{figure}
-    \begin{tikzpicture}
-      \begin{axis}[width=\plotwidth,
-          height=\plotheight,
-          %              ymode = log,
-          xlabel={FWI Iterations},
-        ]
-        \addplot[color=red!90!black,mark options={solid},
-          line width=1pt,
-          mark size=2pt]
-        table[x=monx,y=mony]
-        {fig/file2.txt};
-      \end{axis}
-    \end{tikzpicture}
-  \end{figure}
+    \vspace{2.4cm}
 
+    High Frequencies \\ $\Longleftrightarrow$ \\ Reconstruct \textbf{small} models
+    \end{center}
 
-  \begin{figure}
-    \begin{tikzpicture}
-      \begin{axis}[width=\plotwidth,
-          height=\plotheight,
-          %              ymode = log,
-          xlabel={FWI Iterations},
-        ]
-        \addplot[color=red!90!black,mark options={solid},
-          line width=1pt,
-          mark size=2pt]
-        table[x=monx,y=mony]
-        {fig/file3.txt};
-      \end{axis}
-    \end{tikzpicture}
-  \end{figure}
+    \columnbreak
+    Heuristic Illustration :
+    \vspace{-0.6cm}
+    \setlength{\plotwidth} {6.0cm}
+    \setlength{\plotheight}{3cm}
+    \begin{figure}
+      \begin{tikzpicture}
+        \begin{axis}[
+            title={\textcolor{red}{\textbf{1.0-2.5Hz}}},
+            title style={at={(axis description cs:0.5,0.8)},anchor=north},
+            width=\plotwidth,
+            height=\plotheight,
+            %              ymode = log,
+            yticklabels={,,},
+            xticklabels={,,},
+            ylabel style={rotate=-90},
+            x label style={at={(axis description cs:1.1,0.2)},anchor=north},
+            y label style={at={(axis description cs:0.01,1.4)},anchor=north},
+            xlabel={$\boldsymbol{\textcolor{\mygreen}{m}}$},
+            ylabel={$\CF$},
+            ymin=-5,ymax=29
+          ]
+          \addplot[color=red!90!black,mark options={solid},
+            line width=1pt,
+            mark size=2pt]
+          table[x=monx,y=mony]
+          {fig/file3.txt};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+    \vspace{-1.0cm}
+    \begin{figure}
+      \begin{tikzpicture}
+        \begin{axis}[
+            title={\textcolor{red}{\textbf{1.0-7.5Hz}}},
+            title style={at={(axis description cs:0.5,0.8)},anchor=north},
+            width=\plotwidth,
+            height=\plotheight,
+            yticklabels={,,},
+            xticklabels={,,},
+            x label style={at={(axis description cs:1.1,0.2)},anchor=north},
+            xlabel={$\boldsymbol{\textcolor{\mygreen}{m}}$},
+            %              ymode = log,
+            ymin=-5,ymax=29
+          ]
+          \addplot[color=red!90!black,mark options={solid},
+            line width=1pt,
+            mark size=2pt]
+          table[x=monx,y=mony]
+          {fig/file2.txt};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+    \vspace{-1.0cm}
+    \begin{figure}
+      \begin{tikzpicture}
+        \begin{axis}[
+            title={\textcolor{red}{\textbf{1.0-15Hz}}},
+            title style={at={(axis description cs:0.5,0.8)},anchor=north},
+            width=\plotwidth,
+            height=\plotheight,
+            yticklabels={,,},
+            xticklabels={,,},
+            x label style={at={(axis description cs:1.1,0.2)},anchor=north},
+            xlabel={$\boldsymbol{\textcolor{\mygreen}{m}}$},
+            %              ymode = log,
+            ymin=-5,ymax=29
+          ]
+          \addplot[color=red!90!black,mark options={solid},
+            line width=1pt,
+            mark size=2pt]
+          table[x=monx,y=mony]
+          {fig/file1.txt};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
 
+  \end{multicols}
+
+  \vfill
+  \tiny
+  \begin{thebibliography}{1}
+  \bibitem{bunks} Carey Bunks, Fatimetou M. Saleck, S. Zaleski, and G. Chavent Chan J. and Warburton T.
+    \newblock Multiscale seismic waveform inversion
+    \newblock GEOPHYSICS, Vol. 60, No. 5, 1995
+  \end{thebibliography}
 \end{frame}
-
-
-
 
 
 
@@ -682,7 +725,8 @@ Discretize Then Adjoint strategy not implemented :
     Cost function evolution :
     \begin{figure}
       \begin{tikzpicture}
-        \begin{axis}[width=\plotwidth,
+        \begin{axis}[
+            width=\plotwidth,
             height=\plotheight,
 %            ymode = log,
             xlabel={FWI Iterations},
