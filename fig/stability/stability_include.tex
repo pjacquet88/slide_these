@@ -1,0 +1,82 @@
+%% -----------------------------------------------
+%% begin the TikZ picture
+\begin{tikzpicture}
+\begin{groupplot}[group style={group size=2 by 1,horizontal sep=.2cm,
+                  group name=mygroupplot},%ylabel={$\log(\omega^2 \mathcal{C})$},
+                  enlargelimits=false,xlabel={},
+                  enlarge y limits=true,
+                  ymin=5.e-1,ymax=20,
+                  height=\stabfreqwidth,width=2.1\stabfreqwidth]
+%% Plot n°1 
+%% -----------------------------------------------------------------------
+   \nextgroupplot[height=0.8\stabfreqwidth,width=\stabfreqwidth,
+       scale only axis,separate axis lines,xminorticks=true,
+       yminorticks=true, xtick={500,2000,4000},% xmode=log,
+       ymode=log,xmin=50,xmax=5000,clip mode=individual] %% foreground(for marks)
+       \pgfmathsetmacro{\freq}   {10.}
+       \pgfmathsetmacro{\scale}  {3317076607}
+       \pgfmathsetmacro{\kup}    {0.058}
+       \pgfmathsetmacro{\klow}   {0.95}
+       %%\pgfmathsetmacro{\kup}  {0.062748205533406}
+       %%\pgfmathsetmacro{\klow} {0.866851837848860}
+       
+       %% load current data
+       \addplot[color=blue,mark=square*,mark options={solid},
+                forget plot,line width=\stabestimlwidth,mark size=\stabestimmwidth,
+                dotted, only marks,
+                select coords between index={2}{12}]
+                table[x=N,y=Stability10Hz,
+                y expr=ln(\thisrow{Stability10Hz}*\scale*(2*pi*\freq)^2)]
+                {fig/stability/data/data_adaptive_unisource.txt};
+       %% Upper Bound
+       %% -----------
+       \addplot[color=red,dotted,forget plot,
+                line width=\stabboundwidth,samples=150,domain=50:7000]
+                {\kup*x^(4./7.)};
+       %% Lower Bound
+       %% -----------
+       \addplot[color=red,dashed,forget plot,
+                line width=\stabboundwidth,samples=100,domain=1200:7000]
+                {\klow*x^(1./5.)};
+%% Plot n°2
+%% ----------------------------------------------------------------------- 
+   \nextgroupplot[height=0.8\stabfreqwidth,width= \stabfreqwidth,
+       scale only axis,separate axis lines,xminorticks=true,
+       yminorticks=true,xmode=log,
+       ymode=log,xmin=5000,xmax=2e6,ylabel={},yticklabels={},
+       clip mode=individual] %% foreground(for marks)
+       \pgfmathsetmacro{\freq}   {10.}
+       \pgfmathsetmacro{\scale}  {3317076607}
+       \pgfmathsetmacro{\kup}    {0.058}
+       \pgfmathsetmacro{\klow}   {0.95}
+       %%\pgfmathsetmacro{\kup}  {0.062748205533406}
+       %%\pgfmathsetmacro{\klow} {0.866851837848860}
+       
+       %% load current data
+       \addplot[color=blue,mark=square*,mark options={solid},
+                forget plot,line width=\stabestimlwidth,mark size=\stabestimmwidth,
+                dotted, only marks,
+                select coords between index={11}{17}]
+                table[x=N,y=Stability10Hz,
+                y expr=ln(\thisrow{Stability10Hz}*\scale*(2*pi*\freq)^2)]
+                {fig/stability/data/data_adaptive_unisource.txt};
+       %% Upper Bound
+       %% -----------
+       \addplot[color=red,dotted,forget plot,
+                line width=\stabboundwidth,samples=100,domain=2000:40000]
+                {\kup*x^(4./7.)};
+       %% Lower Bound
+       \addplot[color=red,dashed,forget plot,
+                line width=\stabboundwidth,samples=150,domain=2000:2000000]
+                {\klow*x^(1./5.)};
+                
+%   \nextgroupplot[group/empty plot]
+%   \nextgroupplot[group/empty plot]
+   
+   \end{groupplot}
+   %% X label for all
+   \node[anchor=south] at 
+        ($(mygroupplot c1r1) + (.5\stabfreqwidth,-.6\stabfreqwidth)$)
+        {Number of domains ($N$)}; 
+\end{tikzpicture}
+%% ----------------------

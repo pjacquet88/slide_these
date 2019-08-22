@@ -1,0 +1,56 @@
+ \begin{tikzpicture}[scale=0.8]
+      \draw[color=black,line width=2.1](0.0,0.0) -- (5,0.0);
+      %\draw[color=blue, line width=10] (0,-0.02) node {$\bullet$} ;
+      %\draw[color=blue, line width=10] (5,-0.02) node {$\bullet$} ;
+     % \draw node[color=blue,fill,circle,minimum size=0.01](1,1) {};
+      \node[anchor=south east, color=black]
+      at (0,0) {$0$};
+      \node[anchor=south west, color=black]
+      at (5,0) {$T$};
+      
+      \pgfmathsetmacro{\x}{0.0}
+      \draw[color=black,line width=2.1](\x,0.1) -- (\x,-0.1);
+
+      \pgfmathsetmacro{\x}{5.0}
+      \draw[color=black,line width=2.1](\x,0.1) -- (\x,-0.1);
+
+      \pgfmathsetmacro{\x}{0.5}
+      \draw[color=black,line width=1.5](\x,0.1) -- (\x,-0.1);
+      \draw[arrowStyle,color=blue]
+      (\x-0.5,0) to[out=90,in=90,looseness=4.0]
+      node[sloped,anchor=south]
+      {}
+      (\x,0.0);
+      \draw[color=black,line width=1.5](\x,0.1) -- (\x,-0.1);
+
+
+      
+      \pgfmathsetmacro{\x}{1.0}
+            \draw[arrowStyle,color=blue]
+      (\x-0.5,0) to[out=90,in=90,looseness=4.0]
+      node[sloped,anchor=south]
+      {}
+      (\x,0.0);
+      \draw[color=black,line width=1.5](\x,0.1) -- (\x,-0.1);
+      \pgfmathsetmacro{\x}{1.5}
+            \draw[arrowStyle,color=blue]
+      (\x-0.5,0) to[out=90,in=180,looseness=1.0]
+      node[sloped,anchor=south]
+      {}
+      (\x,0.55);
+
+      
+      \draw[color=black,line width=1.5](\x,0.1) -- (\x,-0.1);
+      \pgfmathsetmacro{\x}{2.0}
+      \draw[color=black,line width=1.5](\x,0.1) -- (\x,-0.1);
+      \pgfmathsetmacro{\x}{2.5}
+      \draw[color=black,line width=1.5](\x,0.1) -- (\x,-0.1);
+      \pgfmathsetmacro{\x}{3.0}
+      \draw[color=black,line width=1.5](\x,0.1) -- (\x,-0.1);
+      \pgfmathsetmacro{\x}{3.5}
+      \draw[color=black,line width=1.5](\x,0.1) -- (\x,-0.1);
+      \pgfmathsetmacro{\x}{4.0}
+      \draw[color=black,line width=1.5](\x,0.1) -- (\x,-0.1);
+      \pgfmathsetmacro{\x}{4.5}
+      \draw[color=black,line width=1.5](\x,0.1) -- (\x,-0.1);
+    \end{tikzpicture}

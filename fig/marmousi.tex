@@ -1,0 +1,22 @@
+\begin{tikzpicture}[scale=1.5]
+
+\node[inner sep=0pt] (initial) at (0,0)
+    {\includegraphics[width=0.7\textwidth]{fig/marmousi-bm-smooth.png}};
+    \node[below] (initial_name) at (initial.south) {\textbf{Initial Model}};
+
+\node[inner sep=0pt] (gradient) at (0,-5.5)
+     {\includegraphics[width=0.70\textwidth]{fig/marmousi_grad.png}};
+     \node[below] (gradient_name) at (gradient.south) {\textbf{$\mu$ Gradient}};
+
+%% \draw[->,thick] (initial_name.south) -- (gradient.north)
+%% node[midway,fill=white] {Compute Gradient};
+
+%% \draw [->,thick] (gradient.west) to [out=180,in=180] node[midway,fill=white]{~~~~~ Update model} (initial.west);
+\node[inner sep=0pt] (final) at (0,-11.0)
+     {\includegraphics[width=0.70\textwidth]{fig/marmousi_end.png}};
+     \node[below] (final_name) at (final.south) {\textbf{(Ideal) Final Model}};
+
+%% \draw[double,->,thick] (gradient_name.south) -- (final.north)
+%% node[midway,fill=white] {Convergency Tests Passed};
+
+\end{tikzpicture}

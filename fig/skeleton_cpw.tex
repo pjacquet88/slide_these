@@ -1,0 +1,21 @@
+\begin{tikzpicture}
+\pgfmathsetmacro{\xmin} {0.}
+\pgfmathsetmacro{\xmax} {17.}
+\pgfmathsetmacro{\zmin} {0.}
+\pgfmathsetmacro{\zmax} {3.5}
+
+\begin{axis}[%
+title={\normalsize{\textbf{$\mathbf{\velocity}$ gradient}}},
+width=1.3\modelwidth,
+height=0.55\modelwidth,
+axis on top, separate axis lines,
+xmin=\xmin, xmax=\xmax, xlabel={\normalsize{x (km)}},
+ymin=\zmin, ymax=\zmax, ylabel={\normalsize{depth (km)}}, y dir=reverse,
+xtick distance=4,
+colormap/paraview, colorbar,
+colorbar style={title={$\cdot 10^{-17}$}},
+point meta min=-5, point meta max=5
+]
+\addplot [forget plot] graphics [xmin=\xmin,xmax=\xmax,ymin=\zmin,ymax=\zmax] {{\modelfile}.png};
+\end{axis}
+\end{tikzpicture}%

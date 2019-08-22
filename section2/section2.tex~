@@ -1,0 +1,199 @@
+\section{Adjoint Studies}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 0 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\renewcommand\tikzscale{1.3}
+\input{images/adjoint_scheme.tex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 1 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}{AtD : Adjoint then Discretized Strategy}
+
+  \begin{equation}
+    \CF(\contP)=\frac{1}{2}||\textcolor{blue}{d_{obs}} - R\contP||^2
+    \end{equation}
+
+  \noindent
+  \begin{multicols}{2}
+    \noindent
+      \begin{empheq}[left=\empheqlbrace]{align}
+    & \frac{1}{\density \velocity^2}\frac{\partial \contP}{\partial_t}+\nabla.\contV=f_p \text{~~ on $\boldsymbol{\Omega}$}\\
+    & \density\frac{\partial \contV}{\partial_t}+\nabla\contP=f_v  \text{~~ on $\boldsymbol{\Omega}$}\\
+    & \contP=0 \text{~~ on $\textcolor{red}{\boldsymbol{\Gamma_1}}$} \\
+    & \frac{\partial \contP}{\partial t}+\velocity \nabla \contP.\normal=0 \text{~~ on $\textcolor{blue}{\boldsymbol{\Gamma_2}}$}\\
+        & \density \frac{\partial \contV}{\partial t}+\nabla \contP=0 \text{~~ on $\textcolor{blue}{\boldsymbol{\Gamma_2}}$} \\
+        &\contP(0) = 0 \text{, ~~~} \contV(0) = 0
+      \end{empheq}
+      \vspace{30cm}
+    \columnbreak
+    \noindent
+      \begin{empheq}[left=\empheqlbrace]{align}
+    & \frac{1}{\density \velocity^2}\frac{\partial \Lbdun}{\partial_t}+\nabla.\Lbdeux=\frac{\partial \CF}{\partial \contP} \text{~~ on $\boldsymbol{\Omega}$}\\
+    & \density\frac{\partial \Lbdeux}{\partial_t}+\nabla\Lbdun=f_v  \text{~~ on $\boldsymbol{\Omega}$}\\
+    & \Lbdun=0 \text{~~ on $\textcolor{red}{\boldsymbol{\Gamma_1}}$} \\
+    & \frac{\partial \Lbdun}{\partial t}+\velocity \nabla \Lbdun.\normal=0 \text{~~ on $\textcolor{blue}{\boldsymbol{\Gamma_2}}$}\\
+    & \density \frac{\partial \Lbdeux}{\partial t}+\nabla \Lbdun=0 \text{~~ on $\textcolor{blue}{\boldsymbol{\Gamma_2}}$} \\
+    &\Lbdun(T) = 0 \text{, ~~~} \Lbdeux(T) = 0
+  \end{empheq}
+    %% \begin{empheq}[left=\empheqlbrace]{align}
+    %%   & \frac{1}{\density\velocity^2}\frac{\partial \Lbdun}{\partial t}+\nabla.\Lbdeux=\frac{\partial J}{\partial \contP}\\
+    %%   & \rho_0\frac{\partial \Lbdeux}{\partial t}+\nabla\Lbdun=0\\   \label{eq_form_1_abc}
+    %%   & \Lbdun(t=T)=0 \\
+    %%   & \Lbdeux(t=T)=0 \\
+    %%   & \frac{\partial \Lbdun}{\partial t}+\velocity\nabla \Lbdun.\normal=0 \text{~~ on $\Gamma$}
+    %% \end{empheq}
+  \end{multicols}
+  \vspace{-0.5cm}
+  \begin{equation}
+    t\in[0,T] \text{~~~~~~~~~~~~~~~~~~~~~~~~~~} t\in[T,0]
+    \end{equation}
+\end{frame}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 2 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Adjoint then Discretized}
+\begin{frame}{AtD : Adjoint then Discretized Strategy}
+
+  \begin{equation}
+    \CF(\contP)=\frac{1}{2}||\textcolor{blue}{d_{obs}} - R\contP||^2
+  \end{equation}
+
+  \noindent
+  \begin{multicols}{2}
+    \noindent
+    \begin{empheq}[left=\empheqlbrace]{align}
+  & \frac{\partial \discreteU}{\partial t}^n=A\discreteU^n+ \discreteF^n \\[0.2cm]
+  & \text{With : ~~}  \discreteU^n=\vectll{(}{\discreteP^n}{\discreteV^n}{)}
+    \end{empheq}
+    \vspace{0.3cm}
+    \begin{figure}
+      \noindent
+      \input{images/forward.tex}
+Time-steps going Forward
+    \end{figure}
+    \columnbreak
+    \noindent
+    \begin{empheq}[left=\empheqlbrace]{align}
+   \textbf{~~~}   & \frac{\partial \discreteLbd}{\partial t}^n=A\discreteLbd^n+R^*(R\discreteU^n-\textcolor{blue}{d_{obs}})\\
+  & \text{With : ~~}  \discreteLbd^n=\vectll{(}{\discreteLbdun^n}{\discreteLbdeux^n}{)}
+    \end{empheq}
+    \vspace{-0.0cm}
+    \noindent
+    \begin{figure}
+      \noindent
+      \input{images/backward.tex}
+      Time-steps going Backward
+    \end{figure}
+  \end{multicols}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 3 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Discretize then Adjoint}
+\begin{frame}{DtA : Discretize then Adjoint Strategy}
+  %%   \begin{equation}
+  %%     \frac{\partial \discreteU}{\partial t}^n=A\discreteU^n + \discreteF^n \text{~~~ With : } \discreteU=\vectll{(}{\discreteP}{\discreteV}{)} \text{~,~} A=\begin{pmatrix}
+  %% A_{pp} & A_p \\
+  %% A_v & 0
+  %% \end{pmatrix} \text{~,~} \discreteF=\vectll{(}{\discreteF_p}{0}{)}
+  %%   \end{equation}
+
+    %% RK4 time-scheme leads to :
+    %% \begin{equation}
+    %%   \discreteU^{n+1}=B\discreteU^n+C_0\discreteF^n+C_{\frac{1}{2}}\discreteF^{n+\frac{1}{2}}+C_1\discreteF^{n+1}
+    %% \end{equation}
+
+    %% AB3 time-scheme leads to :
+    %% \begin{equation}
+    %%   \discreteU^{n+1}=(I+b_0)A\discreteU^n+b_1A\discreteU^{n-1}+b_2A\discreteU^{n-2}+b_0\discreteF^n+b_1\discreteF^{n-1}+b_2\discreteF^{n-2}
+    %% \end{equation}
+
+    All time scheme can be summed-up such as :
+    \begin{equation}
+      L\discreteU=E\discreteF \uncover<2->{=\discreteG}
+    \end{equation}
+    We are looking for a Discrete Adjoint state satisfying :
+    \begin{equation}
+      L^*\discreteLbd=-R^*(\textcolor{blue}{d_{obs}}-R\discreteU) \uncover<2->{=\discreteD}
+    \end{equation}
+    With the adjoint operator $L^*$ satisfying :
+      \begin{equation}
+    <L\discreteU,\discreteLbd>=<\discreteU,L^*\discreteLbd>
+      \end{equation}
+      \uncover<2->{
+        \begin{equation}
+        <\discreteG,\discreteLbd>=<\discreteU,\discreteD> \text{~~~(Adjoint Test)}
+      \end{equation}
+
+
+      \begin{center}
+        Adjoint test succeeds $\Longleftrightarrow$  operator $L^*$  well established
+      \end{center}
+      }
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 4 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 5 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{DtA : Discretize then Adjoint Strategy}{Example with RK4}
+\small
+      RK4 time-scheme leads to :
+    \begin{equation}
+      \discreteU^{n+1}=B\discreteU^n+C_0\discreteF^n+C_{\frac{1}{2}}\discreteF^{n+\frac{1}{2}}+C_1\discreteF^{n+1}
+    \end{equation}
+
+\begin{equation}
+  L\discreteU=E\discreteF=\discreteG
+\end{equation}
+\begin{equation}
+  \begin{pmatrix}
+    I & & & & \\
+    -B&I & & & \\
+    & -B&I  & & \\
+    & & \ddots & \ddots   & \\
+    & &  & -B &I \\
+    %% \vdots & \ddots & \vdots \\
+    %% 0      & \cdots & 1
+  \end{pmatrix}
+  \begin{pmatrix}
+    \discreteU^0 \\
+    \discreteU^1 \\
+    \discreteU^2 \\
+    \vdots \\
+    \discreteU^n \\
+  \end{pmatrix}=
+  \begin{pmatrix}
+    \discreteG^0 \\
+    \discreteG^1 \\
+    \discreteG^2 \\
+    \vdots \\
+    \discreteG^n \\
+  \end{pmatrix}
+\end{equation}
+
+So :
+
+\begin{equation}
+  L^*=\begin{pmatrix}
+  I &-B^* & & & \\
+  &I &-B^* & & \\
+  & &\ddots  &\ddots & \\
+  & &  & I   &-B^* \\
+  & &  &  &I \\
+  %% \vdots & \ddots & \vdots \\
+  %% 0      & \cdots & 1
+  \end{pmatrix}
+\end{equation}
+\end{frame}

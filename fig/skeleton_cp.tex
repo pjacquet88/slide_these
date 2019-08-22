@@ -1,0 +1,22 @@
+\begin{tikzpicture}
+\pgfmathsetmacro{\xmin} {0.}
+\pgfmathsetmacro{\xmax} {12.}
+\pgfmathsetmacro{\zmin} {0.}
+\pgfmathsetmacro{\zmax} {2.5}
+
+\begin{axis}[%
+title={\small{\modeltitle}},
+width=1.0\modelwidth,
+height=0.4\modelwidth,
+axis on top, separate axis lines,
+xmin=\xmin, xmax=\xmax, %xlabel={x (km)},
+ymin=\zmin, ymax=\zmax, ylabel={depth (km)},
+yticklabels={},xticklabels={},
+y dir=reverse,
+colormap/paraview, colorbar,
+point meta min=1.5e-3, point meta max=5.5e-3,
+colorbar/width=2.5mm,
+]
+\addplot [forget plot] graphics [xmin=\xmin,xmax=\xmax,ymin=\zmin,ymax=\zmax] {{\modelfile}.png};
+\end{axis}
+\end{tikzpicture}%

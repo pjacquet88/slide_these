@@ -1,0 +1,81 @@
+\begin{frame}{Adjoint Formulation}
+\begin{figure}
+
+\definecolor{color1}{RGB}{255,174,41}   %% myOrange
+%\definecolor{color2}{RGB}{216,93,99}  %% myGreen
+\definecolor{color3}{RGB}{100,149,237} %% myBlue
+\definecolor{color2}{RGB}{223,83,74} %% myRed
+
+\definecolor{colorOne}{RGB}{255,174,41}   %% myOrange
+%\definecolor{color2}{RGB}{216,93,99}  %% myGreen
+\definecolor{colorThree}{RGB}{100,149,237} %% myBlue
+\definecolor{colorTwo}{RGB}{223,83,74} %% myRed
+
+
+\begin{tikzpicture}[scale=\tikzscale] %% [every node/.style={scale=1}]
+
+\node[boxOptions]
+at (0,3.5){ {\textbf{\Large\fontfamily{pzc}\selectfont Continuous \\ Direct Problem}}};
+
+\uncover<2->{
+\node[boxOptions]
+at (6,3.5){ {\textbf{\Large\fontfamily{pzc}\selectfont Continuous \\ Adjoint Problem}}};
+
+\coordinate (a) at (1.4,3.5);
+\coordinate (b) at (4.7,3.5);
+\draw[->, >=latex, red!50!white, line width=10pt]   (a) to node[pos=0.4,above]{\small{\textbf{\textcolor{black}{Adjoint}}}} (b) ;
+}
+
+\uncover<3->{
+\node[boxOptions]
+at (6,0.7){\textbf{Discretization of the Continuous Adjoint Problem}};
+
+\draw[arrowStyleinv]
+(6,2.1) to[out=90,in=90]
+node[sloped,anchor=south]
+{}
+(6,2.6);
+
+\coordinate (b) at (6,1.2);
+\coordinate (a) at (6,3.0);
+\draw[->, >=latex, red!50!white, line width=10pt]   (a) to node[fill=colorThree!0,pos=0.3]{\small{\textbf{\textcolor{black}{Discretization}}}} (b) ;
+}
+
+
+\uncover<4->{
+\node[boxOptions]
+at (0,-0.5){\textbf{Discrete \\Direct Problem}};
+
+%% \draw[arrowStyleinv]
+%% (0,0.7) to[out=90,in=90]
+%% node[sloped,anchor=south]
+%% {\footnotesize{Discretization ~~~~~~~~~~~~~}}
+%% (0,2.5);
+
+\coordinate (b) at (0,-0.1);
+\coordinate (a) at (0,3.0);
+\draw[->, >=latex, blue!50!white, line width=10pt]   (a) to node[fill=colorThree!0]{\small{\textbf{\textcolor{black}{Discretization}}}} (b) ;
+
+
+\node[boxOptions]
+at (6,-0.5){\textbf{Adjoint of the Discrete Problem}};
+
+
+%% \draw[arrowStyle]
+%% (2,0) to[out=0,in=180]
+%% node[sloped,anchor=south]
+%% {(*)}
+%% (4,0);
+
+\coordinate (a) at (1.4,-0.5);
+\coordinate (b) at (4.7,-0.5);
+\draw[->, >=latex, blue!50!white, line width=10pt]   (a) to node[pos=0.4,below]{\small{\textbf{\textcolor{black}{Adjoint}}}} (b) ;
+}
+
+\uncover<5->{
+\draw[color=red,line width=2] (4.5,1.4)
+rectangle (7.5,-1.0);
+}
+\end{tikzpicture}
+\end{figure}
+\end{frame}

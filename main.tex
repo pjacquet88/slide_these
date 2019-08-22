@@ -1,0 +1,231 @@
+\documentclass[10pt]{beamer}
+\usetheme[
+%%% options passed to the outer theme
+%    progressstyle=fixedCircCnt,   %either fixedCircCnt, movCircCnt, or corner
+%    rotationcw,          % change the rotation direction from counter-clockwise to clockwise
+%    shownavsym          % show the navigation symbols
+  ]{AAUsimple}
+
+% If you want to change the colors of the various elements in the theme, edit and uncomment the following lines
+% Change the bar and sidebar colors:
+%\setbeamercolor{AAUsimple}{fg=red!20,bg=red}
+%\setbeamercolor{sidebar}{bg=red!20}
+% Change the color of the structural elements:
+%\setbeamercolor{structure}{fg=red}
+% Change the frame title text color:
+%\setbeamercolor{frametitle}{fg=blue}
+% Change the normal text color background:
+%\setbeamercolor{normal text}{fg=black,bg=gray!10}
+% ... and you can of course change a lot more - see the beamer user manual.
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{mathenv}
+\usepackage{empheq}
+\usepackage{subfigure}
+\usepackage{multimedia}
+\usepackage{pgf,tikz}
+\usetikzlibrary{positioning,arrows}
+%\usepackage[pdftex]{hyperref}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\mathtoolsset{showonlyrefs=true}
+
+\usepackage{multicol}
+\usepackage{empheq}
+\usepackage{textpos}
+\usepackage{graphics}
+% Or whatever. Note that the encoding and the font should match. If T1
+% does not look nice, try deleting the line with the fontenc.
+\usepackage{helvet}
+\usepackage{tikz,pgfplots,xcolor}
+
+\pgfplotsset{compat=newest}
+
+%%%%%% TIKZ SET STYLE %%%%%%%%
+\tikzset{boxOptions/.style={
+    rectangle,
+    rounded corners,
+    draw=black, very thick,
+    text width=9em,
+    minimum height=2em,
+    text centered}
+}
+
+\tikzset{arrowStyle/.style={
+    ->,
+    thick,
+    shorten <=2pt,
+    shorten >=2pt}
+}
+
+\tikzset{arrowStyleinv/.style={
+    <-,
+    thick,
+    shorten <=2pt,
+    shorten >=2pt}
+}
+
+\usetikzlibrary{backgrounds}
+
+\newcommand\tikzscale{0cm}
+\newlength{\tikzwidth}
+\newlength{\tikzheight}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% colored hyperlinks
+\newcommand{\chref}[2]{%
+  \href{#1}{{\usebeamercolor[bg]{AAUsimple}#2}}%
+}
+\newcommand{\scaption}[1]{\caption{\tiny{#1}}}
+
+
+\definecolor{light-gray}{gray}{0.95}
+\definecolor{myred}{RGB}{200,0,0}
+\newcommand{\myred}{red!70!black}
+\newcommand{\mygreen}{green!60!black}
+\newcommand{\myblue}{blue!40!black}
+\newcommand{\code}[1]{\colorbox{light-gray}{\texttt{#1}}}
+
+
+\newcommand\discreteP{\boldsymbol{\textcolor{\myred}{\bar{P}}}}
+\newcommand\discreteV{\boldsymbol{\textcolor{\myred}{\bar{V}}}}
+\newcommand\discreteU{\boldsymbol{\textcolor{\myred}{\bar{U}}}}
+\newcommand\discreteF{\boldsymbol{\bar{F}}}
+\newcommand\discreteG{\boldsymbol{\bar{G}}}
+
+\newcommand\discreteQP{\bar{q_p}}
+\newcommand\discreteQV{\bar{q_v}}
+\newcommand\discreteQ{\bar{q}}
+%\newcommand\discreteD{\bar{d}}
+\newcommand\Lag{\mathcal{L}}
+
+\newcommand\contP{\boldsymbol{\textcolor{\myred}{p}}}
+\newcommand\contV{\boldsymbol{\textcolor{\myred}{v}}}
+%\newcommand\contP{p}
+%\newcommand\contV{\textbf{v}}
+%\newcommand\contV{v}
+\newcommand\contU{\textbf{u}}
+\newcommand\qcqU{\widehat{\textbf{u}}}
+\newcommand\qcqP{\widehat{p}}
+\newcommand\qcqV{\widehat{\textbf{v}}}
+\newcommand\contLbd{\boldsymbol{\lambda}}
+\newcommand\qcqLbd{\boldsymbol{\widehat{\lambda}}}
+\newcommand\Lbdun{\boldsymbol{\textcolor{\myred}{\lambda_1}}}
+\newcommand\Lbdeux{\boldsymbol{\textcolor{\myred}{\lambda_2}}}
+\newcommand\qcqLbdun{\widehat{\lambda_1}}
+\newcommand\qcqLbdeux{\boldsymbol{\widehat{\lambda_2}}}
+
+\newcommand\discreteLbd{\textcolor{\myred}{\boldsymbol{\bar{\Lambda}}}}
+\newcommand\discreteLbdun{\textcolor{\myred}{\boldsymbol{\bar{\Lambda_1}}}}
+\newcommand\discreteLbdeux{\textcolor{\myred}{\boldsymbol{\bar{\Lambda_2}}}}
+\newcommand\discreteD{\boldsymbol{\bar{D}}}
+
+\newcommand\CF{\mathcal{J}}
+
+\newcommand\contAl{\boldsymbol{\alpha}}
+\newcommand\normal{\boldsymbol{n}}
+
+%% \newcommand\velocity{v_p}
+%% \newcommand\density{\rho_0}
+\newcommand\velocity{\boldsymbol{\textcolor{\mygreen}{c}}}
+\newcommand\bulkmodulus{\boldsymbol{\textcolor{\mygreen}{\kappa}}}
+\newcommand\density{\boldsymbol{\textcolor{\mygreen}{\rho}}}
+
+\newcommand{\modelfile}{blabla.png}
+
+\pgfplotsset{
+        colormap/paraview/.style={
+                colormap={paraview}{
+                        rgb255(0cm)=(20,119,255)
+			rgb255(1cm)=(168,181,255)
+			rgb255(2cm)=(240,240,240)
+			rgb255(3cm)=(255,161,145)
+                        rgb255(4cm)=(234,60,53)
+                },
+        },
+}
+
+\newlength{\plotwidth}
+\newlength{\plotheight}
+\setlength{\plotwidth} {6cm}
+\setlength{\plotheight}{7cm}
+
+
+
+\newcommand\vectll[4]{\left#1 \begin{array}{c}
+    #2\\
+    #3\\
+  \end{array} \right#4}
+
+
+
+\title[\textbf{Time Domain FWI involving DG approximation}]{\textbf{Time Domain Full Waveform Inversion \\  involving Discontinuous Galerkin \\ approximation}}
+
+
+\AtBeginSection[]
+{  \frame<handout:0>
+  {    \frametitle{Outline}
+    \tableofcontents[sectionstyle=show/shaded,
+           subsectionstyle=show/shaded/shaded]
+  }
+}
+\renewcommand{\thesubfigure}{\relax}
+%\subtitle{v.\ 1.2.1}  % could also be a conference name
+
+\date{\textbf{Waves 2019}}
+
+\author{
+  \textbf{Pierre Jacquet}\\
+  \href{mailto:pierre.jacquet@inria.fr}{{\tt pierre.jacquet@inria.fr}}
+}
+
+% - Give the names in the same order as they appear in the paper.
+% - Use the \inst{?} command only if the authors have different
+%   affiliation. See the beamer manual for an example
+
+\institute[
+%  {\includegraphics[scale=0.2]{aau_segl}}\\ %insert a company, department or university logo
+ \textbf{ First year PhD Student\\
+  Inria - Magique 3D - DIP\\
+  Pau, FRANCE}
+] % optional - is placed in the bottom of the sidebar on every slide
+{% is placed on the bottom of the title page
+  \textbf{ Barucq Hélène, Diaz Julien, Calandra Henri \\
+    First year PhD Student\\
+   Inria - Magique 3D - DIP\\
+  Pau, FRANCE}
+  %there must be an empty line above this line - otherwise some unwanted space is added between the university and the country (I do not know why;( )
+}
+
+% specify a logo on the titlepage (you can specify additional logos an include them in
+% institute command below
+\pgfdeclareimage[height=2cm]{titlepagelogo}{AAUgraphics/bandeau.png} % placed on the title page
+%\pgfdeclareimage[height=1.5cm]{titlepagelogo2}{AAUgraphics/aau_logo_new} % placed on the title page
+\titlegraphic{% is placed on the bottom of the title page
+  \pgfuseimage{titlepagelogo}
+%  \hspace{1cm}\pgfuseimage{titlepagelogo2}
+}
+
+\begin{document}
+% the titlepage
+{\aauwavesbg%
+\begin{frame}[plain,noframenumbering] % the plain option removes the header from the title page
+  \titlepage
+\end{frame}}
+%%%%%%%%%%%%%%%%
+
+% TOC
+%% \begin{frame}{Outline}{}
+%% \tableofcontents
+%% \end{frame}
+%%%%%%%%%%%%%%%%
+
+%\input{section1/section1.tex}  %% Model + Bernstein
+%\input{section2/section2.tex}  %% AtD and DtA
+\input{section3/section3.tex}  %% Some results
+
+
+\end{document}

@@ -1,0 +1,52 @@
+% This file was created by matlab2tikz.
+% Minimal pgfplots version: 1.3
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+width=.98\stabfreqwidth,
+height=0.6\stabfreqwidth,
+at={(0,0)},
+scale only axis,separate axis lines,xmode=log,
+xmin=200,xmax=2.e7,
+xminorticks=true,xlabel={number of domains $N$},ymode=log,
+ymin=1.e-2,ymax=50000,
+yminorticks=true,ylabel={stability $\mathcal{C}$},
+ytick={0.1,10,1000},
+xtick={1000,100000,1.e7},
+%% xticklabels={1000,10000}
+]
+\pgfmathsetmacro{\omeg}{2.*5.*pi}
+\pgfmathsetmacro{\b}{1./1400}
+\pgfmathsetmacro{\kscaleu} {48.9390}%{11.7210}
+\pgfmathsetmacro{\kup}     {0.01489}%{0.03918}
+\pgfmathsetmacro{\kscalel} {11.7210}
+\pgfmathsetmacro{\klow}    {0.61010}
+
+\addplot [color=blue,dotted,mark=square*,mark options={solid},forget plot,
+          line width=\stabestimlwidth,mark size=\stabestimmwidth]
+  table[row sep=crcr]{%
+     336   0.000000035275754E006  \\
+    2880   0.000000201889140E006  \\
+   23040   0.000001691598368E006  \\
+  187492   0.000014179907670E006  \\
+ 1527168   0.000117216249820E006  \\
+ 3070818   0.000906557054637E006  \\
+ 4597248   0.002903951700096E006  \\
+11003850   0.018096826396902E006  \\
+};
+
+%% Upper Bound
+%% -----------
+\addplot[name path=up,color=red,dashed,forget plot,line width=\stabboundwidth,
+         samples=20,domain=100:1.e8] 
+          {\kscaleu / \omeg^2 * exp(\kup*(1+\omeg^2*\b^2)*x^(4./7.))};
+%% Lower Bound
+%% -----------
+\addplot[name path=low,color=red,dashed,forget plot,line width=\stabboundwidth,
+         samples=20,domain=100:1.e8] 
+         {\kscalel /(4.*\omeg^2) * exp(\klow*x^(1./5.))};
+\addplot[red,opacity=2.0e-01] fill between[of=up and low];
+
+\end{axis}
+\end{tikzpicture}%
