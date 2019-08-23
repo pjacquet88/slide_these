@@ -8,7 +8,7 @@
 
 \begin{frame}{Adjoint State Method}
 
-Lagrangian fonctional :
+Lagrangian fonctional \cite{plessix} :
   \begin{equation}
     \Lag(\qcqU,\qcqLbd,\model) = \frac{1}{2}||\textcolor{blue}{d_{obs}}-\textcolor{red}{\mathcal{R}(\qcqU)}||^2dt + <\DP(\qcqU),\qcqLbd>
   \end{equation}
@@ -33,7 +33,16 @@ Lagrangian fonctional :
   \begin{equation}
     \partial_{\model_i} \CF(\model) = \partial_{\model_i} \Lag(\contU,\contLbd,\model) = \partial_{\model_i} <\DP(\contU),\contLbd>
   \end{equation}
-}
+  }
+
+  \vfill
+  \tiny
+  \begin{thebibliography}{1}
+  \bibitem{plessix} Plessix R-E
+    \newblock A review of the adjoint-state method for computing the gradient
+of a functional with geophysical applications
+    \newblock Geophysical Journal International, Volume 167, Issue 2, 2006
+  \end{thebibliography}
 
 \end{frame}
 
@@ -236,11 +245,11 @@ Time-steps going Forward
 \small
       RK4 time-scheme leads to :
     \begin{equation}
-      \discreteU^{n+1}=B\discreteU^n+C_0\discreteF^n+C_{\frac{1}{2}}\discreteF^{n+\frac{1}{2}}+C_1\discreteF^{n+1}
+      \discreteU^{n+1}=B\discreteU^n+\textcolor{\myblue}{{\boldsymbol{C_0}}}\discreteF^n+\textcolor{\myblue}{{\boldsymbol{C_{\frac{1}{2}}}}}\discreteF^{n+\frac{1}{2}}+\textcolor{\myblue}{{\boldsymbol{C_1}}}\discreteF^{n+1}
     \end{equation}
 
 \begin{equation}
-  L\discreteU=E\discreteF=\discreteG
+  \textcolor{\myblue}{{\boldsymbol{L}}}\discreteU=\textcolor{\myblue}{{\boldsymbol{E}}}\discreteF=\discreteG
 \end{equation}
 \begin{equation}
   \begin{pmatrix}
@@ -271,7 +280,7 @@ Time-steps going Forward
 So :
 
 \begin{equation}
-  L^*=\begin{pmatrix}
+  \textcolor{\myblue}{{\boldsymbol{L^*}}}=\begin{pmatrix}
   I &-B^* & & & \\
   &I &-B^* & & \\
   & &\ddots  &\ddots & \\

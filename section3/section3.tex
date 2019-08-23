@@ -267,38 +267,32 @@ Gradient expression :
 \subsection{2D Time Domain FWI Results}
 \begin{frame}{2D Time Domain Reconstruction}
 
-2D FWI :
-\begin{itemize}
-\item Developped in Total environnement (DIP\footnote{\url{http://dip.inria.fr/}})
-\item Nodal Space Operators (Lagrangian/Jacobian)
-\item Modal Space Operators (Bernstein-Bézier)
-\item Runge Kutta 2/4 and Adams Bashforth time-schemes
-\end{itemize}
-\vspace{0.5cm}
-Discretize Then Adjoint strategy not implemented :
-\begin{itemize}
-\item Tremendous task in a complex industrial code
-\end{itemize}
+  \vspace{1cm}
+  2D FWI :
+  \begin{itemize}
+  \item Developped in Total environnement (DIP\footnote{\url{http://dip.inria.fr/}})
+  \item Nodal Space Operators (Lagrangian/Jacobian)
+  \item Modal Space Operators (Bernstein-Bézier)
+  \item Runge Kutta 2/4 and Adams Bashforth 3 time-schemes
+  \end{itemize}
+  \vspace{0.5cm}
+  \begin{overprint}
+    \onslide<1>{
+      Discretize Then Adjoint strategy not implemented :
+      \begin{itemize}
+      \item Tremendous task in a complex industrial code
+      \end{itemize}
+    }
+    \onslide<2>{
+      \vspace{-1cm}
+      Gradient expression :
+      \begin{equation}
+        \nabla_{\boldsymbol{\textcolor{\mygreen}{\frac{1}{\kappa}}}}\CF=\int_0^{T} \int_{\Omega} \frac{\partial \contP}{\partial t}\Lbdun d\Omega dt \text{~~~~ with : } \boldsymbol{\textcolor{\mygreen}{\kappa}}=\density \velocity^2
+      \end{equation}
+      $\velocity$, $\density$ and  $\boldsymbol{\textcolor{\mygreen}{\kappa}}$  Constant per elements
+    }
+  \end{overprint}
 \end{frame}
-
-
-\begin{frame}[noframenumbering]{2D Time Domain Reconstruction}
-
-2D FWI :
-\begin{itemize}
-\item Developped in Total environnement (DIP\footnote{\url{http://dip.inria.fr/}})
-\item Nodal Operators (Lagrangian/Jacobian)
-\item Modal Operators (Bernstein-Bézier)
-\item Runge Kutta 2/4 and Adams Bashforth time-schemes
-\end{itemize}
-\vspace{0.5cm}
- Gradient expression :
-  \begin{equation}
-     \nabla_{\boldsymbol{\textcolor{\mygreen}{\frac{1}{\kappa}}}}\CF=\int_0^{T} \int_{\Omega} \frac{\partial \contP}{\partial t}\Lbdun d\Omega dt \text{~~~~ with : } \boldsymbol{\textcolor{\mygreen}{\kappa}}=\density \velocity^2
-  \end{equation}
-   $\velocity$, $\density$ and  $\boldsymbol{\textcolor{\mygreen}{\kappa}}$  Constant per elements
-\end{frame}
-
 
 
 
@@ -862,5 +856,30 @@ Discretize Then Adjoint strategy not implemented :
 % ============================================
 
 \begin{frame}{Conclusion}
-conclusion
+
+  \begin{block}{Main Results :}
+    \begin{itemize}
+      \item Comparison between adjoint formulations (\textbf{\textcolor{red}{{AtD}}} and \textbf{\textcolor{blue}{{DtA}}})
+      \item 2D Acoustic Reconstruction performed with different discretization
+      \item Multiscale FWI implemented and working on Marmousi
+    \end{itemize}
+  \end{block}
+
+  \uncover<2->{
+    \begin{exampleblock}{Perspectives :}
+    \begin{itemize}
+      \item Develop enhanced optimizers (Limited BFGS, NLCG)
+      \item Perform reconstruction on other test cases (2D/3D)
+      \item Extend the code to elastic and elasto-acoustic propagator
+      \item Exploit coupled numerical method (SEM/DG)
+    \end{itemize}
+    \end{exampleblock}
+    }
+
+\uncover<3->{
+  \vfill
+  \hfill
+  \textbf{Thank you.}
+}
+
 \end{frame}

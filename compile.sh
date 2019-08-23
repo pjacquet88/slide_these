@@ -6,9 +6,9 @@
 
 
 pdflatex main.tex
-#bibtex main
-#pdflatex main.tex
-#pdflatex main.tex
+bibtex main
+pdflatex main.tex
+pdflatex main.tex
 # evince main.pdf &
 rm -rf main.aux main.log main.out main.toc main.bbl main.blg
 
