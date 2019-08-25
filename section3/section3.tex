@@ -322,7 +322,7 @@ Gradient expression :
 
 \begin{frame}[noframenumbering]{2D Time Domain FWI Reconstructions}{Time-schemes comparison}
   \vspace{-0.5cm}
-  \renewcommand{\modelfile}{fig/marmousi_noise_rk2}
+  \renewcommand{\modelfile}{fig/marmousi_noise_rk4_2}
   \renewcommand{\modeltitle}{\textbf{\textcolor{red}{RK2}} Reconstructed $\velocity$ Model (30 iterations)}
   \begin{figure}
     \input{fig/skeleton_cp} \hfill
@@ -569,7 +569,7 @@ Gradient expression :
   \vfill
   \tiny
   \begin{thebibliography}{1}
-  \bibitem{bunks} Carey Bunks, Fatimetou M. Saleck, S. Zaleski, and G. Chavent Chan J. and Warburton T.
+  \bibitem{bunks} C. Bunks, F. M. Saleck, S. Zaleski, and G. Chavent
     \newblock Multiscale seismic waveform inversion
     \newblock GEOPHYSICS, Vol. 60, No. 5, 1995
   \end{thebibliography}
@@ -673,7 +673,7 @@ Gradient expression :
     \item 19 sources / 181 Receivers
     \item 120 cores
     \item Computation time : 17h
-    \item Frequencies : \textcolor{red}{1-2.5Hz} \\ ~ \\ ~
+    \item Frequencies : \textcolor{pink!60!black}{1-2.5Hz} \\ ~ \\ ~
     \end{itemize}
     \columnbreak
 
@@ -688,19 +688,19 @@ Gradient expression :
             xlabel={FWI Iterations},
             xmin=-5.0, xmax=105.0,
             legend pos=south east]
-          \addplot[color=red!90!black,mark options={solid},
+          \addplot[color=pink!60!black,mark options={solid},
             line width=1pt,
             mark size=2pt]
           table[x=monx,y=mony]
           {fig/run_marmousi_smooth.txt};
-          \addlegendentry{$\CF(m)$}
+
         \end{axis}
       \end{tikzpicture}
     \end{figure}
   \end{multicols}
 \end{frame}
 
-\begin{frame}[noframenumbering]{2D Multiscale Reconstructions}
+\begin{frame}{2D Multiscale Reconstructions}
 
   \begin{multicols}{2}
     \begin{itemize}
@@ -710,7 +710,7 @@ Gradient expression :
     \item 19 sources / 181 Receivers
     \item 120 cores
     \item Computation time : 17h
-    \item Frequencies : 1-2.5Hz / \textcolor{red}{1-5Hz} \\ ~
+    \item Frequencies : \textcolor{pink!60!black}{1-2.5Hz}, \textcolor{blue!60!black}{1-5.0Hz} \\ ~
     \end{itemize}
     \columnbreak
 
@@ -719,26 +719,31 @@ Gradient expression :
     Cost function evolution :
     \begin{figure}
       \begin{tikzpicture}
-        \begin{axis}[
-            width=\plotwidth,
+        \begin{axis}[width=\plotwidth,
             height=\plotheight,
 %            ymode = log,
             xlabel={FWI Iterations},
             xmin=-5.0, xmax=105.0,
             legend pos=south east]
-          \addplot[color=red!90!black,mark options={solid},
+          \addplot[color=pink!60!black,mark options={solid},
+            line width=1pt,
+            mark size=2pt]
+          table[x=monx,y=mony]
+          {fig/run_marmousi_smooth.txt};
+
+          \addplot[color=blue!90!black,mark options={solid},
             line width=1pt,
             mark size=2pt]
           table[x=monx,y=mony]
           {fig/run_marmousi_smooth_2.txt};
-          \addlegendentry{$\CF(m)$}
+
         \end{axis}
       \end{tikzpicture}
     \end{figure}
   \end{multicols}
 \end{frame}
 
-\begin{frame}[noframenumbering]{2D Multiscale Reconstructions}
+\begin{frame}{2D Multiscale Reconstructions}
 
   \begin{multicols}{2}
     \begin{itemize}
@@ -748,7 +753,7 @@ Gradient expression :
     \item 19 sources / 181 Receivers
     \item 120 cores
     \item Computation time : 17h
-    \item Frequencies : 1-2.5Hz / 1-5Hz / \textcolor{red}{1-7.5Hz} \\ ~
+    \item Frequencies : \textcolor{pink!60!black}{1-2.5Hz}, \textcolor{blue!60!black}{1-5.0Hz}, \textcolor{green!90!black}{1-7.5Hz} \\ ~
     \end{itemize}
     \columnbreak
 
@@ -763,20 +768,31 @@ Gradient expression :
             xlabel={FWI Iterations},
             xmin=-5.0, xmax=105.0,
             legend pos=south east]
-          \addplot[color=red!90!black,mark options={solid},
+          \addplot[color=pink!60!black,mark options={solid},
+            line width=1pt,
+            mark size=2pt]
+          table[x=monx,y=mony]
+          {fig/run_marmousi_smooth.txt};
+
+          \addplot[color=blue!90!black,mark options={solid},
+            line width=1pt,
+            mark size=2pt]
+          table[x=monx,y=mony]
+          {fig/run_marmousi_smooth_2.txt};
+
+          \addplot[color=green!90!black,mark options={solid},
             line width=1pt,
             mark size=2pt]
           table[x=monx,y=mony]
           {fig/run_marmousi_smooth_3.txt};
-          \addlegendentry{$\CF(m)$}
+
         \end{axis}
       \end{tikzpicture}
     \end{figure}
   \end{multicols}
 \end{frame}
 
-
-\begin{frame}[noframenumbering]{2D Multiscale Reconstructions}
+\begin{frame}{2D Multiscale Reconstructions}
 
   \begin{multicols}{2}
     \begin{itemize}
@@ -786,7 +802,7 @@ Gradient expression :
     \item 19 sources / 181 Receivers
     \item 120 cores
     \item Computation time : 17h
-    \item Frequencies : 1-2.5Hz / 1-5Hz / 1-7.5Hz / \textcolor{red}{1-10Hz} \\ ~
+    \item Frequencies : \textcolor{pink!60!black}{1-2.5Hz}, \textcolor{blue!60!black}{1-5.0Hz}, \textcolor{green!90!black}{1-7.5Hz}, \textcolor{orange!90!black}{1-10Hz} \\ ~
     \end{itemize}
     \columnbreak
 
@@ -801,19 +817,37 @@ Gradient expression :
             xlabel={FWI Iterations},
             xmin=-5.0, xmax=105.0,
             legend pos=south east]
-          \addplot[color=red!90!black,mark options={solid},
+          \addplot[color=pink!60!black,mark options={solid},
+            line width=1pt,
+            mark size=2pt]
+          table[x=monx,y=mony]
+          {fig/run_marmousi_smooth.txt};
+
+          \addplot[color=blue!90!black,mark options={solid},
+            line width=1pt,
+            mark size=2pt]
+          table[x=monx,y=mony]
+          {fig/run_marmousi_smooth_2.txt};
+
+          \addplot[color=green!90!black,mark options={solid},
+            line width=1pt,
+            mark size=2pt]
+          table[x=monx,y=mony]
+          {fig/run_marmousi_smooth_3.txt};
+
+          \addplot[color=orange!90!black,mark options={solid},
             line width=1pt,
             mark size=2pt]
           table[x=monx,y=mony]
           {fig/run_marmousi_smooth_4.txt};
-          \addlegendentry{$\CF(m)$}
+
         \end{axis}
       \end{tikzpicture}
     \end{figure}
   \end{multicols}
 \end{frame}
 
-\begin{frame}[noframenumbering]{2D Multiscale Reconstructions}
+\begin{frame}{2D Multiscale Reconstructions}
 
   \begin{multicols}{2}
     \begin{itemize}
@@ -823,7 +857,7 @@ Gradient expression :
     \item 19 sources / 181 Receivers
     \item 120 cores
     \item Computation time : 17h
-    \item Frequencies : 1-2.5Hz / 1-5Hz / 1-7.5Hz / 1-10Hz / \textcolor{red}{1-15Hz}
+    \item Frequencies : \textcolor{pink!60!black}{1-2.5Hz}, \textcolor{blue!60!black}{1-5.0Hz}, \textcolor{green!90!black}{1-7.5Hz}, \textcolor{orange!90!black}{1-10Hz}, \textcolor{red!90!black}{1-15Hz}
     \end{itemize}
     \columnbreak
 
@@ -838,17 +872,42 @@ Gradient expression :
             xlabel={FWI Iterations},
             xmin=-5.0, xmax=105.0,
             legend pos=south east]
+          \addplot[color=pink!60!black,mark options={solid},
+            line width=1pt,
+            mark size=2pt]
+          table[x=monx,y=mony]
+          {fig/run_marmousi_smooth.txt};
+
+          \addplot[color=blue!90!black,mark options={solid},
+            line width=1pt,
+            mark size=2pt]
+          table[x=monx,y=mony]
+          {fig/run_marmousi_smooth_2.txt};
+
+          \addplot[color=green!90!black,mark options={solid},
+            line width=1pt,
+            mark size=2pt]
+          table[x=monx,y=mony]
+          {fig/run_marmousi_smooth_3.txt};
+
+          \addplot[color=orange!90!black,mark options={solid},
+            line width=1pt,
+            mark size=2pt]
+          table[x=monx,y=mony]
+          {fig/run_marmousi_smooth_4.txt};
+
           \addplot[color=red!90!black,mark options={solid},
             line width=1pt,
             mark size=2pt]
           table[x=monx,y=mony]
           {fig/run_marmousi_smooth_5.txt};
-          \addlegendentry{$\CF(m)$}
+
         \end{axis}
       \end{tikzpicture}
     \end{figure}
   \end{multicols}
 \end{frame}
+
 
 
 % ============================================
@@ -867,7 +926,8 @@ Gradient expression :
 
   \uncover<2->{
     \begin{exampleblock}{Perspectives :}
-    \begin{itemize}
+      \begin{itemize}
+      \item Investigating on the \textbf{\textcolor{blue}{{DtA}}} for 2D cases
       \item Develop enhanced optimizers (Limited BFGS, NLCG)
       \item Perform reconstruction on other test cases (2D/3D)
       \item Extend the code to elastic and elasto-acoustic propagator
