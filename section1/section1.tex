@@ -44,18 +44,18 @@
 \subsection{FWI Workflow}
 
 \begin{frame}{FWI Workflow}
-  \begin{columns}
-    \column{\dimexpr\paperwidth-10pt}
-    \begin{figure}
-      \def\svgwidth{1.0\linewidth}
-      \input{images/data.pdf_tex}
-    \end{figure}
-  \end{columns}
-  \vspace{4.5cm}
-~
+\vspace{-3.67cm}
+\begin{columns}
+\column{\dimexpr\paperwidth-10pt}
+\begin{figure}
+\def\svgwidth{1.0\linewidth}
+\input{images/data.pdf_tex}
+\end{figure}
+\end{columns}
 \end{frame}
 
 \begin{frame}[noframenumbering]{FWI Workflow}
+  \vspace{-0.5cm}
   \begin{columns}
     \column{\dimexpr\paperwidth-10pt}
     \begin{figure}
@@ -63,16 +63,29 @@
       \input{images/data_2.pdf_tex}
     \end{figure}
   \end{columns}
-  \vspace{1cm}
+  \vspace{0.5cm}
   \uncover<2->{
     Cost function to minimize :
     \begin{equation}
       \CF(\model) = \frac{1}{2}||\textcolor{blue}{d_{obs}}-\textcolor{red}{\mathcal{F}(\model)}||^2
     \end{equation}
  \begin{itemize}
-   \item $\mathcal{F}(m)$ is the restriction on the receivers of the simulated waves in the media $\model$. (With $\model = \velocity, \density, \bulkmodulus$...)
+   \item $\mathcal{F}(m)$ is the restriction on the receivers of the simulated waves in the medium $\model$. (With $\model = \velocity, \density, \bulkmodulus$...)
    \item FWI iterates until $\CF(\model) \longrightarrow 0$
  \end{itemize}
+ \vspace{0.2cm}
+  \tiny
+  \begin{thebibliography}{1}
+  \begin{multicols}{2}
+  \bibitem{lailly} Patrick Lailly
+  \newblock The  seismic  inverse  problem  as  a  sequence  of  before  stack  migrations
+  \newblock Conference  on  Inverse  Scattering
+  \columnbreak
+  \bibitem{tarantola} Albert Tarantola
+  \newblock Inversion of seismic reflection data in the acoustic approximation
+  \newblock Geophysics, Vol. 49, 1984
+  \end{multicols}
+  \end{thebibliography}
   }
 \end{frame}
 
@@ -125,7 +138,8 @@
     & \frac{1}{\density \velocity^2}\frac{\partial \contP}{\partial t}+\nabla \cdot \contV=f_p \text{~~ on $\boldsymbol{\Omega}$}\\
     & \density\frac{\partial \contV}{\partial t}+\nabla\contP=0  \text{~~ on $\boldsymbol{\Omega}$}\\
     & \contP=0 \text{~~ on $\textcolor{red}{\boldsymbol{\Gamma_1}}$} \\
-    & \frac{\partial \contP}{\partial t}+\velocity \nabla \contP \cdot \normal=0 \text{~~ on $\textcolor{blue}{\boldsymbol{\Gamma_2}}$}
+    & \frac{\partial \contP}{\partial t}+\velocity \nabla \contP \cdot \normal=0 \text{~~ on $\textcolor{blue}{\boldsymbol{\Gamma_2}}$} \\
+    & \contP(0) = 0 \text{, ~~~} \contV(0) = 0
   \end{empheq}
 
   \columnbreak
@@ -204,7 +218,7 @@
   Assets of Discontinuous Galerkin Methods : \\
 
   \begin{itemize}
-  \item Unstructured grid (enable to match the topography and media irregularities)
+  \item Unstructured grid (enable to match the topography and medium irregularities)
   \item Robust to physical discontinuities
   \item hp-adaptivity
   \item Massively parallel performance properties
@@ -220,4 +234,5 @@
     \input{images/padaptivity.tex}
   }
 \end{figure}
+
 \end{frame}

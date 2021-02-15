@@ -1,235 +1,631 @@
-\documentclass[10pt]{beamer}
-\usetheme[
-%%% options passed to the outer theme
-%    progressstyle=fixedCircCnt,   %either fixedCircCnt, movCircCnt, or corner
-%    rotationcw,          % change the rotation direction from counter-clockwise to clockwise
-%    shownavsym          % show the navigation symbols
-  ]{AAUsimple}
+\documentclass[red]{beamer}
 
-% If you want to change the colors of the various elements in the theme, edit and uncomment the following lines
-% Change the bar and sidebar colors:
-%\setbeamercolor{AAUsimple}{fg=red!20,bg=red}
-%\setbeamercolor{sidebar}{bg=red!20}
-% Change the color of the structural elements:
-%\setbeamercolor{structure}{fg=red}
-% Change the frame title text color:
-%\setbeamercolor{frametitle}{fg=blue}
-% Change the normal text color background:
-%\setbeamercolor{normal text}{fg=black,bg=gray!10}
-% ... and you can of course change a lot more - see the beamer user manual.
+\usepackage{graphicx,multimedia}
+%% \addbibresource{zotero.bib}
+\input{package.tex}
+\usepackage[style=verbose,backend=bibtex]{biblatex}
+\usepackage{subcaption}
+\addbibresource{zotero.bib}
+%\input{package_manuscript.tex}
+\input{setup.tex}
+\input{setup_manuscript.tex}
 
-\usepackage[utf8]{inputenc}
-\usepackage[english]{babel}
-\usepackage[T1]{fontenc}
-\usepackage{mathenv}
-\usepackage{empheq}
-\usepackage{subfigure}
-\usepackage{multimedia}
-\usepackage{pgf,tikz}
-\usetikzlibrary{positioning,arrows}
-%\usepackage[pdftex]{hyperref}
-\usepackage{mathrsfs}
-\usepackage{mathtools}
-\mathtoolsset{showonlyrefs=true}
+\usepackage{xpatch}
+\xpatchbibmacro{cite}{cite:short}{cite:full}{}{}
 
-\usepackage{multicol}
-\usepackage{empheq}
-\usepackage{textpos}
-\usepackage{graphics}
-% Or whatever. Note that the encoding and the font should match. If T1
-% does not look nice, try deleting the line with the fontenc.
-\usepackage{helvet}
-\usepackage{tikz,pgfplots,xcolor}
-
-\pgfplotsset{compat=newest}
-
-%%%%%% TIKZ SET STYLE %%%%%%%%
-\tikzset{boxOptions/.style={
-    rectangle,
-    rounded corners,
-    draw=black, very thick,
-    text width=9em,
-    minimum height=2em,
-    text centered}
-}
-
-\tikzset{arrowStyle/.style={
-    ->,
-    thick,
-    shorten <=2pt,
-    shorten >=2pt}
-}
-
-\tikzset{arrowStyleinv/.style={
-    <-,
-    thick,
-    shorten <=2pt,
-    shorten >=2pt}
-}
-
-\usetikzlibrary{backgrounds}
-
-\newcommand\tikzscale{0cm}
-\newlength{\tikzwidth}
-\newlength{\tikzheight}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% colored hyperlinks
-\newcommand{\chref}[2]{%
-  \href{#1}{{\usebeamercolor[bg]{AAUsimple}#2}}%
-}
-\newcommand{\scaption}[1]{\caption{\tiny{#1}}}
-
-
-\definecolor{light-gray}{gray}{0.95}
-\definecolor{myred}{RGB}{200,0,0}
-\newcommand{\myred}{red!70!black}
-\newcommand{\mygreen}{green!60!black}
-\newcommand{\myblue}{blue!40!black}
-\newcommand{\code}[1]{\colorbox{light-gray}{\texttt{#1}}}
-
-
-\newcommand\discreteP{\boldsymbol{\textcolor{\myred}{\bar{P}}}}
-\newcommand\discreteV{\boldsymbol{\textcolor{\myred}{\bar{V}}}}
-\newcommand\discreteU{\boldsymbol{\textcolor{\myred}{\bar{U}}}}
-\newcommand\discreteF{\boldsymbol{\bar{F}}}
-\newcommand\discreteG{\boldsymbol{\bar{G}}}
-
-\newcommand\discreteQP{\bar{q_p}}
-\newcommand\discreteQV{\bar{q_v}}
-\newcommand\discreteQ{\bar{q}}
-%\newcommand\discreteD{\bar{d}}
-\newcommand\Lag{\boldsymbol{\mathcal{L}}}
-
-\newcommand\contP{\boldsymbol{\textcolor{\myred}{p}}}
-\newcommand\contV{\boldsymbol{\textcolor{\myred}{v}}}
-%\newcommand\contP{p}
-%\newcommand\contV{\textbf{v}}
-%\newcommand\contV{v}
-\newcommand\contU{\boldsymbol{\textcolor{\myred}{u}}}
-\newcommand\qcqU{\textcolor{\myred}{\widehat{\boldsymbol{{u}}}}}
-\newcommand\qcqP{\widehat{p}}
-\newcommand\qcqV{\widehat{\textbf{v}}}
-\newcommand\contLbd{\boldsymbol{\textcolor{\myblue}{\lambda}}}
-\newcommand\qcqLbd{\boldsymbol{\textcolor{\myblue}{\widehat{\lambda}}}}
-\newcommand\Lbdun{\boldsymbol{\textcolor{\myred}{\lambda_1}}}
-\newcommand\Lbdeux{\boldsymbol{\textcolor{\myred}{\lambda_2}}}
-\newcommand\qcqLbdun{\widehat{\lambda_1}}
-\newcommand\qcqLbdeux{\boldsymbol{\widehat{\lambda_2}}}
-
-\newcommand\discreteLbd{\textcolor{\myred}{\boldsymbol{\bar{\Lambda}}}}
-\newcommand\discreteLbdun{\textcolor{\myred}{\boldsymbol{\bar{\Lambda_1}}}}
-\newcommand\discreteLbdeux{\textcolor{\myred}{\boldsymbol{\bar{\Lambda_2}}}}
-\newcommand\discreteD{\boldsymbol{\bar{D}}}
-
-\newcommand\CF{\mathcal{J}}
-\newcommand\CFF{\mathcal{G}}
-\newcommand\DP{Forward_{\model}}
-
-\newcommand{\model}{\boldsymbol{\textcolor{\mygreen}{m}}}
-
-\newcommand\contAl{\boldsymbol{\alpha}}
-\newcommand\normal{\boldsymbol{n}}
-
-%% \newcommand\velocity{v_p}
-%% \newcommand\density{\rho_0}
-\newcommand\velocity{\boldsymbol{\textcolor{\mygreen}{c}}}
-\newcommand\bulkmodulus{\boldsymbol{\textcolor{\mygreen}{\kappa}}}
-\newcommand\density{\boldsymbol{\textcolor{\mygreen}{\rho}}}
-
-\newcommand{\modelfile}{blabla.png}
-
-\pgfplotsset{
-        colormap/paraview/.style={
-                colormap={paraview}{
-                        rgb255(0cm)=(20,119,255)
-			rgb255(1cm)=(168,181,255)
-			rgb255(2cm)=(240,240,240)
-			rgb255(3cm)=(255,161,145)
-                        rgb255(4cm)=(234,60,53)
-                },
-        },
-}
-
-\newlength{\plotwidth}
-\newlength{\plotheight}
-\setlength{\plotwidth} {6cm}
-\setlength{\plotheight}{7cm}
-
-
-
-\newcommand\vectll[4]{\left#1 \begin{array}{c}
-    #2\\
-    #3\\
-  \end{array} \right#4}
-
-
-
-\title[\textbf{Time Domain FWI involving DG approximation}]{\textbf{Time Domain Full Waveform Inversion \\  involving Discontinuous Galerkin \\ approximation}}
-
-
-\AtBeginSection[]
-{  \frame<handout:0>
-  {    \frametitle{Outline}
-    \tableofcontents[sectionstyle=show/shaded,
-           subsectionstyle=show/shaded/shaded]
-  }
-}
-\renewcommand{\thesubfigure}{\relax}
-%\subtitle{v.\ 1.2.1}  % could also be a conference name
-
-\date{\textbf{Waves 2019}}
-
-\author{
-  \textbf{Pierre Jacquet}\\
-  \href{mailto:pierre.jacquet@inria.fr}{{\tt pierre.jacquet@inria.fr}}
-}
-
-% - Give the names in the same order as they appear in the paper.
-% - Use the \inst{?} command only if the authors have different
-%   affiliation. See the beamer manual for an example
-
-\institute[
-%  {\includegraphics[scale=0.2]{aau_segl}}\\ %insert a company, department or university logo
- \textbf{ First year PhD Student\\
-  Inria - Magique 3D - DIP\\
-  Pau, FRANCE}
-] % optional - is placed in the bottom of the sidebar on every slide
-{% is placed on the bottom of the title page
-  \textbf{ Atle Andreas, Barucq Hélène, Calandra Henri, Diaz Julien \\
-    Second year PhD Student\\
-   Inria - Magique 3D - DIP\\
-  Pau, FRANCE}
-  %there must be an empty line above this line - otherwise some unwanted space is added between the university and the country (I do not know why;( )
-}
-
-% specify a logo on the titlepage (you can specify additional logos an include them in
-% institute command below
-\pgfdeclareimage[height=2cm]{titlepagelogo}{AAUgraphics/bandeau.png} % placed on the title page
-%\pgfdeclareimage[height=1.5cm]{titlepagelogo2}{AAUgraphics/aau_logo_new} % placed on the title page
-\titlegraphic{% is placed on the bottom of the title page
-  \pgfuseimage{titlepagelogo}
-%  \hspace{1cm}\pgfuseimage{titlepagelogo2}
-}
+%  \logo{\includegraphics[height=1cm]{inria.png}}
 
 \begin{document}
-% the titlepage
-{\aauwavesbg%
-\begin{frame}[plain,noframenumbering] % the plain option removes the header from the title page
-  \titlepage
-\end{frame}}
-%%%%%%%%%%%%%%%%
 
-% TOC
-%% \begin{frame}{Outline}{}
-%% \tableofcontents
+\input{section1/section1.tex}  %% intro FWI
+%% \input{section2/section2.tex}  %% AtD and DtA
+%% \input{section3/section3.tex}  %% Some results
+
+
+%% \begin{frame}[plain]
+%% \maketitle
+%% \small
+%% {\centering\itshape \textbf{Jury Members} \vspace{0.5cm}\par}
+%% \begin{tabular}[t]{l l l}
+%%  Hélène Barucq  & Henri Calandra & Gilles Carbou \\
+%%  Hervé Chauris & Julien Diaz & Florian Faucher \\
+%%  Michel Kern & Jeanne Pellerin & Sébastien Pernet
+%% \end{tabular}%
 %% \end{frame}
-%%%%%%%%%%%%%%%%
-
-%\input{section1/section1.tex}  %% intro FWI
-%\input{section2/section2.tex}  %% AtD and DtA
-\input{section3/section3.tex}  %% Some results
 
 
+%% \section{Mesh adaption in FWI workflow}
+%% \subsection{Introduction}
+%% \begin{frame}{Mesh adaptation in FWI workflow}{Introduction}
+%%   \begin{block}{Model evolution:}
+%%     \begin{center}
+%%       \movie[showcontrols,loop,autostart]
+%%             {\includegraphics[scale=.3]{animation/fwi_marmousi/fwi_marmousi-00.png}}
+%%             {animation/fwi_marmousi/out.avi}
+%%     \end{center}
+%%   \end{block}
+
+%%   \begin{block}{Mesh evolution (constant mesh):}
+%%     \begin{center}
+%%       \includegraphics[scale=0.16]{animation/fwi_mesh1_black/fwi_mesh1-00.png}
+%%     \end{center}
+%%   \end{block}
+
+%% \end{frame}
+
+
+%% \begin{frame}{Mesh adaptation in FWI workflow}{Motivation:}
+%%   \begin{block}{Model evolution:}
+%%     \begin{center}
+%%       \movie[showcontrols,loop,autostart]
+%%             {\includegraphics[scale=.3]{animation/fwi_marmousi/fwi_marmousi-00.png}}
+%%             {animation/fwi_marmousi/out.avi}
+%%     \end{center}
+%%   \end{block}
+
+%%   \begin{block}{Mesh evolution (model adaptative):}
+%%     \begin{center}
+%%             \movie[showcontrols,loop,autostart]
+%%             {\includegraphics[scale=0.16]{animation/fwi_mesh1_black/fwi_mesh1-00.png}}
+%%             {animation/fwi_mesh1_black/out.avi}
+%%     \end{center}
+%%   \end{block}
+%% \end{frame}
+
+
+%% \begin{frame}{Mesh adaptation in FWI workflow}{Adaptation to the velocity model}
+%%   \begin{block}{Model evolution:}
+%%     \begin{center}
+%%       \movie[showcontrols,loop,autostart]
+%%             {\includegraphics[scale=.3]{animation/fwi_marmousi/fwi_marmousi-00.png}}
+%%             {animation/fwi_marmousi/out.avi}
+%%     \end{center}
+%%   \end{block}
+
+%%   \begin{block}{Mesh evolution (model and frequency adaptative):}
+%%     \begin{center}
+%%             \movie[showcontrols,loop,autostart]
+%%             {\includegraphics[scale=0.16]{animation/fwi_mesh2/fwi_mesh2-00.png}}
+%%             {animation/fwi_mesh2/out.avi}
+%%     \end{center}
+%%   \end{block}
+%% \end{frame}
+
+
+
+%% \begin{frame}{Mesh adaptation in FWI workflow}{Introduction}
+%%   Why adapting the mesh in the FWI course ?
+%%   \vspace{1cm}
+%%   \begin{itemize}
+%%   \item<2->{Adjust the computational burden}
+%%   \item<3->{ Capture appearing structures}
+%%   \item<4->{Avoid small cells in high velocity structures (\textbf{relax the CFL condition})}
+%%   \item<5->{Enables to choose the mesh according to the frequency range currently reconstructed}
+%%   \end{itemize}
+%% \end{frame}
+
+
+%% \begin{frame}{Mesh adaptation in FWI workflow}{Introduction}
+%%   How to include mesh adaptation into FWI workflow ?
+%% \begin{figure}[!htbp]
+%% \centering
+%% \includegraphics[scale=0.2]{image/fwi_workflow_mesh_adapt.pdf}
+%% \caption{FWI workflow extended with mesh adaptation.}
+%% \label{fwi_workflow_mesh_extended}
+%% \end{figure}
+%% \end{frame}
+
+%% \renewcommand{\footnotesize}{\fontsize{7pt}{9pt}\selectfont}
+%% \setbeamercovered{invisible}
+%% \subsection{Mesh Adaptation}
+%% \begin{frame}{Mesh Adaptation}{Definitions}
+
+%%   $\boldsymbol{S^i}$ : solution at the $i^{th}$ iteration |
+%%   $\boldsymbol{\Triangles^i}$ : mesh at the $i^{th}$ iteration
+
+%%   \vspace{0.5cm}
+%%    \begin{figure}
+%%      \begin{tikzpicture}
+%%        \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=0.8\textheight]{image/mesh_adapt_workflow.pdf}};
+%%         \uncover<2->{
+%%         \node at (7.6,1.52) {\textbf{\textcolor{blue}{Mshmet \footcite{Mshmet}}}};
+%%         \node at (7.6,2.64) {\textbf{\textcolor{red}{MMG \footcite{MMG}}}};
+%%           \draw [blue,ultra thick,rounded corners] (3.85,0.95) rectangle (6.7,1.95);
+%%           \draw [red,ultra thick,rounded corners] (3.8,2.20) rectangle (6.8,3.0);}
+%%         \end{tikzpicture}
+%%         \caption{Classical mesh adaptation workflow.}
+%%    \end{figure}
+%% \end{frame}
+
+%% \begin{frame}{Mesh Adaptation}{Metric field $\metric$}
+
+%%   \begin{block}{Metric definition:}
+%%     \small
+%%     $\forall P \in \Domain, \boldsymbol{\metric(P)}$ is a \textbf{SPD matrix} of size $\dim \times \dim$.
+
+%%       \begin{empheq}{align}
+%%     \forall (P,M) \in \Domain^2, \parallel\vec{PM} \parallel^2_{\metric(P)} &= \langle \vec{PM}, \metric(P) \vec{PM} \rangle \\
+%%                               %\parallel\vec{PM} \parallel_{\metric(P)}   &= \sqrt{\vec{PM}^\top \metric(P) \vec{PM}}
+%%       \end{empheq}
+%%       \end{block}
+
+%%   \uncover<2->{
+%%   \begin{block}{Unit ball : Set of point $M$ such that $\parallel \vec{PM} \parallel_{\metric(P)} = 1.$}
+%%     \small
+%%           \begin{empheq}{align}
+%%    \text{In 2D :  } \metric(P) = S \Lambda S^\top\,, \Lambda =  \begin{pmatrix}
+%%     \lambda_{1} &\\
+%%     & \lambda_2
+%%   \end{pmatrix}\,, \lambda_1 \geq \lambda_2 > 0.
+%%           \end{empheq}
+%%           \begin{multicols}{2}
+%%             \begin{figure}[!htbp]
+%% \centering
+%% \includegraphics[scale=0.04]{image/ellipse_iso_triangle.pdf}
+%% \caption{\tiny{Unit ball $(\lambda_1 = \lambda_2 = \lambda)$}}
+%% \label{ellipse_iso_triangle}
+%% \end{figure}
+%%             \columnbreak
+%%            \begin{figure}[!htbp]
+%% \centering
+%% \includegraphics[scale=0.028]{image/ellipse_aniso.pdf}
+%% \vspace{-0.5cm}
+%% \caption{\tiny{Unit ball $(\lambda_1 >> \lambda_2)$}}
+%% \label{ellipse_iso_triangle}
+%%      \end{figure}
+%%  \end{multicols}
+%%   \end{block}
+%%   }
+%% \end{frame}
+
+%% \begin{frame}{Mesh Adaptation}{Metric field $\metric$}
+%%   \small
+%%   [P.J. Frey and F. Alauzet]\footcite{freyAnisotropicMeshAdaptation2005}: controle the error on the element $\element$:
+
+%%   \begin{multicols}{2}
+%%   \begin{empheq}{align}
+%% \exists \, \bar{\metric}(\element)\, / \, \varepsilon_\element = \underset{\overrightarrow{e}\in E_\element}{max} \langle \overrightarrow{e}, \bar{\metric}(\element) \overrightarrow{e} \rangle. \label{error_frey}
+%%   \end{empheq}
+%%   \columnbreak
+%%   \begin{figure}
+%%     \includegraphics[scale=0.08]{image/triangle_error_frey}
+%% %    \caption{Element $K$}
+%%     \end{figure}
+%%   \end{multicols}
+
+%%   \uncover<2->{
+%%   \vspace{-1cm}
+%%   \begin{block}{Objective:}
+%%     Adapt $\Triangles$ into $\Triangles$' such that:
+
+%%     \begin{empheq}{align}
+%%       \varepsilon &= \langle \overrightarrow{e}, \bar{\metric}(\element) \overrightarrow{e} \rangle \,, \qquad \forall \element \in \Triangles'\,, \qquad \forall \overrightarrow{e} \in E_\element. \\
+%%             & \qquad \qquad \qquad \text{with:  } \metric = \frac{1}{\varepsilon} \bar{\metric}. \\
+%%       1 &= \langle \overrightarrow{e}, \metric(\element) \overrightarrow{e} \rangle \,, \qquad \forall \element \in \Triangles'\,, \qquad \forall \overrightarrow{e} \in E_\element.
+%%     \end{empheq}
+%%   \end{block}
+%% }
+
+%%   \end{frame}
+
+%% %\setbeamercovered{transparent}
+%% \begin{frame}{Mesh Adaptation}{Algorithm}
+
+%%   \begin{block}{Distance between $P$ and $M$ according to the metric field $\metric$:}
+%%   \begin{empheq}{align}
+%% \parallel \overrightarrow{PM} \parallel_\metric =  \int_{0}^{1} \sqrt{ \overrightarrow{PM}^\top  \metric( (1-t)P + tM) \overrightarrow{PM}  } \, dt \,.
+%%   \end{empheq}
+%%   \end{block}
+
+%%   \begin{enumerate}
+%%     \uncover<2->{
+%% \item Scan all the edges $\overrightarrow{PM}$ and verify $\parallel \overrightarrow{PM} \parallel_\metric=1$:
+%% \begin{itemize}
+%% \item{Split the current edge if too long;}
+%% \item{Collapse the edge if too short.}
+%% \end{itemize}
+%%     }
+%%     \uncover<3->{
+%% \item Check quality of the elements:
+%% \begin{itemize}
+%% \item Swap edges if "too bad elements";
+%% \item{Move points.}
+%% \end{itemize}
+%%     }
+%%     \uncover<3-4>{
+%% \begin{tikzpicture}[remember picture,overlay]
+%%     \node[xshift=80mm,yshift=-56mm,anchor=north west] at (current page.north west){%
+%%     \includegraphics[width=40mm]{image/swap_edge.pdf}};
+%% \end{tikzpicture}
+%% }
+%%     \uncover<4->{
+%%       \vspace{-0.5cm}
+%%     \item Go to 1. until convergence of the algorithm:
+%%       \begin{empheq}{align}
+%%         \frac{\sqrt{2}}{2} \le \parallel \overrightarrow{PM} \parallel_\metric \le \sqrt{2}\,.
+%%       \end{empheq}
+%%       }
+%% \end{enumerate}
+
+%% \end{frame}
+
+%% \begin{frame}
+
+%%   \begin{block}{Definition of Isotropic/ Anisotropic cells}
+%% \begin{multicols}{2}
+%%   \begin{figure}[H]
+%% \includegraphics[scale=0.6]{image/isotropic_cell.pdf}
+%% \caption{Isotropic cell  ($\lambda_1 = \lambda_2$).}
+%% \end{figure}
+%% \columnbreak
+%% \begin{figure}
+%% \includegraphics[scale=0.7]{image/anisotropic_cell.pdf}
+%% \caption{Anisotropic cell ($\lambda_1 >> \lambda_2$).}
+%% \end{figure}
+%% \end{multicols}
+%% \end{block}
+%% \end{frame}
+
+
+%% \begin{frame}{Define a metric according to the mode parameters}
+%%   How to define a metric according to $\smodel^i$ instead of $S^i$ ?
+%%   \vspace{0.5cm}
+%%   \begin{multicols}{2}
+%%     \vspace{-1cm}
+%%     \begin{figure}
+%%       \includegraphics[scale=0.27]{image/mesh_adapt_workflow.pdf}
+%%     \end{figure}
+%%     \columnbreak
+%%         \begin{figure}
+%%       \includegraphics[scale=0.27]{image/mesh_adapt_workflow_fwi.pdf}
+%%     \end{figure}
+%%      \end{multicols}
+%% \end{frame}
+
+
+%% \begin{frame}
+%% \small
+%%   No predominant direction $\longrightarrow$ Isotropic metric define by a scalar field (size map ($h(P)$))
+
+%%   In a reference square of size $\lambda \times \lambda$:
+%%   \begin{empheq}{align}
+%%     \nppw^2  &= \frac{\lambda^2}{a} \frac{(\PolOrder + 1)(\PolOrder + 2)}{2}, \text{  where: } \lambda = \velocity / \fmax \\
+%%   \end{empheq}
+
+%%   Isotropic cell hypothesis:
+%%   \begin{empheq}{align}
+%%     a = \frac{\sqrt{3}}{4} h^2
+%%   \end{empheq}
+
+%%   \begin{block}{Heuristic size map formula:}
+%%   \begin{empheq}{align}
+%%   \forall x \in \Domain, \, \,  h(x)=2\frac{\lambda(x)}{\nppw}\sqrt{\frac{(\PolOrder+1)(\PolOrder+2)}{2\sqrt{3}}} \,.
+%%   \end{empheq}
+%%   \end{block}
+%% \end{frame}
+
+
+%% \begin{frame}{Numerical assessement of the isotropic size map}
+%%   \begin{multicols}{2}
+%%     \begin{itemize}
+%%     \item 2s simulation
+%%     \item 1 source: First order ricker $\fpeak=10$Hz
+%%     \item 462 receivers
+%%     \item Constant velocity model (to avoid errors from mis-representation of the model)
+%%     \item compare numerical traces with analytic traces \footcite{gar6more}
+%%     \item for various $\nppw$ values
+%%     \end{itemize}
+%%     \columnbreak
+%%   \begin{figure}[H]
+%%   \centering
+%%   \includegraphics[scale=0.31]{image/precision_test.pdf}
+%%   \caption{Experimental setup for the accuracy assessment.}
+%%   \label{homogeneous_prec}
+%%   \end{figure}
+%%   \end{multicols}
+%%   \end{frame}
+
+%% \begin{frame}{Error as a function of $\nppw$}
+%%   \begin{figure}[H]
+%%  \vspace{-0.3cm}
+%% \centering
+%%  \setlength{\plotwidth}{10cm}
+%%     \setlength{\plotheight}{6.0cm}
+%%     \begin{tikzpicture}
+%%       \begin{axis}[%
+%%           width=\plotwidth, height=\plotheight,,
+%%           at={(0,0)},scale only axis,separate axis lines,
+%%           ymode=log,
+%%           xlabel={$\nppw$},
+%%           ylabel={error},
+%%           grid=both,
+%%           grid style={line width=.1pt, draw=gray!10},
+%%           major grid style={line width=.2pt,draw=gray!50},
+%%           %%   ymode=log,
+%%           %yminorticks=true,
+%%           %% xmin=0,xmax=35,
+%%           %% ymin=0,ymax=1.25,
+%%           legend pos=north east
+%%           %ymin=0.98,ymax=1.22
+%%         ]
+
+%%         %% load current data
+%%         %% -----------------
+%%         \addplot[color=blue!50!black,mark options={solid}, mark=triangle*,
+%%           line width=1pt,
+%%           mark size=2pt]
+%%         table[x=ppw,y=error]
+%%         {graph/mesh_error2.txt};
+%%         \addlegendentry{P2}
+
+%%  \addplot[color=red!50!black,mark options={solid}, mark=*,
+%%           line width=1pt,
+%%           mark size=2pt]
+%%         table[x=ppw,y=error]
+%%         {graph/mesh_error3.txt};
+%%         \addlegendentry{P3}
+
+%%  \addplot[color=green!50!black,mark options={solid}, mark=square*,
+%%           line width=1pt,
+%%           mark size=2pt]
+%%         table[x=ppw,y=error]
+%%         {graph/mesh_error4.txt};
+%%         \addlegendentry{P4}
+
+%%  \addplot[color=yellow!50!black,mark options={solid}, mark=diamond*,
+%%           line width=1pt,
+%%           mark size=2pt]
+%%         table[x=ppw,y=error]
+%%         {graph/mesh_error5.txt};
+%%         \addlegendentry{P5}
+%%       \end{axis}
+%%       \uncover<2->{
+%%        \draw [red,ultra thick,rounded corners] (0.0,0.67) -- (10,0.67);}
+%%       %% --------------------------------------------------------------------
+%%     \end{tikzpicture}
+%%     \end{figure}
+%% \end{frame}
+
+
+%% \begin{frame}{Error as a function of the ratio $\lambda/h$}
+%%   \begin{figure}[H]
+%%     \vspace{-0.3cm}
+%% \centering
+%%  \setlength{\plotwidth}{10cm}
+%%     \setlength{\plotheight}{6.0cm}
+%%         \begin{tikzpicture}
+%%       \begin{axis}[%
+%%           width=\plotwidth, height=\plotheight,,
+%%           at={(0,0)},scale only axis,separate axis lines,
+%%           ymode=log,
+%%           xlabel={$\lambda/h$},
+%%           grid=both,
+%%           grid style={line width=.1pt, draw=gray!10},
+%%           major grid style={line width=.2pt,draw=gray!50},
+%%           %%   ymode=log,
+%%           %yminorticks=true,
+%%           %% xmin=0,xmax=35,
+%%           %% ymin=0,ymax=1.25,
+%%           legend pos=north east
+%%           %ymin=0.98,ymax=1.22
+%%         ]
+
+%%         %% load current data
+%%         %% -----------------
+%%         \addplot[color=blue!50!black,mark options={solid}, mark=triangle*,
+%%           line width=1pt,
+%%           mark size=2pt]
+%%         table[x=ratio,y=error]
+%%         {graph/mesh_error2.txt};
+%%         \addlegendentry{P2}
+
+%%  \addplot[color=red!50!black,mark options={solid}, mark=*,
+%%           line width=1pt,
+%%           mark size=2pt]
+%%         table[x=ratio,y=error]
+%%         {graph/mesh_error3.txt};
+%%         \addlegendentry{P3}
+
+%%  \addplot[color=green!50!black,mark options={solid}, mark=square*,
+%%           line width=1pt,
+%%           mark size=2pt]
+%%         table[x=ratio,y=error]
+%%         {graph/mesh_error4.txt};
+%%         \addlegendentry{P4}
+
+%%  \addplot[color=yellow!50!black,mark options={solid}, mark=diamond*,
+%%           line width=1pt,
+%%           mark size=2pt]
+%%         table[x=ratio,y=error]
+%%         {graph/mesh_error5.txt};
+%%         \addlegendentry{P5}
+%%       \end{axis}
+%%       %% --------------------------------------------------------------------
+%%       \uncover<2->{
+%%       \draw [red,ultra thick,rounded corners] (0.0,0.67) -- (10,0.67);}
+%%     \end{tikzpicture}
+%%     \end{figure}
+%% \end{frame}
+
+%% \begin{frame}{Summary of the experimental criterion}
+%%   \small
+%%       \hspace{-1cm}
+%%   \begin{table}[!htbp]
+%%     \begin{tabular}{|l|c|c|c|c|c|}
+%%     \hline
+%%         \textbf{Polynomial order ($\PolOrder$)} & 2 & 3 & 4 & 5 & 6 \\ \hline
+%%         $\boldsymbol{\nppw}$  & 13 & 10 & 10 & 9 & 9 \\ \hline
+%%         \textbf{Ratio} $\boldsymbol{\lambda/h}$ & 3.49 & 2.08 & 1.70 & 1.29 & 1.12 \\ \hline
+%%         \textbf{Number of Element} & 303283 & 105788 & 69813 & 40012 & 29894 \\ \hline
+%%         \textbf{Computational time (s)} & 5230 & 2764 & 1956 & 2017  & 1789\\ \hline
+%%     \end{tabular}
+%%     \caption{Summary table for 1$\%$ relative error for 2D DG acoustic solver on triangular grid.}
+%%     \label{recap_ppw}
+%%   \end{table}
+%%   \uncover<2->{
+%%   \begin{tikzpicture}[remember picture,overlay]
+%%     \draw [red,ultra thick,rounded corners] (-1.0,2.1) rectangle (6.3,2.7);
+%% %    \node[xshift=80mm,yshift=-56mm,anchor=north west] at (current page.north west){%
+%% %    \includegraphics[width=40mm]{image/swap_edge.pdf}};
+%%   \end{tikzpicture}
+%%   }
+%% \end{frame}
+
+%% \begin{frame}{Validation of the isotropic size map}
+%%   \begin{block}{}
+%%     Polynomial order fixed ($\PolOrder$) $\longrightarrow$ define mesh ($h$-adaptivity)
+%%   \end{block}
+
+%%   $\Updownarrow$
+
+%%     \begin{block}{}
+%%     Mesh given ($h$) $\longrightarrow$ define the polynomial order ($p$-adaptivity)
+%%     \end{block}
+
+%%     \uncover<2->{
+%%       \vspace{-0.4cm}
+%% \setlength{\modelwidth}{6.5cm}
+%% \begin{figure}[!htbp]
+%%   \renewcommand{\modelfile}{image/iso22_mesh}
+%%      \begin{subfigure}[!htbp]{0.5\textwidth}
+%%         \vspace{0.4cm}
+%%         \hspace{-0.5cm}
+%%          \centering
+%%          \input{graph/skeleton_mesh}
+%%          \caption{Marmousi refined mesh at the interfaces (12809 elements).}
+%%          \label{marmousi_mesh_padapt}
+%%      \end{subfigure}
+%%      \hspace{-1cm}
+%%      \renewcommand{\modelfile}{image/iso22_order}
+%%      \renewcommand{\cmapmin}{2}
+%%      \renewcommand{\cmapmax}{4}
+%%      \begin{subfigure}[!htbp]{0.5\textwidth}
+%%         \vspace{-0.3cm}
+%%          \centering
+%%          \input{graph/skeleton_order}
+%%          \vspace{-0.9cm}
+%%          \caption{$p$-adaptivity map.}
+%%          \label{marmousi_order_padapt}
+%%      \end{subfigure}
+
+%%   \begin{tikzpicture}[remember picture,overlay]
+%%     \draw [red,ultra thick,rounded corners, line width=0.1cm] (-5.5,3.4) rectangle (5.5,4.3);
+%% %    \node[xshift=80mm,yshift=-56mm,anchor=north west] at (current page.north west){%
+%% %    \includegraphics[width=40mm]{image/swap_edge.pdf}};
+%%   \end{tikzpicture}
+%% \end{figure}
+%%      }
+%%      \uncover<3->{
+%% \vspace{-0.5cm}
+%% \begin{table}[!htbp]
+%%   \small
+%%     \centering
+%%     \begin{tabular}{|c|c|c|c|}
+%%     \hline
+%%          $p$-adaptivity    &  P2   & P3   &  P4   \\ \hline
+%%         Number of elements & 1424  & 7981 & 3404   \\ \hline
+%%         Pourcentage        & 11\%  &  63\%&  27\%  \\ \hline
+%%     \end{tabular}
+%%     \caption{Relative error on traces obtained for different $p$-adaptivity strategies.}
+%% \end{table}
+%% }
+%% \end{frame}
+
+
+%% \begin{frame}[noframenumbering]{Validation of the isotropic size map}
+%%   \begin{block}{}
+%%     Polynomial order fixed ($\PolOrder$) $\longrightarrow$ define mesh ($h$-adaptivity)
+%%   \end{block}
+
+%%   $\Updownarrow$
+
+%%     \begin{block}{}
+%%     Mesh given ($h$) $\longrightarrow$ define the polynomial order ($p$-adaptivity)
+%%     \end{block}
+
+%%       \vspace{-0.4cm}
+%% \setlength{\modelwidth}{6.5cm}
+%% \begin{figure}[!htbp]
+%%   \renewcommand{\modelfile}{image/iso22_mesh}
+%%      \begin{subfigure}[!htbp]{0.5\textwidth}
+%%         \vspace{0.4cm}
+%%         \hspace{-0.5cm}
+%%          \centering
+%%          \input{graph/skeleton_mesh}
+%%          \caption{Marmousi refined mesh at the interfaces (12809 elements).}
+%%          \label{marmousi_mesh_padapt}
+%%      \end{subfigure}
+%%      \hspace{-1cm}
+%%      \renewcommand{\modelfile}{image/iso22_order}
+%%      \renewcommand{\cmapmin}{2}
+%%      \renewcommand{\cmapmax}{4}
+%%      \begin{subfigure}[!htbp]{0.5\textwidth}
+%%         \vspace{-0.3cm}
+%%          \centering
+%%          \input{graph/skeleton_order}
+%%          \vspace{-0.9cm}
+%%          \caption{$p$-adaptivity map.}
+%%          \label{marmousi_order_padapt}
+%%      \end{subfigure}
+
+%%   \begin{tikzpicture}[remember picture,overlay]
+%%     \draw [red,ultra thick,rounded corners, line width=0.1cm] (-5.5,3.4) rectangle (5.5,4.3);
+%% %    \node[xshift=80mm,yshift=-56mm,anchor=north west] at (current page.north west){%
+%% %    \includegraphics[width=40mm]{image/swap_edge.pdf}};
+%%   \end{tikzpicture}
+%% \end{figure}
+
+%% \vspace{-1cm}
+%% \begin{table}[!htbp]
+%%   \small
+%%     \centering
+%%     \begin{tabular}{|c|c|c|c|c|c|}
+%%     \hline
+%%          & $p$-adaptivity & Full P2 & Full P3 & Full P4 & Full P5 \\ \hline
+%%         L2 relative error & 0.38\%  & 17.40\% & 1.44\% & 0.30\% &  ref. \\ \hline
+%%         CPU Time (s) & 815 & 502 & 1122 & 2244 & 3455 \\ \hline
+%%     \end{tabular}
+%%     \caption{Relative error on traces obtained for different $p$-adaptivity strategies.}
+%%     \label{marmousi_padapt_test_error}
+%% \end{table}
+
+%% \end{frame}
+
+%% \begin{frame}
+%% \begin{figure}%[!htbp]
+%% \centering
+%% \includegraphics[scale=0.09]{image/ellipse_iso_triangle.pdf}
+%% \caption{\tiny{Unit ball centered on $P$ with respect to the distance norm $\parallel.\parallel_{\metric(P)}$ in isotropic case.}}
+%% \label{ellipse_iso_triangle}
+%% \end{figure}
+%% \end{frame}
+
+
+%%           \begin{multicols}{2}
+%% %%             \begin{figure}[!htbp]
+%% %% \centering
+%% %% \includegraphics[scale=0.09]{image/ellipse_iso_triangle.pdf}
+%% %% \caption{Unit ball centered on $P$ with respect to the distance norm $\parallel.\parallel_{\metric(P)}$ in isotropic case.}
+%% %% \label{ellipse_iso_triangle}
+%% %% \end{figure}
+%% blabla
+%%             \columnbreak
+%% bloblo
+%% %%            \begin{figure}[!htbp]
+%% %% \centering
+%% %% \includegraphics[scale=0.09]{image/ellipse_iso_triangle.pdf}
+%% %% \caption{Unit ball centered on $P$ with respect to the distance norm $\parallel.\parallel_{\metric(P)}$ in isotropic case.}
+%% %% \label{ellipse_iso_triangle}
+%% %% \end{figure}
+%%             \end{multicols}
+
+
+
+%% \input{section1/section1.tex}  %% intro FWI
+%% \input{section2/section2.tex}  %% AtD and DtA
+%% \input{section3/section3.tex}  %% Some results
+%% \input{section2/section2.tex}  %% AtD and DtA
+\printbibliography
+%\bibliographystyle{abbrvnat}
+%\bibliography{zotero.bib}
 \end{document}

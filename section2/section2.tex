@@ -10,10 +10,10 @@
 
 Lagrangian fonctional \cite{plessix} :
   \begin{equation}
-    \Lag(\qcqU,\qcqLbd,\model) = \frac{1}{2}||\textcolor{blue}{d_{obs}}-\textcolor{red}{\mathcal{R}(\qcqU)}||^2dt + <\DP(\qcqU),\qcqLbd>
+    \Lag(\qcqU,\qcqLbd,\model) = \frac{1}{2}||\textcolor{blue}{d_{obs}}-\textcolor{red}{\mathcal{R}(\qcqU)}||^2 + <\DP(\qcqU)-f_p,\qcqLbd>
   \end{equation}
 
-    If $\qcqU=\contU$ Solution of the Direct Problem $\Longleftrightarrow$ ($\DP(\contU) = 0$) :
+    If $\qcqU=\contU$ Solution of the Direct Problem $\Longleftrightarrow$ ($\DP(\contU)-f_p = 0$) :
 
   \begin{equation}
     \CF(\model) = \Lag(\contU,\qcqLbd,\model)
@@ -28,7 +28,7 @@ Lagrangian fonctional \cite{plessix} :
   }
 
   \uncover<3->{
-  For $\DP(\contU) = 0$ :
+  For $\DP(\contU)-f_p = 0$ :
 
   \begin{equation}
     \partial_{\model_i} \CF(\model) = \partial_{\model_i} \Lag(\contU,\contLbd,\model) = \partial_{\model_i} <\DP(\contU),\contLbd>
@@ -92,10 +92,10 @@ of a functional with geophysical applications
     \noindent
       \begin{empheq}[left=\empheqlbrace]{align}
     & \frac{1}{\density \velocity^2}\frac{\partial \Lbdun}{\partial t}+\nabla \cdot \Lbdeux=\frac{\partial \CF}{\partial \contP} \text{~~ on $\boldsymbol{\Omega}$}\\
-    & \density\frac{\partial \Lbdeux}{\partial t}+\nabla\Lbdun=0  \text{~~ on $\boldsymbol{\Omega}$}\\
-    & \Lbdun=0 \text{~~ on $\textcolor{red}{\boldsymbol{\Gamma_1}}$} \\
-    & \frac{\partial \Lbdun}{\partial t}-\velocity \nabla \Lbdun \cdot \normal=0 \text{~~ on $\textcolor{blue}{\boldsymbol{\Gamma_2}}$}\\
-    & \Lbdun(T) = 0 \text{, ~~~} \Lbdeux(T) = 0
+    & \hspace{0.1cm} \density\frac{\partial \Lbdeux}{\partial t}+\nabla\Lbdun=0  \text{~~ on $\boldsymbol{\Omega}$}\\
+    & \hspace{0.1cm} \Lbdun=0 \text{~~ on $\textcolor{red}{\boldsymbol{\Gamma_1}}$} \\
+    & \hspace{0.1cm} \frac{\partial \Lbdun}{\partial t}-\velocity \nabla \Lbdun \cdot \normal=0 \text{~~ on $\textcolor{blue}{\boldsymbol{\Gamma_2}}$}\\
+    & \hspace{0.1cm} \Lbdun(T) = 0 \text{, ~~~} \Lbdeux(T) = 0
   \end{empheq}
 
   \end{multicols}
@@ -309,7 +309,8 @@ So :
       \begin{itemize}
       \item[\textcolor{\mygreen}{\textbf{+}}] Physical approach
       \item[\textcolor{\mygreen}{\textbf{+}}] Same discrete operators for Forward and Backward
-      \item[\textbf{- -}] Inaccurate gradient \cite{Sirkes}
+      \item[\textbf{- -}] Approximate gradient \cite{Sirkes}
+      \item[\textcolor{black}{\textbullet}] Consistent with the discretization
       \end{itemize}
       %      \dotfill
       \vspace{0.5cm}
@@ -322,7 +323,59 @@ So :
       \item[\textcolor{\mygreen}{\textbf{+}}] Numerical approach
       \item[\textcolor{\mygreen}{\textbf{+}}] Has an Adjoint Test
       \item[\textbf{-}] Tremendous work to develop the adjoint operators
-      \item[\textcolor{black}{\textbf{?}}] Non-consistency of the adjoint state \cite{Set1997Feb}
+      \item[\textcolor{black}{\textbullet}] Non-consistency of the adjoint state \cite{Set1997Feb}
+      \end{itemize}
+    \end{column}
+  \end{columns}
+
+  \vfill
+  \tiny
+  \begin{thebibliography}{2}
+    \bibitem{Sirkes} Sirkes, Ziv and Tziperman, Eli
+      \newblock Finite Difference of Adjoint or Adjoint of Finite Difference ?
+      \newblock 1997
+  \bibitem{Set1997Feb} Sei Alain and Symes William
+    \newblock A Note on Consistency and Adjointness for Numerical Schemes
+    \newblock 1997
+  \end{thebibliography}
+
+\end{frame}
+
+
+
+
+
+
+
+
+% ================================================
+% ====== Frame : Adjoint Strategies Comparison ===
+% ================================================
+
+\begin{frame}{Adjoint Strategies Comparison}
+  \begin{columns}
+    \begin{column}[t]{0.5\textwidth}
+      \textbf{\textcolor{red}{Adjoint Then Discretize}}
+      \vspace{0.5cm}
+%      \dotfill % to show column margins
+      \begin{itemize}
+      \item[\textcolor{\mygreen}{\textbf{+}}] Physical approach
+      \item[\textcolor{\mygreen}{\textbf{+}}] Same discrete operators for Forward and Backward
+      \item[\textbf{- -}] Approximate gradient \cite{Sirkes}
+      \item[\textcolor{black}{\textbullet}] Consistent with the discretization
+      \end{itemize}
+      %      \dotfill
+      \vspace{0.5cm}
+    \end{column}\vrule \hfill
+    \begin{column}[t]{0.5\textwidth}
+      \textbf{\textcolor{blue}{Discretize then Adjoint}}
+      \vspace{0.5cm}
+%            \dotfill
+      \begin{itemize}
+      \item[\textcolor{\mygreen}{\textbf{+}}] Numerical approach
+      \item[\textcolor{\mygreen}{\textbf{+}} \textcolor{black}{\textbf{/}} \textbf{-}] Has an Adjoint Test {\small{\textbf{(in theory)}}}
+      \item[\textbf{-}] Tremendous work to develop the adjoint operators
+      \item[\textcolor{black}{\textbullet}] Non-consistency of the adjoint state \cite{Set1997Feb}
       \end{itemize}
     \end{column}
   \end{columns}

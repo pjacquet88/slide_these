@@ -1,0 +1,28 @@
+\begin{tikzpicture}
+\pgfmathsetmacro{\xmin} {0.}
+\pgfmathsetmacro{\zmin} {0.}
+\pgfmathsetmacro{\xmax} {9.5}
+\pgfmathsetmacro{\zmax} {9.5}
+\pgfmathsetmacro{\xxmax} {10.0}
+\pgfmathsetmacro{\zzmax} {10.0}
+
+
+\begin{axis}[%
+width=1.0\modelwidth,
+height=1.0\modelwidth,
+axis on top, separate axis lines,
+xmin=\xmin, xmax=\xxmax, %xlabel={x (km)},
+ymin=\zmin, ymax=\zzmax,
+yticklabels={},xticklabels={},
+y dir=reverse,
+point meta min=1.5e3, point meta max=5.5e3,
+axis x line=top,thick,
+axis y line=left,thick,
+ylabel style={rotate=-90},
+ylabel={$z$},
+xlabel={$y$},
+ticks = none,
+]
+\addplot [forget plot] graphics [xmin=\xmin,xmax=\xmax,ymin=\zmin,ymax=\zmax] {{\modelfile}.png};
+\end{axis}
+\end{tikzpicture}%

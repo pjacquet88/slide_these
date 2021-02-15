@@ -1,0 +1,99 @@
+%%%%% PACKAGES %%%%%%
+
+\usepackage{geometry}
+\topmargin
+-1.5cm
+\textwidth
+15.5cm
+\textheight
+23.5cm
+\oddsidemargin
+0.7cm
+\evensidemargin
+1.2cm
+
+
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{tabularx,colortbl}
+\usepackage[table]{xcolor}
+%\usepackage{mathenv}
+\usepackage{babel}
+\usepackage{ulem}
+%\usepackage{movie15}
+\usepackage{amsmath}
+\usepackage{empheq}
+%\usepackage{animate}
+\usepackage[pdftex]{graphicx}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{nomencl}
+\usepackage{setspace}
+\usepackage{stmaryrd}
+\usepackage{mathtools}
+\mathtoolsset{showonlyrefs=true}
+\usepackage{cancel}
+\usepackage{stackengine}
+\usepackage{scalerel}
+\usepackage{amsbsy} % BOLD SYMBOL
+\usepackage{fancyvrb}
+\usepackage{subcaption}
+\usepackage{pgf,tikz}
+\usepackage{pgfplots}
+\usepackage{mathrsfs}
+\usepackage{changepage} % Change Margin locally
+
+\usepackage{natbib}   % bibliography style
+\usepackage{multicol} % multicol
+\usepackage{nccmath}  % binome (k parmi n)
+\usepackage{amssymb}  % Ensemble N Q R Z etc... \mathbb{NQRZ}
+
+\usepackage{tcolorbox}
+\usepackage{framed}
+\usepackage[framemethod=tikz]{mdframed}
+
+
+\pgfplotsset{compat=newest}
+\usetikzlibrary{shapes,positioning,arrows,fit}
+\usetikzlibrary{patterns}
+\pgfplotsset
+    {compat=newest}
+
+
+\usepackage[pdftex]{hyperref}
+\usepackage[hyperpageref]{backref}
+
+
+\usepackage{pdfpages}
+
+\usepackage{listings}
+
+
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{lemma}[section]{Lemma}
+\newtheorem*{remark}{Remark}
+\newtheorem{property}{Property}
+\newtheorem{proposition}{Proposition}
+
+
+\usepackage{pifont} % For V and X check
+\usepackage{algorithm2e}
+%\usepackage{algorithmic}
+
+
+%% % ----------------------------------------------------------
+%% %% Externalize pictures, we can use the command
+%% %% ----------------------------------------------------------
+%% \usepgfplotslibrary{external}
+%% \tikzexternalize[
+%%  mode=list and make,
+%%  prefix=./figures_external/]
+%% \makeatletter
+%% \newcommand{\todo}[2][]{\tikzexternaldisable\@todo[#1]{#2}\tikzexternalenable}
+%% \makeatother
+%% %% ----------------------------------------------------------

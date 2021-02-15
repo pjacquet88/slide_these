@@ -155,6 +155,7 @@ Gradient expression :
                    height=\plotheight,
                    xlabel={Depth},
                    ylabel={$\velocity$},
+                   ylabel style={rotate=-90},
                    legend pos=south east]
         \addplot[color=red!90!black,mark options={solid},
           line width=1pt,
@@ -205,13 +206,13 @@ Gradient expression :
               line width=1pt,
               mark size=2pt]
             table[x=monx,y=mony]
-            {images/run_atd_rk4_bb.txt};
+            {images/run_atd_rk2_1000.txt};
             \addlegendentry{AtD}
             \addplot[color=blue!90!black,mark options={solid},
               line width=1pt,
               mark size=2pt]
             table[x=monx,y=mony]
-            {images/run_dta_rk4_bb.txt};
+            {images/run_dta_rk2_1000.txt};
             \addlegendentry{DtA}
           \end{axis}
         \end{tikzpicture}
@@ -226,20 +227,20 @@ Gradient expression :
               height=\plotheight,
               xlabel={FWI Iterations},
               ymode = log,
-              ylabel={log(Cost Function)},
+              ylabel={Cost Function},
 %              ylabel style={rotate=-90},
               legend pos=north east]
             \addplot[color=red!90!black,mark options={solid},
               line width=1pt,
               mark size=2pt]
             table[x=monx,y=mony]
-            {images/run_atd_ab3_bb.txt};
+            {images/run_atd_ab3_1000.txt};
             \addlegendentry{AtD}
             \addplot[color=blue!90!black,mark options={solid},
               line width=1pt,
               mark size=2pt]
             table[x=monx,y=mony]
-            {images/run_dta_ab3_bb.txt};
+            {images/run_dta_ab3_1000.txt};
             \addlegendentry{DtA}
           \end{axis}
         \end{tikzpicture}
@@ -248,9 +249,9 @@ Gradient expression :
 
     \uncover<2->{
     \begin{itemize}
-      \item For RK4 scheme : Similar convergency
-      \item For AB3 scheme : \textcolor{red}{AtD} is slighly better than \textcolor{blue}{DtA}
-      \item The slope strongly depends on the optimizer -> Impossibilty to conclude
+      \item For RK4 scheme : \textcolor{red}{AtD} is slighly better than \textcolor{blue}{DtA}
+      \item For AB3 scheme : \textcolor{blue}{DtA} is slighly better than \textcolor{red}{AtD}
+      \item No predominant behaviour
     \end{itemize}
     }
 
@@ -307,12 +308,12 @@ Gradient expression :
 \newcommand{\modeltitle}{Initial $\velocity$ Model}
 
 \begin{frame}{2D Time Domain FWI Reconstructions}{Time-schemes comparison}
-  \vspace{-0.5cm}
+  \vspace{-0.3cm}
   \renewcommand{\modelfile}{fig/marmousi_noise_ini}
   \begin{figure}
        \input{fig/skeleton_cp} \hfill
   \end{figure}
-  \vspace{-1cm}
+  \vspace{-1.3cm}
   \renewcommand{\modeltitle}{Target $\velocity$ Model}
   \renewcommand{\modelfile}{fig/marmousi_target}
   \begin{figure}
@@ -321,13 +322,13 @@ Gradient expression :
 \end{frame}
 
 \begin{frame}[noframenumbering]{2D Time Domain FWI Reconstructions}{Time-schemes comparison}
-  \vspace{-0.5cm}
+  \vspace{-0.3cm}
   \renewcommand{\modelfile}{fig/marmousi_noise_rk4_2}
   \renewcommand{\modeltitle}{\textbf{\textcolor{red}{RK2}} Reconstructed $\velocity$ Model (30 iterations)}
   \begin{figure}
     \input{fig/skeleton_cp} \hfill
   \end{figure}
-  \vspace{-1cm}
+  \vspace{-1.3cm}
   \renewcommand{\modeltitle}{Target $\velocity$ Model}
   \renewcommand{\modelfile}{fig/marmousi_target}
   \begin{figure}
@@ -336,13 +337,13 @@ Gradient expression :
 \end{frame}
 
 \begin{frame}[noframenumbering]{2D Time Domain FWI Reconstructions}{Time-schemes comparison}
-  \vspace{-0.5cm}
+  \vspace{-0.3cm}
   \renewcommand{\modelfile}{fig/marmousi_noise_rk4_2}
   \renewcommand{\modeltitle}{\textbf{\textcolor{red}{RK4}} Reconstructed $\velocity$ Model (30 iterations)}
   \begin{figure}
     \input{fig/skeleton_cp} \hfill
   \end{figure}
-  \vspace{-1cm}
+  \vspace{-1.3cm}
   \renewcommand{\modeltitle}{Target $\velocity$ Model}
   \renewcommand{\modelfile}{fig/marmousi_target}
   \begin{figure}
@@ -351,13 +352,13 @@ Gradient expression :
 \end{frame}
 
 \begin{frame}[noframenumbering]{2D Time Domain FWI Reconstructions}{Time-schemes comparison}
-  \vspace{-0.5cm}
+  \vspace{-0.3cm}
   \renewcommand{\modelfile}{fig/marmousi_noise_ab3}
   \renewcommand{\modeltitle}{\textbf{\textcolor{red}{AB3}} Reconstructed $\velocity$ Model (30 iterations)}
   \begin{figure}
        \input{fig/skeleton_cp} \hfill
   \end{figure}
-  \vspace{-1cm}
+  \vspace{-1.3cm}
   \renewcommand{\modeltitle}{Target $\velocity$ Model}
   \renewcommand{\modelfile}{fig/marmousi_target}
   \begin{figure}
@@ -380,6 +381,7 @@ Gradient expression :
     \item Time Scheme : AB3
     \item Constant $\density$ model ($\density=1$)
     \item 19 sources / 181 Receivers
+    \item Noise : SNR=10
     \item 30 iterations
     \item 120 cores
     \item Nodal computation time : 5h10
@@ -435,13 +437,13 @@ Gradient expression :
 
 \subsection{2D Multiscale Reconstruction}
 \begin{frame}{2D Multiscale Reconstructions}{Reconstruction with an initial smooth model}
-  \vspace{-0.5cm}
+  \vspace{-0.3cm}
   \renewcommand{\modelfile}{fig/marmousi_filter_0}
   \renewcommand{\modeltitle}{Initial $\velocity$ Model}
   \begin{figure}
        \input{fig/skeleton_cp} \hfill
   \end{figure}
-  \vspace{-1cm}
+  \vspace{-1.3cm}
   \renewcommand{\modeltitle}{Target $\velocity$ Model}
   \renewcommand{\modelfile}{fig/marmousi_target}
   \begin{figure}
@@ -450,13 +452,13 @@ Gradient expression :
 \end{frame}
 
 \begin{frame}[noframenumbering]{2D Multiscale Reconstructions}{Reconstruction with an initial smooth model}
-  \vspace{-0.5cm}
+  \vspace{-0.3cm}
   \renewcommand{\modelfile}{fig/marmousi_nofilter}
   \renewcommand{\modeltitle}{Reconstructed model $\velocity$ Model (30 iterations AB3)}
   \begin{figure}
        \input{fig/skeleton_cp} \hfill
   \end{figure}
-  \vspace{-1cm}
+  \vspace{-1.3cm}
   \renewcommand{\modeltitle}{Target $\velocity$ Model}
   \renewcommand{\modelfile}{fig/marmousi_target}
   \begin{figure}
@@ -473,18 +475,129 @@ Gradient expression :
 % ============================================
 
 \begin{frame}{2D Multiscale Reconstructions}{Multiscale Principle \cite{bunks}}
-  \vspace{-0.5cm}
+  \vspace{-0.45cm}
   \begin{multicols}{2}
 
     \begin{center}
     ~
     \vspace{0.8cm}
 
-    Low Frequencies \\ $\Longleftrightarrow$ \\ Reconstruct \textbf{coarse} models
+    Low Frequencies \\ $\Longleftrightarrow$ \\ Reconstruct \textbf{coarse} structures
 
     \vspace{2.4cm}
 
-    High Frequencies \\ $\Longleftrightarrow$ \\ Reconstruct \textbf{small} models
+    High Frequencies \\ $\Longleftrightarrow$ \\ Reconstruct \textbf{small} structures
+    \end{center}
+
+    \columnbreak
+    Filtered Traces :
+    \vspace{-0.6cm}
+    \setlength{\plotwidth} {6.0cm}
+    \setlength{\plotheight}{3cm}
+    \begin{figure}
+      \begin{tikzpicture}
+        \begin{axis}[
+            title={\textcolor{red}{\textbf{1.0-2.5Hz}}},
+            title style={at={(axis description cs:0.7,0.8)},anchor=north},
+            width=\plotwidth,
+            height=\plotheight,
+            scaled y ticks = false,
+            %              ymode = log,
+            yticklabels={,,},
+            xticklabels={,,},
+            ylabel style={rotate=-90},
+            x label style={at={(axis description cs:1.1,0.2)},anchor=north},
+            y label style={at={(axis description cs:0.01,1.4)},anchor=north},
+            xlabel={time},
+            ylabel={$\contP$},
+          ]
+          \addplot[color=red!90!black,mark options={solid},
+            line width=1pt,
+            mark size=2pt]
+          table[x=monx,y=mony]
+          {fig/data_low.dat};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+    \vspace{-1.0cm}
+    \begin{figure}
+      \begin{tikzpicture}
+        \begin{axis}[
+            title={\textcolor{red}{\textbf{1.0-7.5Hz}}},
+            title style={at={(axis description cs:0.7,0.8)},anchor=north},
+            width=\plotwidth,
+            height=\plotheight,
+            scaled y ticks = false,
+            yticklabels={,,},
+            xticklabels={,,},
+            x label style={at={(axis description cs:1.1,0.2)},anchor=north},
+            xlabel={time},
+            %              ymode = log,
+          ]
+          \addplot[color=red!90!black,mark options={solid},
+            line width=1pt,
+            mark size=2pt]
+          table[x=monx,y=mony]
+          {fig/data_mid.dat};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+    \vspace{-1.0cm}
+    \begin{figure}
+      \begin{tikzpicture}
+        \begin{axis}[
+            title={\textcolor{red}{\textbf{1.0-15Hz}}},
+            title style={at={(axis description cs:0.7,0.8)},anchor=north},
+            width=\plotwidth,
+            height=\plotheight,
+            scaled y ticks = false,
+            yticklabels={,,},
+            xticklabels={,,},
+            x label style={at={(axis description cs:1.1,0.2)},anchor=north},
+            xlabel={time},
+            %              ymode = log,
+          ]
+          \addplot[color=red!90!black,mark options={solid},
+            line width=1pt,
+            mark size=2pt]
+          table[x=monx,y=mony]
+          {fig/data_hig.dat};
+        \end{axis}
+      \end{tikzpicture}
+    \end{figure}
+
+  \end{multicols}
+
+  \vfill
+  \tiny
+  \begin{thebibliography}{1}
+  \bibitem{bunks} C. Bunks, F. M. Saleck, S. Zaleski, and G. Chavent
+    \newblock Multiscale seismic waveform inversion
+    \newblock GEOPHYSICS, Vol. 60, No. 5, 1995
+  \end{thebibliography}
+\end{frame}
+
+
+
+
+
+% ============================================
+% ====== Frame : Multiscale principle=========
+% ============================================
+
+\begin{frame}[noframenumbering]{2D Multiscale Reconstructions}{Multiscale Principle \cite{bunks}}
+  \vspace{-0.4cm}
+  \begin{multicols}{2}
+
+    \begin{center}
+    ~
+    \vspace{0.8cm}
+
+    Low Frequencies \\ $\Longleftrightarrow$ \\ Reconstruct \textbf{coarse} structures
+
+    \vspace{2.4cm}
+
+    High Frequencies \\ $\Longleftrightarrow$ \\ Reconstruct \textbf{small} structures
     \end{center}
 
     \columnbreak
@@ -583,13 +696,13 @@ Gradient expression :
 
 
 \begin{frame}{2D Multiscale Reconstructions}{Reconstruction with an initial smooth model}
-  \vspace{-0.5cm}
+  \vspace{-0.3cm}
   \renewcommand{\modelfile}{fig/marmousi_filter_0}
   \renewcommand{\modeltitle}{Initial $\velocity$ Model}
   \begin{figure}
        \input{fig/skeleton_cp} \hfill
   \end{figure}
-  \vspace{-1cm}
+  \vspace{-1.3cm}
   \renewcommand{\modeltitle}{Target $\velocity$ Model}
   \renewcommand{\modelfile}{fig/marmousi_target}
   \begin{figure}
@@ -598,13 +711,13 @@ Gradient expression :
 \end{frame}
 
 \begin{frame}[noframenumbering]{2D Multiscale Reconstructions}{Reconstruction with an initial smooth model}
-  \vspace{-0.5cm}
+  \vspace{-0.3cm}
   \renewcommand{\modelfile}{fig/marmousi_filter_1}
   \renewcommand{\modeltitle}{Reconstructed $\velocity$ Model with \textcolor{red}{1.0-2.5Hz} filter}
   \begin{figure}
        \input{fig/skeleton_cp} \hfill
   \end{figure}
-  \vspace{-1cm}
+  \vspace{-1.3cm}
   \renewcommand{\modeltitle}{Target $\velocity$ Model}
   \renewcommand{\modelfile}{fig/marmousi_target}
   \begin{figure}
@@ -613,13 +726,13 @@ Gradient expression :
 \end{frame}
 
 \begin{frame}[noframenumbering]{2D Multiscale Reconstructions}{Reconstruction with an initial smooth model}
-  \vspace{-0.5cm}
+  \vspace{-0.3cm}
   \renewcommand{\modelfile}{fig/marmousi_filter_2}
   \renewcommand{\modeltitle}{Reconstructed $\velocity$ Model with \textcolor{red}{1.0-7.5Hz} filter}
   \begin{figure}
        \input{fig/skeleton_cp} \hfill
   \end{figure}
-  \vspace{-1cm}
+  \vspace{-1.3cm}
   \renewcommand{\modeltitle}{Target $\velocity$ Model}
   \renewcommand{\modelfile}{fig/marmousi_target}
   \begin{figure}
@@ -628,13 +741,13 @@ Gradient expression :
 \end{frame}
 
 \begin{frame}[noframenumbering]{2D Multiscale Reconstructions}{Reconstruction with an initial smooth model}
-  \vspace{-0.5cm}
+  \vspace{-0.3cm}
   \renewcommand{\modelfile}{fig/marmousi_filter_3}
   \renewcommand{\modeltitle}{Reconstructed $\velocity$ Model with \textcolor{red}{1.0-10Hz} filter}
   \begin{figure}
        \input{fig/skeleton_cp} \hfill
   \end{figure}
-  \vspace{-1cm}
+  \vspace{-1.3cm}
   \renewcommand{\modeltitle}{Target $\velocity$ Model}
   \renewcommand{\modelfile}{fig/marmousi_target}
   \begin{figure}
@@ -643,13 +756,13 @@ Gradient expression :
 \end{frame}
 
 \begin{frame}[noframenumbering]{2D Multiscale Reconstructions}{Reconstruction with an initial smooth model}
-  \vspace{-0.5cm}
+  \vspace{-0.3cm}
   \renewcommand{\modelfile}{fig/marmousi_filter_5}
   \renewcommand{\modeltitle}{Reconstructed $\velocity$ Model with \textcolor{red}{1.0-15Hz} filter}
   \begin{figure}
        \input{fig/skeleton_cp} \hfill
   \end{figure}
-  \vspace{-1cm}
+  \vspace{-1.3cm}
   \renewcommand{\modeltitle}{Target $\velocity$ Model}
   \renewcommand{\modelfile}{fig/marmousi_target}
   \begin{figure}
@@ -671,6 +784,7 @@ Gradient expression :
     \item Time Scheme : AB3
     \item Constant $\density$ model ($\density=1$)
     \item 19 sources / 181 Receivers
+    \item Noise : SNR=10
     \item 120 cores
     \item Computation time : 17h
     \item Frequencies : \textcolor{pink!60!black}{1-2.5Hz} \\ ~ \\ ~
@@ -708,6 +822,7 @@ Gradient expression :
     \item Time Scheme : AB3
     \item Constant $\density$ model ($\density=1$)
     \item 19 sources / 181 Receivers
+    \item Noise : SNR=10
     \item 120 cores
     \item Computation time : 17h
     \item Frequencies : \textcolor{pink!60!black}{1-2.5Hz}, \textcolor{blue!60!black}{1-5.0Hz} \\ ~
@@ -751,6 +866,7 @@ Gradient expression :
     \item Time Scheme : AB3
     \item Constant $\density$ model ($\density=1$)
     \item 19 sources / 181 Receivers
+    \item Noise : SNR=10
     \item 120 cores
     \item Computation time : 17h
     \item Frequencies : \textcolor{pink!60!black}{1-2.5Hz}, \textcolor{blue!60!black}{1-5.0Hz}, \textcolor{green!90!black}{1-7.5Hz} \\ ~
@@ -800,6 +916,7 @@ Gradient expression :
     \item Time Scheme : AB3
     \item Constant $\density$ model ($\density=1$)
     \item 19 sources / 181 Receivers
+    \item Noise : SNR=10
     \item 120 cores
     \item Computation time : 17h
     \item Frequencies : \textcolor{pink!60!black}{1-2.5Hz}, \textcolor{blue!60!black}{1-5.0Hz}, \textcolor{green!90!black}{1-7.5Hz}, \textcolor{orange!90!black}{1-10Hz} \\ ~
@@ -855,6 +972,7 @@ Gradient expression :
     \item Time Scheme : AB3
     \item Constant $\density$ model ($\density=1$)
     \item 19 sources / 181 Receivers
+    \item Noise : SNR=10
     \item 120 cores
     \item Computation time : 17h
     \item Frequencies : \textcolor{pink!60!black}{1-2.5Hz}, \textcolor{blue!60!black}{1-5.0Hz}, \textcolor{green!90!black}{1-7.5Hz}, \textcolor{orange!90!black}{1-10Hz}, \textcolor{red!90!black}{1-15Hz}

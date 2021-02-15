@@ -1,0 +1,191 @@
+
+%========================================================================
+%========================== BEAMER options ==============================
+%========================================================================
+
+\beamertemplateshadingbackground{blue!5}{structure!5}
+\beamertemplatetransparentcovereddynamic
+\beamertemplateballitem
+\beamertemplatenumberedballsectiontoc
+
+\title[Time-Domain FWI using advanced DG methods]{Time-Domain Full Waveform Inversion using advanced Galerkin Discontinuous methods}
+%\title{Petit titre}
+\author{Pierre Jacquet}
+\institute{Université de Pau et des Pays de l'Adour \\
+  INRIA Bordeaux Sud-Ouest, Project-Team Magique 3D \\
+Laboratory of Mathematics and its Applications of PAU}
+\date{February 25, 2021}
+
+
+\usetheme{Frankfurt}
+
+\definecolor{myNewColorA}{rgb}{0.85,0.07,0.07}
+\definecolor{myNewColorD}{rgb}{0.1, 0.1, 0.3}
+
+\setbeamercolor*{palette primary}{bg=myNewColorA, fg = white}
+ \setbeamercolor*{palette secondary}{bg=myNewColorA, fg = white}
+ \setbeamercolor*{palette quaternary}{bg=myNewColorD, fg = white}
+ \beamertemplatenavigationsymbolsempty
+
+%========================================================================
+%========================================================================
+%========================================================================
+
+
+%========================================================================
+%==================== PAGE DE GARDE =====================================
+%========================================================================
+
+
+\makeatletter
+\newcommand\titlegraphicii[1]{\def\inserttitlegraphicii{#1}}
+\centering
+\titlegraphicii{}
+\setbeamertemplate{title page}
+{
+  \vbox{}
+   {\usebeamercolor[fg]{titlegraphic}\inserttitlegraphic\hfill\inserttitlegraphicii\par}
+  \begin{centering}
+    \begin{beamercolorbox}[sep=8pt,center]{institute}
+      \usebeamerfont{institute}\insertinstitute
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[sep=8pt,center]{title}
+      \usebeamerfont{title}\inserttitle\par%
+      \ifx\insertsubtitle\@empty%
+      \else%
+        \vskip0.25em%
+        {\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par}%
+      \fi%
+    \end{beamercolorbox}%
+    \vskip1em\par
+    \begin{beamercolorbox}[sep=8pt,center]{date}
+      \usebeamerfont{date}\insertdate
+    \end{beamercolorbox}%\vskip0.5em
+    \begin{beamercolorbox}[sep=8pt,center]{author}
+      \usebeamerfont{author}\insertauthor
+    \end{beamercolorbox}
+  \end{centering}
+  %\vfill
+}
+\makeatother
+\author{\textbf{Pierre Jacquet}}
+\title[Time-Domain FWI using advanced DG methods]{Time-Domain Full Waveform Inversion using advanced Discontinuous Galerkin methods}
+\institute{Université de Pau et des Pays de l'Adour \\
+  INRIA Bordeaux Sud-Ouest, Project-Team Magique 3D \\
+Laboratory of Mathematics and its Applications of Pau}
+\date{February 25, 2021}
+  \titlegraphic{\includegraphics[scale=0.25]{inria}}
+
+%========================================================================
+%========================================================================
+%========================================================================
+
+
+
+\pgfplotsset{compat=newest}
+
+%%%%%% TIKZ SET STYLE %%%%%%%%
+\tikzset{boxOptions/.style={
+    rectangle,
+    rounded corners,
+    draw=black, very thick,
+    text width=9em,
+    minimum height=2em,
+    text centered}
+}
+
+\tikzset{arrowStyle/.style={
+    ->,
+    thick,
+    shorten <=2pt,
+    shorten >=2pt}
+}
+
+\tikzset{arrowStyleinv/.style={
+    <-,
+    thick,
+    shorten <=2pt,
+    shorten >=2pt}
+}
+
+\usetikzlibrary{backgrounds}
+
+\newcommand\tikzscale{0cm}
+\newlength{\tikzwidth}
+\newlength{\tikzheight}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% colored hyperlinks
+\newcommand{\chref}[2]{%
+  \href{#1}{{\usebeamercolor[bg]{AAUsimple}#2}}%
+}
+\newcommand{\scaption}[1]{\caption{\tiny{#1}}}
+
+
+\definecolor{light-gray}{gray}{0.95}
+\definecolor{myred}{RGB}{200,0,0}
+\newcommand{\myred}{red!70!black}
+\newcommand{\mygreen}{green!60!black}
+\newcommand{\myblue}{blue!40!black}
+\newcommand{\code}[1]{\colorbox{light-gray}{\texttt{#1}}}
+
+
+\newcommand\discreteP{\boldsymbol{\textcolor{\myred}{\bar{P}}}}
+\newcommand\discreteV{\boldsymbol{\textcolor{\myred}{\bar{V}}}}
+\newcommand\discreteU{\boldsymbol{\textcolor{\myred}{\bar{U}}}}
+\newcommand\discreteF{\boldsymbol{\bar{F}}}
+\newcommand\discreteG{\boldsymbol{\bar{G}}}
+
+\newcommand\discreteQP{\bar{q_p}}
+\newcommand\discreteQV{\bar{q_v}}
+\newcommand\discreteQ{\bar{q}}
+%\newcommand\discreteD{\bar{d}}
+%\newcommand\Lag{\boldsymbol{\mathcal{L}}}
+
+
+\newcommand\qcqU{\textcolor{\myred}{\widehat{\boldsymbol{{u}}}}}
+\newcommand\qcqP{\widehat{p}}
+\newcommand\qcqV{\widehat{\textbf{v}}}
+\newcommand\contLbd{\boldsymbol{\textcolor{\myblue}{\lambda}}}
+\newcommand\qcqLbd{\boldsymbol{\textcolor{\myblue}{\widehat{\lambda}}}}
+\newcommand\Lbdun{\boldsymbol{\textcolor{\myred}{\lambda_1}}}
+\newcommand\Lbdeux{\boldsymbol{\textcolor{\myred}{\lambda_2}}}
+\newcommand\qcqLbdun{\widehat{\lambda_1}}
+\newcommand\qcqLbdeux{\boldsymbol{\widehat{\lambda_2}}}
+
+\newcommand\discreteLbd{\textcolor{\myred}{\boldsymbol{\bar{\Lambda}}}}
+\newcommand\discreteLbdun{\textcolor{\myred}{\boldsymbol{\bar{\Lambda_1}}}}
+\newcommand\discreteLbdeux{\textcolor{\myred}{\boldsymbol{\bar{\Lambda_2}}}}
+\newcommand\discreteD{\boldsymbol{\bar{D}}}
+
+%\newcommand\CF{\mathcal{J}}
+\newcommand\CFF{\mathcal{G}}
+\newcommand\DP{Forward_{\model}}
+
+\newcommand\contAl{\boldsymbol{\alpha}}
+
+%% \newcommand\velocity{v_p}
+%% \newcommand\density{\rho_0}
+%\newcommand\velocity{\boldsymbol{\textcolor{\mygreen}{c}}}
+\newcommand\bulkmodulus{\boldsymbol{\textcolor{\mygreen}{\kappa}}}
+%\newcommand\density{\boldsymbol{\textcolor{\mygreen}{\rho}}}
+
+
+\pgfplotsset{
+        colormap/paraview/.style={
+                colormap={paraview}{
+                        rgb255(0cm)=(20,119,255)
+			rgb255(1cm)=(168,181,255)
+			rgb255(2cm)=(240,240,240)
+			rgb255(3cm)=(255,161,145)
+                        rgb255(4cm)=(234,60,53)
+                },
+        },
+}
+
+
+\newcommand\vectll[4]{\left#1 \begin{array}{c}
+    #2\\
+    #3\\
+  \end{array} \right#4}

@@ -1,0 +1,201 @@
+
+\begin{subfigure}{0.5\textwidth}
+\begin{tikzpicture}
+\begin{axis}[%
+          width=\plotwidth, height=\plotheight,,
+          at={(0,0)},scale only axis,separate axis lines,xminorticks=true,
+          xlabel={$log(\Delta \xx)$ },
+          ylabel={$log(\varepsilon_{L2})$},
+          legend pos=south east,
+          yminorticks=true,
+        ]
+
+        %% load current data
+        %% -----------------
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \addplot[color=blue!50!black,mark=x,mark options={solid},
+          line width=1pt,
+          mark size=4pt]
+        table[x=monx,y=mony]
+        {graph/BT4X1.dat};
+        \addlegendentry{\small Bernstein \normalsize}
+
+        \pgfmathsetmacro{\xa}{-2.0}
+        \pgfmathsetmacro{\ya}{-1.6}
+
+        \pgfmathsetmacro{\xc}{-2.3}
+        \pgfmathsetmacro{\yc}{-2.2}
+
+        \pgfmathsetmacro{\xb}{\xa}
+        \pgfmathsetmacro{\yb}{\yc}
+
+        \pgfmathsetmacro{\xd}{0.33*\xa+0.33*\xc+0.33*\xb}
+        \pgfmathsetmacro{\yd}{0.33*\ya+0.33*\yc+0.33*\yb}
+        \coordinate[]  (p1) at (\xa,\ya) {} ;
+        \coordinate[]  (p2) at (\xb,\yb) {} ;
+        \coordinate[]  (p3) at (\xc,\yc) {} ;
+        \node[]  (p4) at (\xd+0.2,\yd) {2.0} ;
+
+         \draw (p1) -- (p2) -- (p3) -- (p1) ;
+         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        \addplot[color=red!50!black,mark=o,mark options={solid},
+          line width=1pt,
+          mark size=2pt]
+        table[x=monx,y=mony]
+        {graph/LT4X1.dat};
+        \addlegendentry{\small Lagrange \normalsize}
+      \end{axis}
+      %% --------------------------------------------------------------------
+\end{tikzpicture}
+\caption{Study for $\PolOrder=1$.}
+\label{1d_conv_1}
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+\begin{tikzpicture}
+\begin{axis}[%
+          width=\plotwidth, height=\plotheight,,
+          at={(0,0)},scale only axis,separate axis lines,xminorticks=true,
+          xlabel={$log(\Delta \xx)$ },
+          ylabel={$log(\varepsilon_{L2})$},
+          legend pos=south east,
+          yminorticks=true,
+        ]
+
+        %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \addplot[color=blue!50!black,mark=x,mark options={solid},
+          line width=1pt,
+          mark size=4pt]
+        table[x=monx,y=mony]
+        {graph/BT4X2.dat};
+        \addlegendentry{\small Bernstein \normalsize}
+
+        \pgfmathsetmacro{\xaa}{-2.0}
+        \pgfmathsetmacro{\yaa}{-4.1}
+
+        \pgfmathsetmacro{\xcc}{-2.3}
+        \pgfmathsetmacro{\ycc}{-4.9}
+
+        \pgfmathsetmacro{\xbb}{\xaa}
+        \pgfmathsetmacro{\ybb}{\ycc}
+
+        \pgfmathsetmacro{\xdd}{0.33*\xaa+0.33*\xcc+0.33*\xbb}
+        \pgfmathsetmacro{\ydd}{0.33*\yaa+0.33*\ycc+0.33*\ybb}
+        \coordinate[]  (p1) at (\xaa,\yaa) {} ;
+        \coordinate[]  (p2) at (\xbb,\ybb) {} ;
+        \coordinate[]  (p3) at (\xcc,\ycc) {} ;
+        \node[]  (p4) at (\xdd+0.2,\ydd) {3.2} ;
+
+        \draw (p1) -- (p2) -- (p3) -- (p1) ;
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        \addplot[color=red!50!black,mark=o,mark options={solid},
+          line width=1pt,
+          mark size=2pt]
+        table[x=monx,y=mony]
+        {graph/LT4X2.dat};
+          \addlegendentry{\small Lagrange \normalsize}
+      \end{axis}
+      %% --------------------------------------------------------------------
+\end{tikzpicture}
+\caption{Study for $\PolOrder=2$.}
+\label{1d_conv_2}
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+  \begin{tikzpicture}
+\begin{axis}[%
+          width=\plotwidth, height=\plotheight,,
+          at={(0,0)},scale only axis,separate axis lines,xminorticks=true,
+          xlabel={$log(\Delta \xx)$ },
+          ylabel={$log(\varepsilon_{L2})$},
+          legend pos=south east,
+          yminorticks=true,
+        ]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \addplot[color=blue!50!black,mark=x,mark options={solid},
+          line width=1pt,
+          mark size=4pt]
+        table[x=monx,y=mony]
+        {graph/BT4X3.dat};
+        \addlegendentry{\small Bernstein \normalsize}
+
+        \pgfmathsetmacro{\xaaa}{-2.4}
+        \pgfmathsetmacro{\yaaa}{-6.3}
+
+        \pgfmathsetmacro{\xccc}{-2.6}
+        \pgfmathsetmacro{\yccc}{-7.2}
+
+        \pgfmathsetmacro{\xbbb}{\xaaa}
+        \pgfmathsetmacro{\ybbb}{\yccc}
+
+        \pgfmathsetmacro{\xddd}{0.33*\xaaa+0.33*\xccc+0.33*\xbbb}
+        \pgfmathsetmacro{\yddd}{0.33*\yaaa+0.33*\yccc+0.33*\ybbb}
+        \coordinate[]  (p1) at (\xaaa,\yaaa) {} ;
+        \coordinate[]  (p2) at (\xbbb,\ybbb) {} ;
+        \coordinate[]  (p3) at (\xccc,\yccc) {} ;
+        \node[]  (p4) at (\xddd+0.2,\yddd) {3.6} ;
+
+        \draw (p1) -- (p2) -- (p3) -- (p1) ;
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%ù
+        \addplot[color=red!50!black,mark=o,mark options={solid},
+          line width=1pt,
+          mark size=2pt]
+        table[x=monx,y=mony]
+        {graph/LT4X3.dat};
+        \addlegendentry{\small Lagrange \normalsize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+      \end{axis}
+      %% --------------------------------------------------------------------
+  \end{tikzpicture}
+  \caption{Study for $\PolOrder=3$.}
+\label{1d_conv_3}
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+\begin{tikzpicture}
+\begin{axis}[%
+          width=\plotwidth, height=\plotheight,,
+          at={(0,0)},scale only axis,separate axis lines,xminorticks=true,
+          xlabel={$log(\Delta \xx)$ },
+          ylabel={$log(\varepsilon_{L2})$},
+          legend pos=south east,
+          yminorticks=true,
+        ]
+
+
+        \addplot[color=blue!50!black,mark=x,mark options={solid},
+          line width=1pt,
+          mark size=4pt]
+        table[x=monx,y=mony]
+        {graph/BT4X4.dat};
+        \addlegendentry{\small Bernstein \normalsize}
+        \pgfmathsetmacro{\xaaaa}{-2.1}
+        \pgfmathsetmacro{\yaaaa}{-7.8}
+
+        \pgfmathsetmacro{\xcccc}{-2.4}
+        \pgfmathsetmacro{\ycccc}{-9.4}
+
+        \pgfmathsetmacro{\xbbbb}{\xaaaa}
+        \pgfmathsetmacro{\ybbbb}{\ycccc}
+
+        \pgfmathsetmacro{\xdddd}{0.33*\xaaaa+0.33*\xcccc+0.33*\xbbbb}
+        \pgfmathsetmacro{\ydddd}{0.33*\yaaaa+0.33*\ycccc+0.33*\ybbbb}
+        \coordinate[]  (p1) at (\xaaaa,\yaaaa) {} ;
+        \coordinate[]  (p2) at (\xbbbb,\ybbbb) {} ;
+        \coordinate[]  (p3) at (\xcccc,\ycccc) {} ;
+        \node[]  (p4) at (\xdddd+0.2,\ydddd) {5.0} ;
+
+        \draw (p1) -- (p2) -- (p3) -- (p1) ;
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+        \addplot[color=red!50!black,mark=o,mark options={solid},
+          line width=1pt,
+          mark size=2pt]
+        table[x=monx,y=mony]
+        {graph/LT4X4.dat};
+       \addlegendentry{\small Lagrange \normalsize}
+      \end{axis}
+      %% --------------------------------------------------------------------
+\end{tikzpicture}
+\caption{Study for $\PolOrder=4$.}
+\label{1d_conv_4}
+\end{subfigure}

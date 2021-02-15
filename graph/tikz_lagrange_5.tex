@@ -1,0 +1,59 @@
+    \begin{tikzpicture}
+      \begin{axis}[%
+          width=\plotwidth, height=\plotheight,,
+          at={(0,0)},scale only axis,separate axis lines,
+          xlabel={$x$},
+          %%   ymode=log,
+          %yminorticks=true,
+           xmin=0,xmax=1,
+           %ymin=0,ymax=1,
+          legend pos=outer north east
+          %ymin=0.98,ymax=1.22
+        ]
+
+        %% load current data
+        %% -----------------
+        \addplot[color=blue!50!black,mark options={solid}, mark=triangle*,
+          line width=2pt,
+          mark size=0pt]
+        table[x=x,y=1]
+        {graph/lagrange_5.dat};
+        \addlegendentry{$\ell_1^5$}
+
+ \addplot[color=red!75!black,mark options={solid}, mark=*,
+          line width=2pt,
+          mark size=0pt]
+        table[x=x,y=2]
+        {graph/lagrange_5.dat};
+        \addlegendentry{$\ell_2^5$}
+
+ \addplot[color=green!50!black,mark options={solid}, mark=square*,
+          line width=2pt,
+          mark size=0pt]
+        table[x=x,y=3]
+        {graph/lagrange_5.dat};
+        \addlegendentry{$\ell_3^5$}
+
+ \addplot[color=yellow!80!black,mark options={solid}, mark=square*,
+          line width=2pt,
+          mark size=0pt]
+        table[x=x,y=4]
+        {graph/lagrange_5.dat};
+        \addlegendentry{$\ell_4^5$}
+
+ \addplot[color=green!75!white,mark options={solid}, mark=square*,
+          line width=2pt,
+          mark size=0pt]
+        table[x=x,y=5]
+        {graph/lagrange_5.dat};
+        \addlegendentry{$\ell_5^5$}
+
+ \addplot[color=blue!40!white,mark options={solid}, mark=diamond*,
+          line width=2pt,
+          mark size=0pt]
+        table[x=x,y=6]
+        {graph/lagrange_5.dat};
+        \addlegendentry{$\ell_6^5$}
+      \end{axis}
+      %% --------------------------------------------------------------------
+    \end{tikzpicture}

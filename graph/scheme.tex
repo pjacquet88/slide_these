@@ -1,0 +1,21 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tikzset{myrectangle/.style={rectangle,draw=black,text width=2.5cm, minimum height=.7cm,text centered}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% --------------------------------------------------------------------
+
+\begin{tikzpicture}[node distance =.50cm,every node/.append style={font=\normalsize}]
+  \node(ghost){};
+  \node[myrectangle,right       =    of ghost ]  (init)  {$\gradinia,\gradinib$ \\~\\ $(\modelrefa,\modelrefb)$};
+  \node[myrectangle,below      =2.5  of init  ]  (inter)   {$\gradinta,\gradintb$ \\~\\ $(\modelmaina,\modelmainb)$};
+  \node[myrectangle,below      =2.5  of inter  ]  (end)   {$\gradenda,\gradendb$ \\~\\ $(\modelenda,\modelendb)$};
+
+   \draw[line width=1pt,color=black,->]   (init.south)  -- (inter.north) node[midway,fill=white]{tfwi\_param (1)};
+   \draw[line width=1pt,color=black,->]   (inter.south)  -- (end.north) node[midway,fill=white]{tfwi\_param\_function (2)};
+
+\end{tikzpicture}
+
+%% --------------------------------------------------------------------    

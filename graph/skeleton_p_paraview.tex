@@ -1,0 +1,31 @@
+\begin{tikzpicture}
+\pgfmathsetmacro{\xmin} {0.}
+\pgfmathsetmacro{\xmax} {9.7}
+\pgfmathsetmacro{\zmin} {0.}
+\pgfmathsetmacro{\zmax} {2.7}
+\pgfmathsetmacro{\zzmax} {3.0}
+\pgfmathsetmacro{\xxmax} {10.0}
+
+
+\begin{axis}[%
+width=1.0\modelwidth,
+height=1.0\modelwidth,
+axis on top, separate axis lines,
+xmin=\xmin, xmax=\xxmax, %xlabel={x (km)},
+ymin=\zmin, ymax=\zzmax,
+yticklabels={},xticklabels={},
+y dir=reverse,
+colormap/paraview, colorbar,
+colorbar style={title=\small{~~~~~~~~~~~~~~~~~~~~~$kg.m^{-1}.s^{-2}$}},
+point meta min=\cmapmin, point meta max=\cmapmax,
+colorbar/width=2.5mm,
+axis x line=top,thick,
+axis y line=left,thick,
+ylabel style={rotate=-90},
+ylabel={$z$},
+xlabel={$x$},
+ticks = none,
+]
+\addplot [forget plot] graphics [xmin=\xmin,xmax=\xmax,ymin=\zmin,ymax=\zmax] {{\modelfile}.png};
+\end{axis}
+\end{tikzpicture}%

@@ -14,7 +14,8 @@ ymin=\zmin, ymax=\zmax, ylabel={depth (km)},
 yticklabels={},xticklabels={},
 y dir=reverse,
 colormap/paraview, colorbar,
-point meta min=1.5e-3, point meta max=5.5e-3,
+colorbar style={title=\small{$m \cdot s^{-1}$}},
+point meta min=1.5e3, point meta max=5.5e3,
 colorbar/width=2.5mm,
 ]
 \addplot [forget plot] graphics [xmin=\xmin,xmax=\xmax,ymin=\zmin,ymax=\zmax] {{\modelfile}.png};

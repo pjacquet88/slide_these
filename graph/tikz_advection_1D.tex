@@ -1,0 +1,64 @@
+\begin{subfigure}{0.32\textwidth}
+    \begin{tikzpicture}
+    \centering
+      \begin{axis}[%
+          width=\plotwidth, height=\plotheight,,
+          at={(0,0)},scale only axis,separate axis lines,ticks=none,
+          xlabel={$\xx$},
+          ylabel={pressure},
+          xmin=0,xmax=1,
+          legend pos=south east
+        ]
+        %% load current data
+        %% -----------------
+        \addplot[color=blue!75!black,mark options={solid},
+          line width=2pt]
+        table[x=x,y=y]
+        {graph/pression_1d_beg.dat};
+        \addlegendentry{\scriptsize$p(\xx,t_0)$\normalsize}
+      \end{axis}
+    \end{tikzpicture}
+    \caption{Solution at time $t=t_0$.}
+\end{subfigure}
+\begin{subfigure}{0.31\textwidth}
+\centering
+    \begin{tikzpicture}
+      \begin{axis}[%
+          width=\plotwidth, height=\plotheight,,
+          at={(0,0)},scale only axis,separate axis lines,ticks=none,
+          xlabel={$\xx$},
+          xmin=0,xmax=1,
+          legend pos=south east
+        ]
+        %% load current data
+        %% -----------------
+        \addplot[color=blue!75!black,mark options={solid},
+          line width=2pt]
+        table[x=x,y=y]
+        {graph/pression_1d_mid.dat};
+        \addlegendentry{\scriptsize$p(\xx,t_1)$\normalsize}
+      \end{axis}
+    \end{tikzpicture}
+        \caption{Solution at time $t=t_1$.}
+\end{subfigure}
+\begin{subfigure}{0.31\textwidth}
+\centering
+    \begin{tikzpicture}
+      \begin{axis}[%
+          width=\plotwidth, height=\plotheight,,
+          at={(0,0)},scale only axis,separate axis lines,ticks=none,
+          xlabel={$\xx$},
+          xmin=0,xmax=1,
+          legend pos=south west
+        ]
+        %% load current data
+        %% -----------------
+        \addplot[color=blue!75!black,mark options={solid},
+          line width=2pt]
+        table[x=x,y=y]
+        {graph/pression_1d_end.dat};
+        \addlegendentry{\scriptsize$p(\xx,t_2)$ \normalsize}
+      \end{axis}
+    \end{tikzpicture}
+    \caption{Solution at time $t=t_2$.}
+\end{subfigure}

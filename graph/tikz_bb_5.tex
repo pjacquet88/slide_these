@@ -1,0 +1,59 @@
+    \begin{tikzpicture}
+      \begin{axis}[%
+          width=\plotwidth, height=\plotheight,,
+          at={(0,0)},scale only axis,separate axis lines,
+          xlabel={$\xx$},
+          %%   ymode=log,
+          %yminorticks=true,
+           xmin=0,xmax=1,
+           ymin=0,ymax=1,
+          legend pos=outer north east
+          %ymin=0.98,ymax=1.22
+        ]
+
+        %% load current data
+        %% -----------------
+        \addplot[color=blue!50!black,mark options={solid}, mark=triangle*,
+          line width=2pt,
+          mark size=0pt]
+        table[x=x,y=50]
+        {graph/bb_5.dat};
+        \addlegendentry{$B^5_{5,0}$}
+
+ \addplot[color=red!75!black,mark options={solid}, mark=*,
+          line width=2pt,
+          mark size=0pt]
+        table[x=x,y=41]
+        {graph/bb_5.dat};
+        \addlegendentry{$B^5_{4,1}$}
+
+ \addplot[color=green!50!black,mark options={solid}, mark=square*,
+          line width=2pt,
+          mark size=0pt]
+        table[x=x,y=32]
+        {graph/bb_5.dat};
+        \addlegendentry{$B^5_{3,2}$}
+
+ \addplot[color=yellow!80!black,mark options={solid}, mark=square*,
+          line width=2pt,
+          mark size=0pt]
+        table[x=x,y=23]
+        {graph/bb_5.dat};
+        \addlegendentry{$B^5_{2,3}$}
+
+ \addplot[color=green!75!white,mark options={solid}, mark=square*,
+          line width=2pt,
+          mark size=0pt]
+        table[x=x,y=14]
+        {graph/bb_5.dat};
+        \addlegendentry{$B^5_{1,4}$}
+
+ \addplot[color=blue!40!white,mark options={solid}, mark=diamond*,
+          line width=2pt,
+          mark size=0pt]
+        table[x=x,y=05]
+        {graph/bb_5.dat};
+        \addlegendentry{$B^5_{0,5}$}
+      \end{axis}
+      %% --------------------------------------------------------------------
+    \end{tikzpicture}

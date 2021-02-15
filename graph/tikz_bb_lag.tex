@@ -1,0 +1,68 @@
+  %% \begin{subfigure}[b]{0.5\textwidth}
+    \begin{tikzpicture}
+      \begin{axis}[%
+          width=\plotwidth, height=\plotheight,,
+          at={(0,0)},scale only axis,separate axis lines,xminorticks=true,
+          xlabel={Polynomial order $\PolOrder$},
+          ylabel={NZV},
+          xmin=0,xmax=21,
+          legend pos=north west
+        ]
+        %% load current data
+        %% -----------------
+        \addplot[color=blue!50!black,mark options={solid}, mark = triangle,
+          line width=1pt,
+          mark size=2pt]
+        table[x=order,y=nzv]
+        {graph/Bernstein_sparse.txt};
+        \addlegendentry{Bernstein-Bézier}
+        \addplot[color=red!50!black,mark options={solid}, mark = *,
+          line width=1pt,
+          mark size=2pt]
+        table[x=order,y=nzv]
+        {graph/Lagrange_sparse.txt};
+        \addlegendentry{Lagrange}
+        %\includegraphics{images/data_bis.pdf}
+      \end{axis}
+      %% --------------------------------------------------------------------
+    \end{tikzpicture}
+  %%   \caption{}
+  %%   \label{nzv_order}
+  %% \end{subfigure}
+  %% \begin{subfigure}[b]{0.5\textwidth}
+  %%   \setlength{\plotwidth}{6.0cm}
+  %%   \setlength{\plotheight}{4.5cm}
+  %%   \begin{tikzpicture}
+  %%     \begin{axis}[%
+  %%         width=\plotwidth, height=\plotheight,,
+  %%         at={(0,0)},scale only axis,separate axis lines,xminorticks=true,
+  %%         xlabel={Polynomial order $\PolOrder$},
+  %%         ylabel={Ratio},
+  %%         %%   ymode=log,
+  %%         %yminorticks=true,
+  %%         xmin=0,xmax=21,
+  %%         legend pos=north east
+  %%         %ymin=0.98,ymax=1.22
+  %%       ]
+
+  %%       %% load current data
+  %%       %% -----------------
+  %%       \addplot[color=blue!50!black,mark options={solid}, mark = triangle,
+  %%         line width=1pt,
+  %%         mark size=2pt]
+  %%       table[x=order,y=ratio]
+  %%       {graph/Bernstein_sparse.txt};
+  %%       \addlegendentry{Bernstein-Bézier}
+  %%       \addplot[color=red!50!black,mark options={solid}, mark = *,
+  %%         line width=1pt,
+  %%         mark size=2pt]
+  %%       table[x=order,y=ratio]
+  %%       {graph/Lagrange_sparse.txt};
+  %%       \addlegendentry{Lagrange}
+  %%       %\includegraphics{images/data_bis.pdf}
+  %%     \end{axis}
+  %%     %% --------------------------------------------------------------------
+  %%   \end{tikzpicture}
+  %%   \caption{}
+  %%   \label{ratio_order}
+  %% \end{subfigure}
