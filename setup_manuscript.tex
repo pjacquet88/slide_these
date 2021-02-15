@@ -1,0 +1,408 @@
+%%%%% SETUP %%%%%
+
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+\newcommand{\greencheck}{{\textcolor{\mygreen}{\cmark}}}
+\newcommand{\redcross}{{\textcolor{red}{\xmark}}}
+
+\newcommand{\fig}[1]{Figure~\ref{#1}}
+\newcommand{\tab}[1]{Table~\ref{#1}}
+\newcommand{\jd}[1]{\textbf{\textcolor{magenta}{#1}}}
+\newcommand{\hb}[1]{\textbf{\textcolor{purple!95!black}{#1}}}
+\newcommand{\pj}[1]{\textbf{\textcolor{green!95!black}{#1}}}
+
+\newcommand{\jump}[1]{\llbracket#1\rrbracket}
+\newcommand{\average}[1]{\{#1\}}
+
+%%%% BB %%%%
+\newcommand{\lzero}{{\hat{\lambda_0}}}
+\newcommand{\lone}{{\hat{\lambda_1}}}
+\newcommand{\ltwo}{{\hat{\lambda_2}}}
+\newcommand{\lthree}{{\hat{\lambda_3}}}
+\newcommand{\lfour}{{\hat{\lambda_4}}}
+
+\newcommand{\balpha}{{\boldsymbol{\alpha}}}
+\newcommand{\bbeta}{{\boldsymbol{\beta}}}
+\newcommand{\blambda}{{\boldsymbol{\hat{\lambda}}}}
+
+\newcommand{\bgamma}{{\boldsymbol{\gamma}}}
+\newcommand{\bdelta}{{\boldsymbol{\delta}}}
+
+\newcommand{\Lift}{{L}}
+
+%%%%% WADG %%%%%%%%%%%%%%%%
+
+\newcommand{\param}{{\gamma}}
+\newcommand{\coefParam}{{\boldsymbol{\gamma}}}
+\newcommand{\weight}{{\boldsymbol{\hat{\omega}}}}
+\newcommand{\sweight}{{\hat{\omega}}}
+\newcommand{\Mwadg}{{\overset{\sim}{{M}}}}
+\newcommand{\nquad}{{n_q}}
+
+\newcommand{\Pquad}{{\bar{Q}}}
+\newcommand{\QuadOrder}{{N_q}}
+
+
+%%%% ENVIRONNEMENT %%%%%
+
+
+
+%% \mdfsetup{skipabove=\topskip,skipbelow=\topskip}
+%% \tikzset{titre_industry/.style =
+%% 	{draw=black, line width=1.5pt, fill=gray!5,
+%% 	rectangle, rounded corners, right,minimum height=2em}}
+%% \newcommand{\titreencadre}{Titre}
+%% \makeatletter
+%% \mdfdefinestyle{encadrestyle}{%
+%% 	linewidth=1.5pt,roundcorner=5pt,linecolor=black,
+%% 	apptotikzsetting={\tikzset{mdfbackground/.append style ={%
+%% 		fill=gray!15}}},
+%% 	frametitlefont=\bfseries,
+%% 	singleextra={%
+%% 		\node[titre_industry,xshift=2em] at (P-|O) %
+%% 			{~\mdf@frametitlefont{\titreencadre}\hbox{~}};},
+%% 	firstextra={%
+%% 		\node[titre_industry,xshift=2em] at (P-|O) %
+%% 		{~\mdf@frametitlefont{\titreencadre}\hbox{~}};},
+%% 	}
+%% \mdfdefinestyle{encadresanstitrestyle}{%
+%% 	linewidth=1.5pt,roundcorner=5pt,linecolor=orange,
+%% 	apptotikzsetting={\tikzset{mdfbackground/.append style ={%
+%% 		fill=yellow!20}}},
+%% }
+
+%% \newenvironment{industry}{\renewcommand{\titreencadre}{Industrial context}
+%% 	\begin{mdframed}[style=encadrestyle]
+%% 	\vspace{0.8\baselineskip}
+%% 	}{%
+%% \end{mdframed}}
+
+%% \newenvironment{p_note}{\renewcommand{\titreencadre}{Personal note}
+%% 	\begin{mdframed}[style=encadrestyle]
+%% 	\vspace{0.8\baselineskip}
+%% 	}{%
+%% 	\end{mdframed}}
+
+
+
+\newenvironment{conditions}
+{\par\vspace{\abovedisplayskip}\noindent\begin{tabular}{>{$}l<{$} @{${}={}$} l}}
+{\end{tabular}\par\vspace{\belowdisplayskip}}
+
+
+\newcommand{\cmapmin}{0}
+\newcommand{\cmapmax}{1}
+
+\newcommand{\modelfile}{default}
+
+
+%%%%% SIZE %%%%%%%
+
+\newlength{\plotwidth}
+\newlength{\plotheight}
+
+
+\newlength{\modelwidth}
+
+
+%%%%%% PROTOCOL EXP %%%%%%%%%%%
+
+\newcommand\tpeak{{t_{peak}}}
+\newcommand\fpeak{{f_{peak}}}
+\newcommand\fmax{{f_{max}}}
+
+
+%%%%%% MACRO %%%%%%%%%%%.
+
+\newcommand\dangersign[1][2ex]{%
+  \renewcommand\stacktype{L}%
+  \scaleto{\stackon[1.3pt]{\color{red}$\triangle$}{\tiny\bfseries !}}{#1}}
+
+
+
+%%% Inconnu probleme direct
+\newcommand\dt{\partial t}
+
+\newcommand\x{{\boldsymbol{x}}}
+\newcommand\xx{{x_1}}
+\newcommand\xy{{x_2}}
+\newcommand\xz{{x_3}}
+\newcommand\xd{{x_d}}
+
+
+\newcommand\colorcontP{\boldsymbol{\textcolor{\myred}{p}}}
+\newcommand\colorcontV{\boldsymbol{\textcolor{\myred}{v}}}
+
+
+%\newcommand\adjP{{\lambda_p}}
+\newcommand\adjP{{\contP^*}}
+\newcommand\PolAdjP{{(\contP^*)_h}}
+\newcommand\CoefPolAdjP{{(P^*)_h}}
+
+%% \newcommand\adjV{{\boldsymbol{\lambda_v}}}
+%% \newcommand\adjVd{{\lambda_{v_d}}}
+\newcommand\adjV{{\boldsymbol{\contV^*}}}
+\newcommand\adjVd{{\contVd^*}}
+\newcommand\PolAdjV{{(\adjV)_h}}
+
+\newcommand\scoefAdjP{{(P^*)_h}}
+\newcommand\coefAdjP{{\boldsymbol{\scoefAdjP}}}
+\newcommand\coefAdjPj{{\scoefAdjP_{j}}}
+
+\newcommand\scoefAdjV{{(V^*)_h}}
+\newcommand\coefAdjVd{{\scoefAdjV_{d}}}
+\newcommand\scoefAdjVd{{\scoefAdjV_{d}}}
+\newcommand\coefAdjVdj{{\scoefAdjV_{d_j}}}
+\newcommand\coefAdjV{{\boldsymbol{\scoefAdjV}}}
+\newcommand\coefAdjVj{{\scoefAdjP_{j}}}
+
+
+\newcommand\contP{{p}}
+\newcommand\dtcontP{{\frac{\partial \contP}{\dt}}}
+
+\newcommand\contV{\boldsymbol{v}}
+\newcommand\contVx{{v_{\xx}}}
+\newcommand\contVy{{v_\xy}}
+\newcommand\contVz{{v_\xz}}
+\newcommand\contVd{{v_d}}
+
+\newcommand\contU{{\boldsymbol{u}}}
+\newcommand\adjU{{\boldsymbol{{\lambda}}}}
+
+
+\newcommand{\fracdt}{{ \frac{\partial}{\partial t}}}
+\newcommand{\fracdx}{{ \frac{\partial}{\partial \xx}}}
+\newcommand{\fracdy}{{ \frac{\partial}{\partial \xy}}}
+\newcommand{\fracdz}{{ \frac{\partial}{\partial \xz}}}
+\newcommand{\fracdd}{{ \frac{\partial}{\partial \xd}}}
+
+\newcommand{\fracdrefx}{{ \frac{\partial}{\partial \refxx}}}
+\newcommand{\fracdrefy}{{ \frac{\partial}{\partial \refxy}}}
+\newcommand{\fracdrefz}{{ \frac{\partial}{\partial \refxz}}}
+\newcommand{\fracdrefd}{{ \frac{\partial}{\partial \refxd}}}
+
+
+\newcommand\dtcontV{{\frac{\partial \contV}{\dt}}}
+
+\newcommand\polP{{p_h}}
+\newcommand\scoefPolP{{P_h}}
+\newcommand\coefPolP{{\boldsymbol{P_h}}}
+\newcommand\coefPolPj{{P_{h_j}}}
+\newcommand\sdtcoefPolP{{\frac{\partial P_h}{\partial t}}}
+\newcommand\dtcoefPolP{{\frac{\partial \boldsymbol{P_h}}{\partial t}}}
+\newcommand\dtcoefPolPj{{\frac{\partial P_{h_j}}{\partial t}}}
+\newcommand\spolV{{v_h}}
+
+\newcommand\polV{\boldsymbol{\spolV}}
+\newcommand\polVx{{\spolV_1}}
+\newcommand\polVy{{\spolV_2}}
+\newcommand\polVz{{\spolV_3}}
+\newcommand\polVd{{\spolV_d}}
+
+
+\newcommand\scoefPolV{{V_h}}
+\newcommand\coefPolV{{\boldsymbol{\scoefPolV}}}
+\newcommand\coefPolVd{{\coefPolV_d}}
+\newcommand\coefPolVdj{{\scoefPolV_{d_j}}}
+\newcommand\scoefPolVd{{\scoefPolV_{d}}}
+\newcommand\scoefPolVdj{{\scoefPolV_{d_j}}}
+\newcommand\coefPolVj{{\coefPolV_{j}}}
+
+\newcommand\dtcoefPolV{\frac{\partial \coefPolV}{\partial t}}
+\newcommand\dtcoefPolVd{\frac{\partial \coefPolVd}{\partial t}}
+
+
+\newcommand\UGlob{{\boldsymbol{U}}}
+\newcommand\UGGlob{{\boldsymbol{\bar{U}}}}
+\newcommand\FGlob{{\boldsymbol{F}}}
+\newcommand\FGGlob{{\boldsymbol{\bar{F}}}}
+\newcommand\AdjFGGlob{{\boldsymbol{\bar{G}}}}
+
+\newcommand\AdjUGGlob{{\boldsymbol{\bar{\Lambda}}}}
+
+\newcommand\coefpolSource{{\boldsymbol{F_h}}}
+\newcommand\coefpolSourcej{{F_{h_j}}}
+
+\newcommand\dtpolP{\frac{\partial \polP}{\dt}}
+\newcommand\dtContP{\frac{\partial \contP}{\dt}}
+\newcommand\dttContP{\frac{\partial^2 \contP}{\dt^2}}
+
+\newcommand\dtpolV{{\frac{\partial \polV}{\dt}}}
+\newcommand\dtpolVx{{\frac{\partial \polVx}{\dt}}}
+\newcommand\dtpolVy{{\frac{\partial \polVy}{\dt}}}
+\newcommand\dtpolVz{{\frac{\partial \polVz}{\dt}}}
+\newcommand\dtpolVd{{\frac{\partial \polVd}{\dt}}}
+
+
+\newcommand\sdtpolV{{\frac{\partial \spolV}{\dt}}}
+
+\newcommand\testP{q}
+\newcommand\stestV{w}
+\newcommand\testV{\boldsymbol{\stestV}}
+\newcommand\testVx{{\stestV_1}}
+\newcommand\testVy{{\stestV_2}}
+\newcommand\testVz{{\stestV_3}}
+\newcommand\testVd{{\stestV_d}}
+
+\newcommand\PolOrder{{N}}
+
+\newcommand\SpacePolP{{\mathcal{Q}_h^\PolOrder}}
+\newcommand\SpacePolV{{\boldsymbol{\mathcal{W}_h^\PolOrder}}}
+
+\newcommand\SpaceTestP{{\mathcal{Q}}}
+\newcommand\SpaceTestV{{\boldsymbol{\mathcal{W}}}}
+
+\renewcommand\dim{{dim}}
+\newcommand\dof{{DoF}}
+
+\newcommand\elementK{{K}}
+\newcommand\element{{K}}
+\newcommand\refelement{{\hat{K}}}
+
+\newcommand\refx{{\boldsymbol{\hat{x}}}}
+\newcommand\refxx{{\hat{x_1}}}
+\newcommand\refxy{{\hat{x_2}}}
+\newcommand\refxz{{\hat{x_3}}}
+\newcommand\refxd{{\hat{x_d}}}
+\newcommand\ecan{{\boldsymbol{e}}}
+
+
+
+\newcommand\nbelem{{N_e}}
+\newcommand\Triangles{{\mathcal{T}_h}}
+\newcommand\Domain{{\Omega}}
+\newcommand\BDomain{{\partial \Omega}}
+\newcommand\DomainInf{{\Omega_{inf}}}
+\newcommand\normal{{\boldsymbol{n}}}
+\newcommand\snormal{{n}}
+\newcommand\Edge{{\Gamma}}
+
+\newcommand{\Bext}{{\mathcal{B}_{ext}}}
+\newcommand{\Bint}{{\mathcal{B}_{int}}}
+\newcommand{\dk}{{d { \scriptstyle \element}}}
+\newcommand{\drefk}{{d { \scriptstyle \hat{\element}}}}
+\newcommand{\ds}{{d s}}
+\newcommand{\drefs}{{d \hat{s}}}
+
+%\newcommand\detJK{\mathcal{J}_\element}
+%\newcommand\detJF{\mathcal{J}_\Gamma}
+\newcommand\detJF{|T_\Gamma|}
+\newcommand\detJK{|T_\element|}
+\newcommand\detJKl{|T_{\element^l}|}
+
+
+\newcommand\refphi{\hat{\varphi}}
+
+\newcommand\Mass{{M}}
+\newcommand\MassRef{{\hat{M}}}
+\newcommand\MassGlob{{{M^{glob}}}}
+\newcommand\MassGlobEdge{{{M_\Edge^{glob}}}}
+\newcommand\Stiff{{S}}
+\newcommand\StiffRef{{\hat{S}}}
+\newcommand\StiffGlob{{S_d^{glob}}}
+\newcommand\StiffGlobx{{S_x^{glob}}}
+\newcommand\StiffGloby{{S_y^{glob}}}
+\newcommand\StiffGlobz{{S_z^{glob}}}
+\newcommand\Diff{{\hat{D}}}
+\newcommand\Diffd{{\Diff_d}}
+\newcommand\Diffx{{\Diff_\refxx}}
+\newcommand\Diffy{{\Diff_\refxy}}
+\newcommand\Diffz{{\Diff_\refxz}}
+
+\newcommand\Difflzero{{\Diff_\lzero}}
+\newcommand\Difflone{{\Diff_\lone}}
+\newcommand\Diffltwo{{\Diff_\ltwo}}
+\newcommand\Difflthree{{\Diff_\lthree}}
+
+\newcommand\FluxP{{\mathcal{F}_p}}
+\newcommand\FluxV{{\mathcal{F}_v}}
+
+\newcommand\vFluxP{{\bar{\boldsymbol{\mathcal{F}_p}}}}
+\newcommand\vFluxV{{\bar{\boldsymbol{\mathcal{F}_v}}}}
+
+%%%%% Time scheme %%%%%
+
+\newcommand\dx{{\Delta x}}
+\newcommand\deltat{{\Delta t}}
+\newcommand\h{{\Delta t}}
+\newcommand\RHS{{\mathcal{L}}}
+
+%%%%% INVERSE PROBLEM %%%%%%%%%%%%
+
+\newcommand\smodel{{m}}
+\newcommand\model{{\boldsymbol{\smodel}}}
+
+\newcommand\contModel{{m}}
+
+\newcommand\contWavefield{{u}}
+\newcommand\contQcqWavefield{{\widehat{u}}}
+
+\newcommand\contAdjoint{{\lambda}}
+\newcommand\contQcqAdjoint{{\widehat{\lambda}}}
+
+
+\newcommand\wavefield{{\boldsymbol{u}}}
+
+\newcommand\WCF{{\mathcal{W}}_2}
+
+\newcommand\CF{{\mathcal{J}}}
+
+\newcommand\CFu{{\hat{\mathcal{J}}}}
+
+\newcommand\gradCF{\nabla{\mathcal{J}}}
+
+\newcommand\Restriction{{\mathcal{R}}}
+\newcommand\Functional{{\mathcal{F}}}
+\newcommand\data{{d}}
+\newcommand\Tfinal{{T_f}}
+
+\newcommand\Lagrangian{{\mathcal{L}}}
+\newcommand\Lag{{\mathcal{L}}}
+
+\newcommand\dobs{{d_{obs}}}
+\newcommand\nrcv{{n_{rcv}}}
+\newcommand\nsrc{{n_{src}}}
+\newcommand\nsample{{n_t}}
+\newcommand\nt{{N_t}}
+\newcommand\dtsample{{dt}}
+
+\newcommand\RestSpace{{\Restriction_x}}
+\newcommand\RestTime{{\Restriction_t}}
+
+\newcommand\nparam{{n_{p}}}
+
+
+
+%%%%%%% OPTIM %%%%%%%%%%
+
+\newcommand\SD{{d}}
+\newcommand\LS{\alpha}
+
+%\newcommand\dim{{dim}}
+
+
+%%% parameters
+
+\newcommand\density{\rho}
+\newcommand\velocity{c}
+\newcommand\bm{\kappa}
+
+
+%%%%% MESH
+
+\newcommand\nppw{n_{ppw}}
+\newcommand\metric{\mathcal{M}}
+
+%%%%%%%%% COLORMAP %%%%%%%%%%%%%
+
+\pgfplotsset{
+  colormap/paraview/.style={
+    colormap={paraview}{
+      rgb255(0cm)=(20,119,255)
+      rgb255(1cm)=(168,181,255)
+      rgb255(2cm)=(240,240,240)
+      rgb255(3cm)=(255,161,145)
+      rgb255(4cm)=(234,60,53)
+    },
+  },
+}

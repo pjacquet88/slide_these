@@ -226,13 +226,18 @@
 
   \begin{figure}[H]
     \centering
-    \subfigure[h-adaptivity]{
+     \begin{subfigure}[!htbp]{0.5\textwidth}
+     \centering
       \input{images/hadaptivity.tex}
-}
-    \hspace{1cm}
-  \subfigure[p-adaptivity with \textcolor{black}{P1}, \textcolor{blue}{P2}, \textcolor{red}{P3} elements]{
+      \caption{$h$-adaptivity}
+      \end{subfigure}
+    \hspace{-1cm}
+     \begin{subfigure}[!htbp]{0.5\textwidth}
+     \centering
+%%   \subfigure[p-adaptivity with \textcolor{black}{P1}, \textcolor{blue}{P2}, \textcolor{red}{P3} elements]{
     \input{images/padaptivity.tex}
-  }
+\caption{$p$-adaptivity}
+\end{subfigure}
 \end{figure}
 
 \end{frame}
