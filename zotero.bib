@@ -3782,6 +3782,14 @@
   series = {{{SEG Technical Program Expanded Abstracts}}}
 }
 
+
+@article{sei1995note,
+  title={A note on consistency and adjointness for numerical schemes},
+  author={Sei, Alain and Symes, William W},
+  year={1995}
+}
+
+
 @article{seriani1994spectral,
   title = {Spectral Element Method for Acoustic Wave Simulation in Heterogeneous Media},
   author = {Seriani, G{\'e}za and Priolo, Enrico},
@@ -3899,7 +3907,6 @@
   month = nov,
   volume = {79},
   pages = {P1-P16},
-  doi = {10.1190/geo2014-0172.1},
   abstract = {The key computational kernel of most advanced 3D seismic imaging and inversion algorithms used in exploration seismology involves calculating solutions of the 3D acoustic wave equation, most commonly with a finite-difference time-domain (FDTD) methodology. Although well suited for regularly sampled rectilinear computational domains, FDTD methods seemingly have limited applicability in scenarios involving irregular 3D domain boundary surfaces and mesh interiors best described by non-Cartesian geometry (e.g., surface topography). Using coordinate mapping relationships and differential geometry, an FDTD approach can be developed for generating solutions to the 3D acoustic wave equation that is applicable to generalized 3D coordinate systems and (quadrilateral-faced hexahedral) structured meshes. The developed numerical implementation is similar to the established Cartesian approaches, save for a necessary introduction of weighted first- and mixed second-order partial-derivative operators that account for spatially varying geometry. The approach was validated on three different types of computational meshes: (1) an ``internal boundary'' mesh conforming to a dipping water bottom layer, (2) analytic ``semiorthogonal cylindrical'' coordinates, and (3) analytic semiorthogonal and numerically specified ``topographic'' coordinate meshes. Impulse response tests and numerical analysis demonstrated the viability of the approach for kernel computations for 3D seismic imaging and inversion experiments for non-Cartesian geometry scenarios.},
   file = {/home/pierre/Zotero/storage/9XJRPQPU/Shragge - 2014 - Solving the 3D acoustic wave equation on generaliz.pdf},
   journal = {Geophysics}
@@ -4720,3 +4727,17 @@
 }
 
 
+@article{plessixReviewAdjointstateMethod2006,
+  title = {A Review of the Adjoint-State Method for Computing the Gradient of a Functional with Geophysical Applications},
+  author = {Plessix, R.-E.},
+  year = {2006},
+  month = nov,
+  volume = {167},
+  pages = {495--503},
+  issn = {0956-540X},
+  doi = {10.1111/j.1365-246X.2006.02978.x},
+  abstract = {Estimating the model parameters from measured data generally consists of minimizing an error functional. A classic technique to solve a minimization problem is to successively determine the minimum of a series of linearized problems. This formulation requires the Fr\'echet derivatives (the Jacobian matrix), which can be expensive to compute. If the minimization is viewed as a non-linear optimization problem, only the gradient of the error functional is needed. This gradient can be computed without the Fr\'echet derivatives. In the 1970s, the adjoint-state method was developed to efficiently compute the gradient. It is now a well-known method in the numerical community for computing the gradient of a functional with respect to the model parameters when this functional depends on those model parameters through state variables, which are solutions of the forward problem. However, this method is less well understood in the geophysical community. The goal of this paper is to review the adjoint-state method. The idea is to define some adjoint-state variables that are solutions of a linear system. The adjoint-state variables are independent of the model parameter perturbations and in a way gather the perturbations with respect to the state variables. The adjoint-state method is efficient because only one extra linear system needs to be solved.Several applications are presented. When applied to the computation of the derivatives of the ray trajectories, the link with the propagator of the perturbed ray equation is established.},
+  eprint = {https://academic.oup.com/gji/article-pdf/167/2/495/1492368/167-2-495.pdf},
+  journal = {Geophysical Journal International},
+  number = {2}
+}

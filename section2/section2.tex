@@ -7,8 +7,8 @@
 % ============================================
 
 \begin{frame}{Adjoint State Method}
-
-Lagrangian fonctional \cite{plessix} :
+\scriptsize
+Lagrangian fonctional \footcite{plessixReviewAdjointstateMethod2006} :
   \begin{equation}
     \Lag(\qcqU,\qcqLbd,\model) = \frac{1}{2}||\textcolor{blue}{d_{obs}}-\textcolor{red}{\mathcal{R}(\qcqU)}||^2 + <\DP(\qcqU)-f_p,\qcqLbd>
   \end{equation}
@@ -34,15 +34,6 @@ Lagrangian fonctional \cite{plessix} :
     \partial_{\model_i} \CF(\model) = \partial_{\model_i} \Lag(\contU,\contLbd,\model) = \partial_{\model_i} <\DP(\contU),\contLbd>
   \end{equation}
   }
-
-  \vfill
-  \tiny
-  \begin{thebibliography}{1}
-  \bibitem{plessix} Plessix R-E
-    \newblock A review of the adjoint-state method for computing the gradient
-of a functional with geophysical applications
-    \newblock Geophysical Journal International, Volume 167, Issue 2, 2006
-  \end{thebibliography}
 
 \end{frame}
 
@@ -71,8 +62,8 @@ of a functional with geophysical applications
 % ====== Frame : Adjoint then discretize 1 ===
 % ============================================
 
-\begin{frame}{AtD : Adjoint then Discretized Strategy}
-
+\begin{frame}{OtD : Optimize then Discretized Strategy}
+\scriptsize
   \begin{equation}
     \CF(\contP)=\frac{1}{2}||\textcolor{blue}{d_{obs}} - R\contP||^2
     \end{equation}
@@ -83,30 +74,42 @@ of a functional with geophysical applications
       \begin{empheq}[left=\empheqlbrace]{align}
     & \frac{1}{\density \velocity^2}\frac{\partial \contP}{\partial t}+\nabla \cdot \contV=f_p \text{~~ on $\boldsymbol{\Omega}$}\\
     & \density\frac{\partial \contV}{\partial t}+\nabla\contP=0  \text{~~ on $\boldsymbol{\Omega}$}\\
-    & \contP=0 \text{~~ on $\textcolor{red}{\boldsymbol{\Gamma_1}}$} \\
-    & \frac{\partial \contP}{\partial t}+\velocity \nabla \contP \cdot \normal=0 \text{~~ on $\textcolor{blue}{\boldsymbol{\Gamma_2}}$}\\
+    & \contP=0 \text{~~ on $\textcolor{\myred}{\boldsymbol{\Gamma_1}}$} \\
+    & \contP+\velocity \density \contV \cdot \normal=0 \text{~~ on $\textcolor{\myblue}{\boldsymbol{\Gamma_2}}$}\\
     & \contP(0) = 0 \text{, ~~~} \contV(0) = 0
       \end{empheq}
-      \vspace{30cm}
+\vfill
     \columnbreak
     \noindent
+    \uncover<2->{
+      \vspace{-0.5cm}
       \begin{empheq}[left=\empheqlbrace]{align}
     & \frac{1}{\density \velocity^2}\frac{\partial \Lbdun}{\partial t}+\nabla \cdot \Lbdeux=\frac{\partial \CF}{\partial \contP} \text{~~ on $\boldsymbol{\Omega}$}\\
     & \hspace{0.1cm} \density\frac{\partial \Lbdeux}{\partial t}+\nabla\Lbdun=0  \text{~~ on $\boldsymbol{\Omega}$}\\
-    & \hspace{0.1cm} \Lbdun=0 \text{~~ on $\textcolor{red}{\boldsymbol{\Gamma_1}}$} \\
-    & \hspace{0.1cm} \frac{\partial \Lbdun}{\partial t}-\velocity \nabla \Lbdun \cdot \normal=0 \text{~~ on $\textcolor{blue}{\boldsymbol{\Gamma_2}}$}\\
+    & \hspace{0.1cm} \Lbdun=0 \text{~~ on $\textcolor{\myred}{\boldsymbol{\Gamma_1}}$} \\
+    & \hspace{0.1cm}  \Lbdun-\velocity \density \Lbdeux \cdot \normal=0 \text{~~ on $\textcolor{\myblue}{\boldsymbol{\Gamma_2}}$}\\
     & \hspace{0.1cm} \Lbdun(T) = 0 \text{, ~~~} \Lbdeux(T) = 0
-  \end{empheq}
-
+      \end{empheq}
+      \vfill
+      }
   \end{multicols}
   \vspace{-0.5cm}
   \begin{equation}
-    t\in[0,T] \text{~~~~~~~~~~~~~~~~~~~~~~~~~~} t\in[T,0]
-    \end{equation}
+    t\in[0,T] \uncover<2->{\text{~~~~~~~~~~~~~~~~~~~~~~~~~~} t\in[T,0]}
+  \end{equation}
+
+\begin{block}{}
+  Having self-adjoint continuous problem enables to use the same discretization routines to simulate the forward and the adjoint state.
+\end{block}
 \end{frame}
 
 
 
+
+\begin{frame}{Discretize then Optimize Strategy}
+
+
+  \end{frame}
 
 
 % ============================================
@@ -160,19 +163,23 @@ Time-steps going Forward
 % ============================================
 % ====== Frame : Discretize then Adjoint 1 ===
 % ============================================
-\begin{frame}{DtA : Discretize then Adjoint Strategy}{Example With RK4}
+\begin{frame}{DtO : Discretize then Optimize Strategy}{Example With RK2}
 
   All time scheme can be summed-up such as :
   \begin{equation}
     \textcolor{\myblue}{\boldsymbol{L}}\discreteU=\textcolor{\myblue}{\boldsymbol{E}}\discreteF
   \end{equation}
 
+  \uncover<2->{
   \small
-      RK4 time-scheme leads to :
+      RK2 time-scheme leads to :
     \begin{equation}
-      \discreteU^{n+1}=B\discreteU^n+\textcolor{\myblue}{\boldsymbol{C_0}}\discreteF^n+\textcolor{\myblue}{\boldsymbol{C_{\frac{1}{2}}}}\discreteF^{n+\frac{1}{2}}+\textcolor{\myblue}{\boldsymbol{C_1}}\discreteF^{n+1}
+      \discreteU^{n+1}=B\discreteU^n+\textcolor{\myblue}{\boldsymbol{C_0}}\discreteF^n+\textcolor{\myblue}{\boldsymbol{C_{\frac{1}{2}}}}\discreteF^{n+\frac{1}{2}}
     \end{equation}
+    }
 
+
+  \uncover<3->{
 \begin{equation}
   \textcolor{\myblue}{\boldsymbol{L}}\discreteU=\textcolor{\myblue}{\boldsymbol{E}}\discreteF=\discreteG
 \end{equation}
@@ -200,7 +207,8 @@ Time-steps going Forward
     \vdots \\
     \discreteG^n \\
   \end{pmatrix}
-  \end{equation}
+\end{equation}
+}
 \end{frame}
 
 
@@ -236,61 +244,23 @@ Time-steps going Forward
 
 
 
+\begin{frame}{Discretize then Optimize}
 
-% ================================================
-% ====== Frame : return on RK4 case ==============
-% ================================================
+  $\textcolor{\myblue}{\boldsymbol{L^*}}$ is challenging to develop:
 
-\begin{frame}{DtA : Discretize then Adjoint Strategy}{Example with RK4}
-\small
-      RK4 time-scheme leads to :
-    \begin{equation}
-      \discreteU^{n+1}=B\discreteU^n+\textcolor{\myblue}{{\boldsymbol{C_0}}}\discreteF^n+\textcolor{\myblue}{{\boldsymbol{C_{\frac{1}{2}}}}}\discreteF^{n+\frac{1}{2}}+\textcolor{\myblue}{{\boldsymbol{C_1}}}\discreteF^{n+1}
-    \end{equation}
+  \begin{itemize}
+  \item<2-> Requires the adjoint operator of the fluxes \footcite{wilcoxDiscretelyExactDerivatives2013} (Reverse all the communications)
+  \item<3-> Requires the developpement of the adjoint operator for all propagator
+  \item<4-> Architectures of the program divided into several libraries
+    \begin{itemize}
+    \item<5-> Requires the developpement of the adjoint in each inner functions
+    \item<6-> Prevents the use of automatic differentiation tools \footcite{griewank2008evaluating}
+    \end{itemize}
+  \end{itemize}
 
-\begin{equation}
-  \textcolor{\myblue}{{\boldsymbol{L}}}\discreteU=\textcolor{\myblue}{{\boldsymbol{E}}}\discreteF=\discreteG
-\end{equation}
-\begin{equation}
-  \begin{pmatrix}
-    I & & & & \\
-    -B&I & & & \\
-    & -B&I  & & \\
-    & & \ddots & \ddots   & \\
-    & &  & -B &I \\
-    %% \vdots & \ddots & \vdots \\
-    %% 0      & \cdots & 1
-  \end{pmatrix}
-  \begin{pmatrix}
-    \discreteU^0 \\
-    \discreteU^1 \\
-    \discreteU^2 \\
-    \vdots \\
-    \discreteU^n \\
-  \end{pmatrix}=
-  \begin{pmatrix}
-    \discreteG^0 \\
-    \discreteG^1 \\
-    \discreteG^2 \\
-    \vdots \\
-    \discreteG^n \\
-  \end{pmatrix}
-\end{equation}
-
-So :
-
-\begin{equation}
-  \textcolor{\myblue}{{\boldsymbol{L^*}}}=\begin{pmatrix}
-  I &-B^* & & & \\
-  &I &-B^* & & \\
-  & &\ddots  &\ddots & \\
-  & &  & I   &-B^* \\
-  & &  &  &I \\
-  %% \vdots & \ddots & \vdots \\
-  %% 0      & \cdots & 1
-  \end{pmatrix}
-\end{equation}
 \end{frame}
+
+
 
 
 
@@ -303,41 +273,253 @@ So :
 \begin{frame}{Adjoint Strategies Comparison}
   \begin{columns}
     \begin{column}[t]{0.5\textwidth}
-      \textbf{\textcolor{red}{Adjoint Then Discretize}}
+      \textbf{\textcolor{red}{Optimize Then Discretize}}
       \vspace{0.5cm}
 %      \dotfill % to show column margins
       \begin{itemize}
       \item[\textcolor{\mygreen}{\textbf{+}}] Physical approach
       \item[\textcolor{\mygreen}{\textbf{+}}] Same discrete operators for Forward and Backward
-      \item[\textbf{- -}] Approximate gradient \cite{Sirkes}
-      \item[\textcolor{black}{\textbullet}] Consistent with the discretization
+      \item[\textbf{- -}] Approximate gradient \footnotemark
       \end{itemize}
       %      \dotfill
       \vspace{0.5cm}
     \end{column}\vrule \hfill
     \begin{column}[t]{0.5\textwidth}
-      \textbf{\textcolor{blue}{Discretize then Adjoint}}
+      \uncover<2->{
+      \textbf{\textcolor{blue}{Discretize then Optimize}}
       \vspace{0.5cm}
 %            \dotfill
       \begin{itemize}
       \item[\textcolor{\mygreen}{\textbf{+}}] Numerical approach
       \item[\textcolor{\mygreen}{\textbf{+}}] Has an Adjoint Test
       \item[\textbf{-}] Tremendous work to develop the adjoint operators
-      \item[\textcolor{black}{\textbullet}] Non-consistency of the adjoint state \cite{Set1997Feb}
+      \item[\textcolor{black}{\textbullet}] Non-physical consistency of the adjoint state \footnotemark
       \end{itemize}
+      }
     \end{column}
   \end{columns}
+   \footcitetext{gunzburger2002perspectives}
+   \footcitetext{sei1995note}
+\end{frame}
 
-  \vfill
-  \tiny
-  \begin{thebibliography}{2}
-    \bibitem{Sirkes} Sirkes, Ziv and Tziperman, Eli
-      \newblock Finite Difference of Adjoint or Adjoint of Finite Difference ?
-      \newblock 1997
-  \bibitem{Set1997Feb} Sei Alain and Symes William
-    \newblock A Note on Consistency and Adjointness for Numerical Schemes
-    \newblock 1997
-  \end{thebibliography}
+
+% ================================================
+% ====== Frame : 1D comparison ===================
+% ================================================
+
+
+
+\subsection{1D FWI problem}
+\begin{frame}{1D FWI problem}
+
+\begin{figure}[H]
+  \centering
+  \input{graph/1D_fwi.tex}
+  \caption*{1D domain $\Domain$.}
+  \label{1D_domain}
+\end{figure}
+
+
+\uncover<2->{
+      \setlength{\plotwidth} {3.5cm}
+      \setlength{\plotheight}{2.8cm}
+      \pgfplotsset{every tick label/.append style={font=\tiny}}
+      \begin{figure}[H]
+      \begin{subfigure}{0.45\textwidth}
+        \centering
+          \begin{tikzpicture}
+      \begin{axis}[%
+          width=\plotwidth, height=\plotheight,,
+          at={(0,0)},scale only axis,separate axis lines,xminorticks=true,
+          xlabel={\scriptsize{$x$}},
+          ylabel={\scriptsize{Wavespeed (m.s$^{-1}$)}},
+          %ylabel={$\velocity$},
+          %%   ymode=log,
+          yminorticks=true,
+          %xmin=0.,xmax=100.,
+          ymin=900,ymax=1300
+        ]
+
+        %% load current data
+        %% -----------------
+        \addplot[color=blue!50!black,mark options={solid},
+          forget plot,line width=1pt,
+          mark size=2pt]
+        table[x=monx,y=mony]
+        {graph/VP0.dat};
+        %\includegraphics{images/data_bis.pdf}
+      \end{axis}
+      %% --------------------------------------------------------------------
+          \end{tikzpicture}
+          \caption*{Initial wavespeed model.}
+          \label{1D_initial}
+      \end{subfigure}
+     \begin{subfigure}{0.45\textwidth}
+        \centering
+          \begin{tikzpicture}
+      \begin{axis}[%
+          width=\plotwidth, height=\plotheight,,
+          at={(0,0)},scale only axis,separate axis lines,xminorticks=true,
+          xlabel={\scriptsize{$x$}},
+          %ylabel={$\velocity$},
+          %%   ymode=log,
+          yminorticks=true,
+          ymin=900,ymax=1300
+          %%   xmin=0.,xmax=100.
+        ]
+
+        %% load current data
+        %% -----------------
+        \addplot[color=blue!50!black,mark options={solid},
+          forget plot,line width=1pt,
+          mark size=2pt]
+        table[x=monx,y=mony]
+        {graph/VP100.dat};
+      \end{axis}
+      %% --------------------------------------------------------------------
+          \end{tikzpicture}
+          \caption*{Target wavespeed model.}
+          \label{1D_target}
+     \end{subfigure}
+     \label{model_1D_target}
+      \end{figure}
+      }
+
+\end{frame}
+
+
+\begin{frame}{1D FWI problem}{Gradient validation}
+
+  \setlength{\plotwidth}{6.0cm}
+\setlength{\plotheight}{4.5cm}
+   \begin{figure}
+     \centering
+         \begin{tikzpicture}
+      \begin{axis}[%
+          width=\plotwidth, height=\plotheight,,
+          at={(0,0)},scale only axis,separate axis lines,xminorticks=true,
+          xlabel={\scriptsize{$x$}},
+          ylabel={\scriptsize{Gradient amplitude}},
+          legend pos=south east
+        ]
+        %% load current data
+        %% -----------------
+        \addplot[color=black!50!black,mark options={solid}, mark = triangle,
+          line width=1pt,
+          mark size=0pt]
+        table[x=monx,y=mony]
+        {graph/grad_df.dat};
+        \addlegendentry{\scriptsize{FD gradient}}
+
+        \addplot[color=blue!50!black,mark options={solid}, mark = triangle,
+          line width=1pt,
+          mark size=0pt]
+        table[x=monx,y=mony]
+        {graph/grad_dto.dat};
+        \addlegendentry{\scriptsize{DtO gradient}}
+
+
+        \addplot[color=red!50!black,mark options={solid}, mark = triangle,
+          line width=1pt,
+          mark size=0pt]
+        table[x=monx,y=mony]
+        {graph/grad_otd.dat};
+        \addlegendentry{\scriptsize{OtD gradient}}
+
+
+
+
+        %\includegraphics{images/data_bis.pdf}
+      \end{axis}
+      %% --------------------------------------------------------------------
+         \end{tikzpicture}
+     \end{figure}
+
+\end{frame}
+
+
+\begin{frame}{1D Results}
+        \pgfplotsset{every tick label/.append style={font=\tiny}}
+      \setlength{\plotwidth} {4.5cm}
+      \setlength{\plotheight}{3.0cm}
+      \begin{figure}[!htbp]
+        \begin{subfigure}{0.45\textwidth}
+          \hspace{-0.5cm}
+          \vspace{0.2cm}
+        \centering
+           \begin{tikzpicture}
+      \begin{axis}[%
+          width=\plotwidth, height=\plotheight,,
+          at={(0,0)},scale only axis,separate axis lines,xminorticks=true,
+          xlabel={\scriptsize{$x$}},
+          ylabel={$\velocity$},
+          %%   ymode=log,
+          yminorticks=true,
+          ymin=900,ymax=1300,
+          legend pos=south east
+          %%   xmin=0.,xmax=100.
+        ]
+
+        %% load current data
+        %% -----------------
+          \addplot[color=blue!50!black,mark options={solid}, mark = triangle,
+          line width=1pt,
+          mark size=1pt]
+        table[x=monx,y=mony]
+        {graph/vp_DTO.dat};
+       \addlegendentry{DtO}
+
+         \addplot[color=red!50!black,mark options={solid}, mark = *,
+          line width=1pt,
+          mark size=1pt]
+        table[x=monx,y=mony]
+        {graph/vp_OTD.dat};
+        \addlegendentry{OtD}
+
+      \end{axis}
+      %% --------------------------------------------------------------------
+          \end{tikzpicture}
+           \caption*{\small{Final 1D wavespeed model reconstructed}.}
+           \label{vp_DTO_vs_OTD}
+      \end{subfigure}
+      \begin{subfigure}{0.45\textwidth}
+        \centering
+          \begin{tikzpicture}
+      \begin{axis}[%
+          width=\plotwidth, height=\plotheight,,
+          at={(0,0)},scale only axis,separate axis lines,xminorticks=true,
+          xlabel={\scriptsize{iteration}},
+          ylabel={$\CF$},
+          ymode=log,
+          yminorticks=true,
+          %ymin=900,ymax=1300,
+          legend pos=north east
+          %%   xmin=0.,xmax=100.
+        ]
+
+        %% load current data
+        %% -----------------
+          \addplot[color=blue!50!black,mark options={solid}, mark = triangle,
+          line width=1pt,
+          mark size=1pt]
+        table[x=monx,y=mony]
+        {graph/run_lbfgs_DTO.dat};
+       \addlegendentry{DtO}
+
+         \addplot[color=red!50!black,mark options={solid}, mark = *,
+          line width=1pt,
+          mark size=1pt]
+        table[x=monx,y=mony]
+        {graph/run_lbfgs_OTD.dat};
+        \addlegendentry{OtD}
+
+      \end{axis}
+      %% --------------------------------------------------------------------
+          \end{tikzpicture}
+          \caption*{\small{Cost function evolution through 400 L-BFGS iterations.}}
+          \label{cf_DTO_vs_OTD}
+         \end{subfigure}
+         \end{figure}
 
 \end{frame}
 
@@ -345,50 +527,37 @@ So :
 
 
 
+% ==========================================================
+% ====== Frame : Choix et gradient expression ==============
+% ==========================================================
+
+\begin{frame}{Conclusion concerning the gradient expression}
+  We chose the \textbf{Optimize then Discretize} strategy.
 
 
+  \begin{overprint}
+    \onslide<2>
+\begin{block}{Gradient expression on the $l^{th}$ parameter for constant parametrization par element ($\frac{1}{\bm}{\density}$).}
+  \begin{align}
+(\frac{\partial}{\partial \frac{1}{\bm}_l} \CF(\smodel))_h  &\approx \deltat \detJKl \sum_{n=0}^\nt  (\frac{\partial}{\partial t} {{\boldsymbol{\textcolor{\myred}{\scoefPolP}}^n)}^{\element^l}}^\top \MassRef  {(\boldsymbol{\textcolor{\myred}{\scoefAdjP}}^n)}^{\element^l}\,,
+\end{align}
+and
+\begin{align}
+(\frac{\partial}{\partial \density_l} \CF(\smodel))_h  &\approx \deltat \detJKl \sum_{d=1}^\dim \sum_{n=0}^\nt  (\frac{\partial}{\partial t} {{\boldsymbol{\textcolor{\myred}{\scoefPolVd}}^n)}^{\element^l}}^\top \MassRef  {(\boldsymbol{\textcolor{\myred}{\scoefAdjVd}}^n)}^{\element^l} \,.
+\end{align}
+\end{block}
 
-% ================================================
-% ====== Frame : Adjoint Strategies Comparison ===
-% ================================================
+\onslide<3>
+\vspace{-0.3cm}
+\begin{block}{Gradient expression for \textbf{WADG} parametrization for the the $q^{th}$ quadrature point on the $l^{th}$ element ($\frac{1}{\bm}{\density}$).}
+  \begin{align}
+\left(\frac{\partial}{\partial \frac{1}{\bm}_{l,q}} \CF(\smodel)\right)_h \approx  \deltat \detJKl \sum_{n=0}^\nt  {{\textcolor{\myred}{\coefPolP}^n}^{\element^l}}^\top \Pquad  diag(\weight \boldsymbol{\delta_q}) \Pquad^\top   {\textcolor{\myred}{\coefAdjP}^n}^{\element^l} \,,
+\end{align}
+and
+\begin{align}
+\left(\frac{\partial}{\partial \density_{l,q}} \CF(\smodel)\right)_h \approx \deltat \detJKl \sum_{n=0}^\nt \sum_{d=1}^\dim {{\textcolor{\myred}{\coefPolV}^n}^{\element^l}}^\top \Pquad diag(\weight \boldsymbol{\delta_q}) \Pquad^\top   \boldsymbol{\textcolor{\myred}{\scoefAdjVd}}^{\element^l} \,.
+\end{align}
+\end{block}
+\end{overprint}
 
-\begin{frame}{Adjoint Strategies Comparison}
-  \begin{columns}
-    \begin{column}[t]{0.5\textwidth}
-      \textbf{\textcolor{red}{Adjoint Then Discretize}}
-      \vspace{0.5cm}
-%      \dotfill % to show column margins
-      \begin{itemize}
-      \item[\textcolor{\mygreen}{\textbf{+}}] Physical approach
-      \item[\textcolor{\mygreen}{\textbf{+}}] Same discrete operators for Forward and Backward
-      \item[\textbf{- -}] Approximate gradient \cite{Sirkes}
-      \item[\textcolor{black}{\textbullet}] Consistent with the discretization
-      \end{itemize}
-      %      \dotfill
-      \vspace{0.5cm}
-    \end{column}\vrule \hfill
-    \begin{column}[t]{0.5\textwidth}
-      \textbf{\textcolor{blue}{Discretize then Adjoint}}
-      \vspace{0.5cm}
-%            \dotfill
-      \begin{itemize}
-      \item[\textcolor{\mygreen}{\textbf{+}}] Numerical approach
-      \item[\textcolor{\mygreen}{\textbf{+}} \textcolor{black}{\textbf{/}} \textbf{-}] Has an Adjoint Test {\small{\textbf{(in theory)}}}
-      \item[\textbf{-}] Tremendous work to develop the adjoint operators
-      \item[\textcolor{black}{\textbullet}] Non-consistency of the adjoint state \cite{Set1997Feb}
-      \end{itemize}
-    \end{column}
-  \end{columns}
-
-  \vfill
-  \tiny
-  \begin{thebibliography}{2}
-    \bibitem{Sirkes} Sirkes, Ziv and Tziperman, Eli
-      \newblock Finite Difference of Adjoint or Adjoint of Finite Difference ?
-      \newblock 1997
-  \bibitem{Set1997Feb} Sei Alain and Symes William
-    \newblock A Note on Consistency and Adjointness for Numerical Schemes
-    \newblock 1997
-  \end{thebibliography}
-
-\end{frame}
+  \end{frame}

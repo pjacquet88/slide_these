@@ -1,0 +1,180 @@
+\begin{frame}[noframenumbering]
+
+\Large{\textbf{Appendices}}
+
+\end{frame}
+
+
+\begin{frame}[noframenumbering]
+
+\Large{\textbf{Interface refinement}}
+
+\end{frame}
+
+
+\begin{frame}[noframenumbering]{Influence of the cloud point on the gradient}
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.5]{image/histo_comparison_grad.pdf}
+\caption{Histogram recording the number of points in the
+point cloud as a function of the normalized gradient amplitude for two different point clouds.}
+\label{histo_comparison_grad}
+\end{figure}
+\end{frame}
+
+
+
+\begin{frame}[noframenumbering]{Influence of epsilon of the interface detection}
+  \small
+\setlength{\modelwidth}{6.1cm}
+\begin{figure}[!htbp]
+\renewcommand{\cmapmin}{0}
+\renewcommand{\cmapmax}{1}
+\renewcommand{\modelfile}{image/mesh_adapt/interface_tresh_02}
+\begin{subfigure}{0.5\textwidth}
+\vspace{0.0cm}
+\centering
+\input{graph/skeleton_mesh}
+\caption{Interfaces highlighted using $\epsilon=0.2$.}
+\end{subfigure}
+\hspace{-0.5cm}
+\renewcommand{\modelfile}{image/mesh_adapt/interface_tresh_01}
+\begin{subfigure}{0.5\textwidth}
+\centering
+\input{graph/skeleton_no_unit}
+\vspace{-0.7cm}
+\caption{Interfaces highlighted using $\epsilon=0.1$.}
+\end{subfigure}
+
+\renewcommand{\modelfile}{image/grad_e}
+\begin{subfigure}{0.5\textwidth}
+\vspace{0.0cm}
+\centering
+\input{graph/skeleton_mesh}
+\caption{Interfaces highlighted using $\epsilon=0.08$.}
+\end{subfigure}
+\hspace{-0.5cm}
+\begin{subfigure}{0.5\textwidth}
+\centering
+\renewcommand{\modelfile}{image/mesh_adapt/interface_tresh_002}
+\input{graph/skeleton_no_unit}
+\vspace{-0.7cm}
+\caption{Interfaces highlighted using $\epsilon=0.02$.}
+\end{subfigure}
+\caption{Marmousi highlighted interfaces for several threshold values.}
+\label{interface_thresholds}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}[noframenumbering]{Modify the metric $\metric$ to deals with interface}
+  if $Interface(P) = 1$
+
+  \begin{multicols}{2}
+    \large{\textbf{\textcolor{\mygreen}{Isotropic metric}}}
+    \vspace{0.5cm}
+
+    \uncover<2->{
+    \small{In all direction:}
+    \normalsize
+    \begin{equation}
+      \scriptstyle
+      h(P) =  \frac{1}{r} 2\frac{\lambda(P)}{\nppw}\sqrt{\frac{(\PolOrder+1)(\PolOrder+2)}{2\sqrt{3}}},\, r\geq1.0
+    \end{equation}
+    \vfill
+    }
+
+    \columnbreak
+
+    \large{\textbf{\textcolor{blue}{Anisotropic metric}}}
+    \vspace{0.5cm}
+
+    \uncover<3->{
+    \small{In $\vec{\nabla} \velocity$ direction:}
+    \normalsize
+    \begin{equation}
+      \scriptstyle
+      hr(P) =  \frac{1}{r} 2\frac{\lambda(P)}{\nppw}\sqrt{\frac{(\PolOrder+1)(\PolOrder+2)}{2\sqrt{3}}},\, r\geq1.0
+    \end{equation}
+
+    \small{In $\vec{\nabla} \velocity^\top$ direction:}
+    \normalsize
+    \begin{equation}
+      \scriptstyle
+      h(P) =  2\frac{\lambda(P)}{\nppw}\sqrt{\frac{(\PolOrder+1)(\PolOrder+2)}{2\sqrt{3}}}.
+    \end{equation}
+    \vfill
+    }
+
+    \end{multicols}
+
+\end{frame}
+
+
+\begin{frame}[noframenumbering]
+
+  \begin{multicols}{2}
+    \large{\textbf{\textcolor{\mygreen}{Isotropic metric}}}
+
+    \columnbreak
+
+    \large{\textbf{\textcolor{blue}{Anisotropic metric}}}
+
+  \end{multicols}
+
+  \begin{table}[H]
+    \small
+\centering
+\begin{tabular}{|l|l|l|l|l|l|l|l|}
+\hline
+& $\nbelem$  & $r$  & P2 & P3 & P4 &  CPU & Relative  \\
+&  & &  &  &  & time(s) & L2 error \\ \hline
+Mesh 1 &6808 &  1           &  <0.1\% & 8\% &92\% & 379 & 15.2\% \\ \hline
+\rowcolor{green!30}
+Mesh 2 &8434 &  $\sqrt{2}$  & 2\% & 25\% & 73\% & 463 & 10.5\% \\ \hline
+\rowcolor{blue!30}
+Mesh 2'&8226 &  $\sqrt{2}$  & 1\% & 14\% & 85\% & 602 & 8.5\% \\ \hline
+\rowcolor{green!30}
+Mesh 3 &12809&  2           & 24\% &62\% & 27\% & 815 & 5.2\% \\ \hline
+\rowcolor{blue!30}
+Mesh 3'&11496&  2           & 5\% & 37\% & 58\% & 1731 & 5.1\%  \\ \hline
+Mesh 4 &26621&  ref.        & 0\% & 0\% & 100\% & 4384 & ref. \\ \hline
+\end{tabular}
+\caption{Performance comparison between isotropic and anisotropic mesh refinement.}
+\label{mesh_iso_aniso_comp}
+\end{table}
+  \end{frame}
+
+
+
+\begin{frame}[noframenumbering]{Modify the metric $\metric$ to deals with interface}
+
+
+  \begin{multicols}{2}
+        \large{\textbf{\textcolor{\mygreen}{Isotropic metric}}}
+    \vspace{0.5cm}
+    \begin{itemize}
+      \item[\textcolor{\mygreen}{\textbf{+}}] Better capture the interfaces
+      \item[\textcolor{\mygreen}{\textbf{+}}] Enhenced precision
+      \item[\textcolor{\mygreen}{\textbf{+}}] Adapted for explicit time schemes
+      \item[\textcolor{\myred}{\textbf{-}}] Have more $\dof$ for a lower accuracy
+      \end{itemize}
+
+    \columnbreak
+    \large{\textbf{\textcolor{blue}{Anisotropic metric}}}
+    \vspace{0.5cm}
+    \begin{itemize}
+      \item[\textcolor{\mygreen}{\textbf{+}}] Better capture the interfaces
+      \item[\textcolor{\mygreen}{\textbf{++}}] Enhenced precision
+      \item[\textcolor{\myred}{\textbf{- -}}] Not adapted for explicit time schemes
+      \item[\textcolor{\mygreen}{\textbf{++}}] Get lower $\dof$ for a better accuracy
+    \end{itemize}
+  \end{multicols}
+
+  \uncover<2->{
+    \begin{block}{Warning}
+      The refinement depends on the interface detection which is still an empirical selection ($\epsilon$).
+    \end{block}
+    }
+
+\end{frame}

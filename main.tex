@@ -1,20 +1,30 @@
-\documentclass[red]{beamer}
+\documentclass{beamer}
 
 
 \input{package.tex}
 %%%%%%% Packages et corrections ajoutés à la volée %%%%%%%%%%%%%ù
 \usepackage{graphicx,multimedia}
 \usepackage{xpatch}
-\xpatchbibmacro{cite}{cite:short}{cite:full}{}{}
+\usepackage{fourier-orns}
 \usepackage[style=verbose,backend=bibtex]{biblatex}
 \usepackage{subcaption}
 \addbibresource{zotero.bib}
+\usepackage{amsmath}
+\xpatchbibmacro{cite}{cite:short}{cite:full}{}{}
+\usepackage{colortbl}
+\renewcommand{\footnotesize}{\fontsize{7pt}{9pt}\selectfont}
+\usetikzlibrary{patterns}
 
 \input{setup.tex}
 \input{setup_manuscript.tex}
 
-
-
+\AtBeginSection[]
+{
+    \begin{frame}
+        \frametitle{Table of Contents}
+        \tableofcontents[currentsection]
+    \end{frame}
+}
 
 \begin{document}
 
@@ -22,21 +32,29 @@
 \begin{frame}[plain]
 \maketitle
 \small
-{\centering\itshape \textbf{Jury Members} \vspace{0.5cm}\par}
+{\centering\itshape \textbf{Advisors:} \vspace{0.5cm}\par}
 \begin{tabular}[t]{l l l}
- Hélène Barucq  & Henri Calandra & Gilles Carbou \\
- Hervé Chauris & Julien Diaz & Florian Faucher \\
- Michel Kern & Jeanne Pellerin & Sébastien Pernet
+ Hélène Barucq & &  Julien Diaz
 \end{tabular}%
+\end{frame}
+\setbeamercolor*{palette tertiary}{bg=mainRed,fg=gray!10!white} % up 1 + down 1
+\setbeamercolor*{palette primary}{fg=mainRed,bg=mainTitl2}  % up 2 + down 3
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%% TABLE OF CONTENT %%%%%%%%
+\begin{frame}{Overview}
+\tableofcontents
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-
  \input{section1/section1.tex}  %% intro FWI
  \input{section2/section2.tex}  %% AtD and DtA
- \input{section3/section3.tex}  %% Some results
- \input{section4/section4.tex}  %% Some results
+\input{section3/section3.tex}  %% Some results
+ \input{section4/section4.tex}    %% Some results
 
-\printbibliography
+ \printbibliography
+
+%% \input{annexe/annexe.tex}
+
+
 \end{document}
