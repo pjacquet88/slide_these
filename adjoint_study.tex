@@ -8,31 +8,31 @@
 
 \begin{frame}{Adjoint State Method}
 \scriptsize
-Lagrangian fonctional \footcite{plessixReviewAdjointstateMethod2006} :
+Lagrangian functional \footcite{plessixReviewAdjointstateMethod2006} :
+
   \begin{equation}
     \Lag(\qcqU,\qcqLbd,\model) = \frac{1}{2}||\textcolor{blue}{d_{obs}}-\textcolor{red}{\mathcal{R}(\qcqU)}||^2 + <\DP(\qcqU)-f_p,\qcqLbd>
   \end{equation}
 
-    If $\qcqU=\contU$ Solution of the Direct Problem $\Longleftrightarrow$ ($\DP(\contU)-f_p = 0$) :
-
-  \begin{equation}
-    \CF(\model) = \Lag(\contU,\qcqLbd,\model)
-  \end{equation}
 
   \uncover<2->{
+    \begin{block}{Adjoint Equation:}
   Let us choose $\qcqLbd=\contLbd$ such as $\frac{\partial \Lag}{\partial \contU} = 0$
 
   \begin{equation}
-    (\mathcal{R}^*\textcolor{blue}{d_{obs}}-\contU) + \DP^*(\contLbd) = 0
+ \DP^*(\contLbd) + \mathcal{R}^*(\textcolor{blue}{d_{obs}}-\mathcal{R}\contU) = 0
   \end{equation}
+  \end{block}
   }
 
   \uncover<3->{
+    \begin{block}{Gradient Expression:}
   For $\DP(\contU)-f_p = 0$ :
 
   \begin{equation}
     \partial_{\model_i} \CF(\model) = \partial_{\model_i} \Lag(\contU,\contLbd,\model) = \partial_{\model_i} <\DP(\contU),\contLbd>
   \end{equation}
+  \end{block}
   }
 
 \end{frame}
@@ -62,7 +62,7 @@ Lagrangian fonctional \footcite{plessixReviewAdjointstateMethod2006} :
 % ====== Frame : Adjoint then discretize 1 ===
 % ============================================
 
-\begin{frame}{OtD : Optimize then Discretized Strategy}
+\begin{frame}{OtD : Optimize then Discretized Strategy \footcite{tarantolaInversionSeismicReflection1984}}
 \scriptsize
   \begin{equation}
     \CF(\contP)=\frac{1}{2}||\textcolor{blue}{d_{obs}} - R\contP||^2
@@ -75,7 +75,7 @@ Lagrangian fonctional \footcite{plessixReviewAdjointstateMethod2006} :
     & \frac{1}{\density \velocity^2}\frac{\partial \contP}{\partial t}+\nabla \cdot \contV=f_p \text{~~ on $\boldsymbol{\Omega}$}\\
     & \density\frac{\partial \contV}{\partial t}+\nabla\contP=0  \text{~~ on $\boldsymbol{\Omega}$}\\
     & \contP=0 \text{~~ on $\textcolor{\myred}{\boldsymbol{\Gamma_1}}$} \\
-    & \contP+\velocity \density \contV \cdot \normal=0 \text{~~ on $\textcolor{\myblue}{\boldsymbol{\Gamma_2}}$}\\
+    & \contP-\velocity \density \contV \cdot \normal=0 \text{~~ on $\textcolor{\myblue}{\boldsymbol{\Gamma_2}}$}\\
     & \contP(0) = 0 \text{, ~~~} \contV(0) = 0
       \end{empheq}
 \vfill
@@ -84,11 +84,11 @@ Lagrangian fonctional \footcite{plessixReviewAdjointstateMethod2006} :
     \uncover<2->{
       \vspace{-0.5cm}
       \begin{empheq}[left=\empheqlbrace]{align}
-    & \frac{1}{\density \velocity^2}\frac{\partial \Lbdun}{\partial t}+\nabla \cdot \Lbdeux=\frac{\partial \CF}{\partial \contP} \text{~~ on $\boldsymbol{\Omega}$}\\
-    & \hspace{0.1cm} \density\frac{\partial \Lbdeux}{\partial t}+\nabla\Lbdun=0  \text{~~ on $\boldsymbol{\Omega}$}\\
-    & \hspace{0.1cm} \Lbdun=0 \text{~~ on $\textcolor{\myred}{\boldsymbol{\Gamma_1}}$} \\
-    & \hspace{0.1cm}  \Lbdun-\velocity \density \Lbdeux \cdot \normal=0 \text{~~ on $\textcolor{\myblue}{\boldsymbol{\Gamma_2}}$}\\
-    & \hspace{0.1cm} \Lbdun(T) = 0 \text{, ~~~} \Lbdeux(T) = 0
+    & \hspace{0.2cm} \frac{1}{\density \velocity^2}\frac{\partial \Lbdun}{\partial t}+\nabla \cdot \Lbdeux=R^*(R\contP - \textcolor{blue}{d_{obs}})(\Tfinal -t)\\
+    &  \hspace{0.2cm} \density\frac{\partial \Lbdeux}{\partial t}+\nabla\Lbdun=0  \text{~~ on $\boldsymbol{\Omega}$}\\
+    &  \hspace{0.2cm} \Lbdun=0 \text{~~ on $\textcolor{\myred}{\boldsymbol{\Gamma_1}}$} \\
+    &  \hspace{0.2cm}  \Lbdun - \velocity \density \Lbdeux \cdot \normal=0 \text{~~ on $\textcolor{\myblue}{\boldsymbol{\Gamma_2}}$}\\
+    &  \hspace{0.2cm} \Lbdun(T) = 0 \text{, ~~~} \Lbdeux(T) = 0
       \end{empheq}
       \vfill
       }
@@ -98,62 +98,56 @@ Lagrangian fonctional \footcite{plessixReviewAdjointstateMethod2006} :
     t\in[0,T] \uncover<2->{\text{~~~~~~~~~~~~~~~~~~~~~~~~~~} t\in[T,0]}
   \end{equation}
 
-\begin{block}{}
-  Having self-adjoint continuous problem enables to use the same discretization routines to simulate the forward and the adjoint state.
-\end{block}
 \end{frame}
 
 
 
-
-\begin{frame}{Discretize then Optimize Strategy}
-
-
-  \end{frame}
-
-
 % ============================================
-% ====== Frame : Adjoint then discretize 2 ===
+% ====== Frame : Adjoint then discretize 1 ===
 % ============================================
 
-\subsection{Adjoint then Discretized}
-\begin{frame}{AtD : Adjoint then Discretized Strategy}
-
+\begin{frame}[noframenumbering]{OtD : Optimize then Discretized Strategy}
+\scriptsize
   \begin{equation}
     \CF(\contP)=\frac{1}{2}||\textcolor{blue}{d_{obs}} - R\contP||^2
-  \end{equation}
+    \end{equation}
 
   \noindent
   \begin{multicols}{2}
     \noindent
-    \begin{empheq}[left=\empheqlbrace]{align}
-  & \frac{\partial \discreteU}{\partial t}^n=A\discreteU^n+ \discreteF^n \\[0.2cm]
-  & \text{With : ~~}  \discreteU^n=\vectll{(}{\discreteP^n}{\discreteV^n}{)}
-    \end{empheq}
-    \vspace{0.3cm}
-    \begin{figure}
-      \noindent
-      \input{images/forward.tex}
-Time-steps going Forward
-    \end{figure}
+      \begin{empheq}[left=\empheqlbrace]{align}
+    & \frac{1}{\density \velocity^2}\frac{\partial \contP}{\partial t}+\nabla \cdot \contV=f_p \text{~~ on $\boldsymbol{\Omega}$}\\
+    & \density\frac{\partial \contV}{\partial t}+\nabla\contP=0  \text{~~ on $\boldsymbol{\Omega}$}\\
+    & \contP=0 \text{~~ on $\textcolor{\myred}{\boldsymbol{\Gamma_1}}$} \\
+    & \contP-\velocity \density \contV \cdot \normal=0 \text{~~ on $\textcolor{\myblue}{\boldsymbol{\Gamma_2}}$}\\
+    & \contP(0) = 0 \text{, ~~~} \contV(0) = 0
+      \end{empheq}
+\vfill
     \columnbreak
     \noindent
-    \begin{empheq}[left=\empheqlbrace]{align}
-   \boldsymbol{~~~}   & \frac{\partial \discreteLbd}{\partial t}^n=A\discreteLbd^n+R^*(R\discreteU^n-\textcolor{blue}{d_{obs}})\\
-  & \text{With : ~~}  \discreteLbd^n=\vectll{(}{\discreteLbdun^n}{\discreteLbdeux^n}{)}
-    \end{empheq}
-    \vspace{-0.0cm}
-    \noindent
-    \begin{figure}
-      \noindent
-      \input{images/backward.tex}
-      Time-steps going Backward
-    \end{figure}
+    \uncover<1->{
+            \vspace{-0.5cm}
+      \begin{empheq}[left=\empheqlbrace]{align}
+    & \hspace{0.2cm} \frac{1}{\density \velocity^2}\frac{\partial \Lbdun}{\partial t}+\nabla \cdot \Lbdeux=R^*(R\contP - \textcolor{blue}{d_{obs}})(\Tfinal -t)\\
+    &  \hspace{0.2cm} \density\frac{\partial \Lbdeux}{\partial t}+\nabla\Lbdun=0  \text{~~ on $\boldsymbol{\Omega}$}\\
+    &  \hspace{0.2cm} \Lbdun=0 \text{~~ on $\textcolor{\myred}{\boldsymbol{\Gamma_1}}$} \\
+    &  \hspace{0.2cm}  \Lbdun - \velocity \density \Lbdeux \cdot \normal=0 \text{~~ on $\textcolor{\myblue}{\boldsymbol{\Gamma_2}}$}\\
+    &  \hspace{0.2cm} \Lbdun(T) = 0 \text{, ~~~} \Lbdeux(T) = 0
+      \end{empheq}
+      \vfill
+      }
   \end{multicols}
+  \vspace{-0.5cm}
+  \begin{equation}
+    t\in[0,T] \uncover<1->{\text{~~~~~~~~~~~~~~~~~~~~~~~~~~} t\in[T,0]}
+  \end{equation}
+
+  \uncover<1->{
+\begin{block}{NB:}
+  Having self-adjoint continuous problem enables to use the same discretization routines to simulate the forward and the adjoint state.
+\end{block}
+}
 \end{frame}
-
-
-
 
 
 
@@ -165,14 +159,14 @@ Time-steps going Forward
 % ============================================
 \begin{frame}{DtO : Discretize then Optimize Strategy}{Example With RK2}
 
-  All time scheme can be summed-up such as :
+  For any time-schemes we get :
   \begin{equation}
     \textcolor{\myblue}{\boldsymbol{L}}\discreteU=\textcolor{\myblue}{\boldsymbol{E}}\discreteF
   \end{equation}
 
   \uncover<2->{
   \small
-      RK2 time-scheme leads to :
+      For instance wuth RK2 time-scheme we get:
     \begin{equation}
       \discreteU^{n+1}=B\discreteU^n+\textcolor{\myblue}{\boldsymbol{C_0}}\discreteF^n+\textcolor{\myblue}{\boldsymbol{C_{\frac{1}{2}}}}\discreteF^{n+\frac{1}{2}}
     \end{equation}
@@ -216,21 +210,24 @@ Time-steps going Forward
 % ============================================
 % ====== Frame : Discretize then Adjoint 2 ===
 % ============================================
-\begin{frame}{DtA : Discretize then Adjoint Strategy}
+\begin{frame}[noframenumbering]{DtO : Discretize then Optimize Strategy}
 
-    All time scheme can be summed-up such as :
+   For any time-schemes we get:
     \begin{equation}
-      \textcolor{\myblue}{\boldsymbol{L}}\discreteU=\textcolor{\myblue}{\boldsymbol{E}}\discreteF \uncover<2->{=\discreteG}
+      \textcolor{\myblue}{\boldsymbol{L}}\discreteU=\textcolor{\myblue}{\boldsymbol{E}}\discreteF \uncover<1->{=\discreteG}
     \end{equation}
+
     We are looking for a Discrete Adjoint state satisfying :
     \begin{equation}
-      \textcolor{\myblue}{\boldsymbol{L^*}}\discreteLbd=-R^*(\textcolor{blue}{d_{obs}}-R\discreteU) \uncover<2->{=\discreteD}
+      \textcolor{\myblue}{\boldsymbol{L^*}}\discreteLbd=-R^*(\textcolor{blue}{d_{obs}}-R\discreteU) \uncover<1->{=\discreteD}
     \end{equation}
+
+    \uncover<2->{
+    \begin{block}{Adjoint test}
     With the adjoint operator $\textcolor{\myblue}{\boldsymbol{L^*}}$ satisfying :
       \begin{equation}
     <\textcolor{\myblue}{\boldsymbol{L}}\discreteU,\discreteLbd>=<\discreteU,\textcolor{\myblue}{\boldsymbol{L^*}}\discreteLbd>
       \end{equation}
-      \uncover<2->{
         \begin{equation}
         <\discreteG,\discreteLbd>=<\discreteU,\discreteD> \text{~~~(Adjoint Test)}
       \end{equation}
@@ -239,7 +236,9 @@ Time-steps going Forward
       \begin{center}
         Adjoint test succeeds $\Longleftrightarrow$  operator $\textcolor{\myblue}{\boldsymbol{L^*}}$  well established
       \end{center}
-      }
+    \end{block}
+    }
+
 \end{frame}
 
 
@@ -249,12 +248,12 @@ Time-steps going Forward
   $\textcolor{\myblue}{\boldsymbol{L^*}}$ is challenging to develop:
 
   \begin{itemize}
-  \item<2-> Requires the adjoint operator of the fluxes \footcite{wilcoxDiscretelyExactDerivatives2013} (Reverse all the communications)
-  \item<3-> Requires the developpement of the adjoint operator for all propagator
-  \item<4-> Architectures of the program divided into several libraries
+  \item<2-> Requires the adjoint operator of the fluxes \footcite{wilcoxDiscretelyExactDerivatives2013} (Reverse all the communications).
+  \item<3-> Requires the development of the adjoint operator for all propagator.
+  \item<4-> Architectures of the program divided into several libraries.
     \begin{itemize}
-    \item<5-> Requires the developpement of the adjoint in each inner functions
-    \item<6-> Prevents the use of automatic differentiation tools \footcite{griewank2008evaluating}
+    \item<5-> Requires the development of the adjoint in each inner functions.
+    \item<6-> Prevents the use of automatic differentiation tools \footcite{griewank2008evaluating}.
     \end{itemize}
   \end{itemize}
 
@@ -292,14 +291,17 @@ Time-steps going Forward
       \begin{itemize}
       \item[\textcolor{\mygreen}{\textbf{+}}] Numerical approach
       \item[\textcolor{\mygreen}{\textbf{+}}] Has an Adjoint Test
-      \item[\textbf{-}] Tremendous work to develop the adjoint operators
-      \item[\textcolor{black}{\textbullet}] Non-physical consistency of the adjoint state \footnotemark
+      \item[\textcolor{\mygreen}{\textbf{+}}] Exact Gradient
+      \item[\textbf{-}] Not that obvious to develop
+      \item[\textcolor{black}{\textbullet}] Possible inconsistency of the adjoint scheme \footnotemark
       \end{itemize}
       }
     \end{column}
   \end{columns}
-   \footcitetext{gunzburger2002perspectives}
-   \footcitetext{sei1995note}
+  \addtocounter{footnote}{-1}
+  \footcitetext{gunzburger2002perspectives}
+  \addtocounter{footnote}{+1}
+  \footcitetext{sei1995note}
 \end{frame}
 
 
@@ -438,7 +440,7 @@ Time-steps going Forward
 \end{frame}
 
 
-\begin{frame}{1D Results}
+\begin{frame}{1D Results with L-BFGS}
         \pgfplotsset{every tick label/.append style={font=\tiny}}
       \setlength{\plotwidth} {4.5cm}
       \setlength{\plotheight}{3.0cm}
@@ -524,6 +526,28 @@ Time-steps going Forward
 \end{frame}
 
 
+\begin{frame}
+\begin{figure}
+  \includegraphics[scale=0.31]{image/fwi_workflow_red.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}[noframenumbering]
+\begin{figure}
+  \includegraphics[scale=0.31]{image/fwi_workflow_red2.pdf}
+\end{figure}
+\end{frame}
+
+\begin{frame}[noframenumbering]
+\begin{figure}
+  \includegraphics[scale=0.31]{image/fwi_workflow_all.pdf}
+\end{figure}
+\end{frame}
+
+
+
+
+
 
 
 
@@ -531,33 +555,33 @@ Time-steps going Forward
 % ====== Frame : Choix et gradient expression ==============
 % ==========================================================
 
-\begin{frame}{Conclusion concerning the gradient expression}
-  We chose the \textbf{Optimize then Discretize} strategy.
+%% \begin{frame}{Conclusion concerning the gradient expression}
+%%   We chose the \textbf{Optimize then Discretize} strategy.
 
 
-  \begin{overprint}
-    \onslide<2>
-\begin{block}{Gradient expression on the $l^{th}$ parameter for constant parametrization par element ($\frac{1}{\bm}{\density}$).}
-  \begin{align}
-(\frac{\partial}{\partial \frac{1}{\bm}_l} \CF(\smodel))_h  &\approx \deltat \detJKl \sum_{n=0}^\nt  (\frac{\partial}{\partial t} {{\boldsymbol{\textcolor{\myred}{\scoefPolP}}^n)}^{\element^l}}^\top \MassRef  {(\boldsymbol{\textcolor{\myred}{\scoefAdjP}}^n)}^{\element^l}\,,
-\end{align}
-and
-\begin{align}
-(\frac{\partial}{\partial \density_l} \CF(\smodel))_h  &\approx \deltat \detJKl \sum_{d=1}^\dim \sum_{n=0}^\nt  (\frac{\partial}{\partial t} {{\boldsymbol{\textcolor{\myred}{\scoefPolVd}}^n)}^{\element^l}}^\top \MassRef  {(\boldsymbol{\textcolor{\myred}{\scoefAdjVd}}^n)}^{\element^l} \,.
-\end{align}
-\end{block}
+%%   \begin{overprint}
+%%     \onslide<2>
+%% \begin{block}{Gradient expression on the $l^{th}$ parameter for constant parametrization par element ($\frac{1}{\bm}{\density}$).}
+%%   \begin{align}
+%% (\frac{\partial}{\partial \frac{1}{\bm}_l} \CF(\smodel))_h  &\approx \deltat \detJKl \sum_{n=0}^\nt  (\frac{\partial}{\partial t} {{\boldsymbol{\textcolor{\myred}{\scoefPolP}}^n)}^{\element^l}}^\top \MassRef  {(\boldsymbol{\textcolor{\myred}{\scoefAdjP}}^n)}^{\element^l}\,,
+%% \end{align}
+%% and
+%% \begin{align}
+%% (\frac{\partial}{\partial \density_l} \CF(\smodel))_h  &\approx \deltat \detJKl \sum_{d=1}^\dim \sum_{n=0}^\nt  (\frac{\partial}{\partial t} {{\boldsymbol{\textcolor{\myred}{\scoefPolVd}}^n)}^{\element^l}}^\top \MassRef  {(\boldsymbol{\textcolor{\myred}{\scoefAdjVd}}^n)}^{\element^l} \,.
+%% \end{align}
+%% \end{block}
 
-\onslide<3>
-\vspace{-0.3cm}
-\begin{block}{Gradient expression for \textbf{WADG} parametrization for the the $q^{th}$ quadrature point on the $l^{th}$ element ($\frac{1}{\bm}{\density}$).}
-  \begin{align}
-\left(\frac{\partial}{\partial \frac{1}{\bm}_{l,q}} \CF(\smodel)\right)_h \approx  \deltat \detJKl \sum_{n=0}^\nt  {{\textcolor{\myred}{\coefPolP}^n}^{\element^l}}^\top \Pquad  diag(\weight \boldsymbol{\delta_q}) \Pquad^\top   {\textcolor{\myred}{\coefAdjP}^n}^{\element^l} \,,
-\end{align}
-and
-\begin{align}
-\left(\frac{\partial}{\partial \density_{l,q}} \CF(\smodel)\right)_h \approx \deltat \detJKl \sum_{n=0}^\nt \sum_{d=1}^\dim {{\textcolor{\myred}{\coefPolV}^n}^{\element^l}}^\top \Pquad diag(\weight \boldsymbol{\delta_q}) \Pquad^\top   \boldsymbol{\textcolor{\myred}{\scoefAdjVd}}^{\element^l} \,.
-\end{align}
-\end{block}
-\end{overprint}
+%% \onslide<3>
+%% \vspace{-0.3cm}
+%% \begin{block}{Gradient expression for \textbf{WADG} parametrization for the the $q^{th}$ quadrature point on the $l^{th}$ element ($\frac{1}{\bm}{\density}$).}
+%%   \begin{align}
+%% \left(\frac{\partial}{\partial \frac{1}{\bm}_{l,q}} \CF(\smodel)\right)_h \approx  \deltat \detJKl \sum_{n=0}^\nt  {{\textcolor{\myred}{\coefPolP}^n}^{\element^l}}^\top \Pquad  diag(\weight \boldsymbol{\delta_q}) \Pquad^\top   {\textcolor{\myred}{\coefAdjP}^n}^{\element^l} \,,
+%% \end{align}
+%% and
+%% \begin{align}
+%% \left(\frac{\partial}{\partial \density_{l,q}} \CF(\smodel)\right)_h \approx \deltat \detJKl \sum_{n=0}^\nt \sum_{d=1}^\dim {{\textcolor{\myred}{\coefPolV}^n}^{\element^l}}^\top \Pquad diag(\weight \boldsymbol{\delta_q}) \Pquad^\top   \boldsymbol{\textcolor{\myred}{\scoefAdjVd}}^{\element^l} \,.
+%% \end{align}
+%% \end{block}
+%% \end{overprint}
 
-  \end{frame}
+%%   \end{frame}

@@ -63,21 +63,21 @@
 
 
 
-% ============================================
-% ====== Frame : Introduction Questions  =====
-% ============================================
+%% % ============================================
+%% % ====== Frame : Introduction Questions  =====
+%% % ============================================
 
 
-\begin{frame}{Mesh adaptation in FWI workflow}{Introduction}
-  Why adapting the mesh in the FWI course ?
-  \vspace{1cm}
-  \begin{itemize}
-  \item<2->{Adjust the computational burden}
-  \item<3->{ Capture appearing structures}
-  \item<4->{Avoid small cells in high velocity structures (\textbf{relax the CFL condition})}
-  \item<5->{Enables to choose the mesh according to the frequency range currently reconstructed}
-  \end{itemize}
-\end{frame}
+%% \begin{frame}{Mesh adaptation in FWI workflow}{Introduction}
+%%   Why adapting the mesh in the FWI course ?
+%%   \vspace{1cm}
+%%   \begin{itemize}
+%%   \item<2->{Adjust the computational burden}
+%%   \item<3->{ Capture appearing structures}
+%%   \item<4->{Avoid small cells in high velocity structures (\textbf{relax the CFL condition})}
+%%   \item<5->{Enables to choose the mesh according to the frequency range currently reconstructed}
+%%   \end{itemize}
+%% \end{frame}
 
 
 
@@ -90,7 +90,7 @@
 \begin{figure}[!htbp]
 \centering
 \includegraphics[scale=0.2]{image/fwi_workflow_mesh_adapt0.pdf}
-\caption{FWI workflow extended with mesh adaptation.}
+\caption*{FWI workflow extended with mesh adaptation.}
 \label{fwi_workflow_mesh_extended}
 \end{figure}
 \end{frame}
@@ -101,11 +101,10 @@
 \begin{figure}[!htbp]
 \centering
 \includegraphics[scale=0.2]{image/fwi_workflow_mesh_adapt.pdf}
-\caption{FWI workflow extended with mesh adaptation.}
+\caption*{FWI workflow extended with mesh adaptation.}
 \label{fwi_workflow_mesh_extended}
 \end{figure}
 \end{frame}
-
 
 
 % =========================================================
@@ -123,7 +122,7 @@
      \begin{tikzpicture}
        \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=0.8\textheight]{image/mesh_adapt_workflow5.pdf}};
         \end{tikzpicture}
-        \caption{Classical mesh adaptation workflow.}
+        \caption*{Classical mesh adaptation workflow.}
    \end{figure}
 \end{frame}
 
@@ -136,7 +135,7 @@
      \begin{tikzpicture}
        \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=0.8\textheight]{image/mesh_adapt_workflow4.pdf}};
         \end{tikzpicture}
-        \caption{Classical mesh adaptation workflow.}
+        \caption*{Classical mesh adaptation workflow.}
    \end{figure}
 \end{frame}
 
@@ -149,7 +148,7 @@
      \begin{tikzpicture}
        \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=0.8\textheight]{image/mesh_adapt_workflow3.pdf}};
         \end{tikzpicture}
-        \caption{Classical mesh adaptation workflow.}
+        \caption*{Classical mesh adaptation workflow.}
    \end{figure}
 \end{frame}
 
@@ -162,7 +161,7 @@
      \begin{tikzpicture}
        \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=0.8\textheight]{image/mesh_adapt_workflow2.pdf}};
         \end{tikzpicture}
-        \caption{Classical mesh adaptation workflow.}
+        \caption*{Classical mesh adaptation workflow.}
    \end{figure}
 \end{frame}
 
@@ -175,7 +174,7 @@
      \begin{tikzpicture}
        \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=0.8\textheight]{image/mesh_adapt_workflow1.pdf}};
         \end{tikzpicture}
-        \caption{Classical mesh adaptation workflow.}
+        \caption*{Classical mesh adaptation workflow.}
    \end{figure}
 \end{frame}
 
@@ -188,7 +187,7 @@
      \begin{tikzpicture}
        \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=0.8\textheight]{image/mesh_adapt_workflow6.pdf}};
         \end{tikzpicture}
-        \caption{Classical mesh adaptation workflow.}
+        \caption*{Classical mesh adaptation workflow.}
    \end{figure}
 \end{frame}
 
@@ -204,11 +203,11 @@
        \node[anchor=south west,inner sep=0] at (0,0) {\includegraphics[width=0.8\textheight]{image/mesh_adapt_workflow.pdf}};
         \uncover<2->{
         \node at (8.0,1.52) {\textbf{\textcolor{blue}{Mshmet \footcite{Mshmet}}}};
-        \node at (7.8,2.64) {\textbf{\textcolor{red}{MMG \footcite{Mmg}}}};
+        \node at (7.8,2.64) {\textbf{\textcolor{red}{Mmg \footcite{Mmg}}}};
           \draw [blue,ultra thick,rounded corners] (3.9,0.95) rectangle (6.95,2.0);
           \draw [red,ultra thick,rounded corners] (3.9,2.25) rectangle (6.95,3.1);}
         \end{tikzpicture}
-        \caption{Classical mesh adaptation workflow.}
+        \caption*{Classical mesh adaptation workflow.}
    \end{figure}
 \end{frame}
 
@@ -251,7 +250,7 @@
 \centering
 \includegraphics[scale=0.04]{image/ellipse_iso_triangle.pdf}
 \vspace{0.2cm}
-\caption{\tiny{Unit ball $(\lambda_1 = \lambda_2 = \lambda)$}}
+\caption*{\tiny{Unit ball $(\lambda_1 = \lambda_2 = \lambda)$}}
 \label{ellipse_iso_triangle}
 \end{figure}
             \columnbreak
@@ -259,7 +258,7 @@
 \centering
 \includegraphics[scale=0.028]{image/ellipse_aniso.pdf}
 \vspace{-0.3cm}
-\caption{\tiny{Unit ball $(\lambda_1 >> \lambda_2)$}}
+\caption*{\tiny{Unit ball $(\lambda_1 >> \lambda_2)$}}
 \label{ellipse_iso_triangle}
      \end{figure}
  \end{multicols}
@@ -285,7 +284,7 @@
   \columnbreak
   \begin{figure}
     \includegraphics[scale=0.07]{image/triangle_error_frey}
-%    \caption{Element $K$}
+%    \caption*{Element $K$}
     \end{figure}
   \end{multicols}
 
@@ -356,12 +355,12 @@
 %% %% \begin{multicols}{2}
 %% %%   \begin{figure}[H]
 %% %% \includegraphics[scale=0.6]{image/isotropic_cell.pdf}
-%% %% \caption{Isotropic cell  ($\lambda_1 = \lambda_2$).}
+%% %% \caption*{Isotropic cell  ($\lambda_1 = \lambda_2$).}
 %% %% \end{figure}
 %% %% \columnbreak
 %% %% \begin{figure}
 %% %% \includegraphics[scale=0.7]{image/anisotropic_cell.pdf}
-%% %% \caption{Anisotropic cell ($\lambda_1 >> \lambda_2$).}
+%% %% \caption*{Anisotropic cell ($\lambda_1 >> \lambda_2$).}
 %% %% \end{figure}
 %% %% \end{multicols}
 %% %% \end{block}
@@ -397,18 +396,22 @@
   \uncover<2->{
   In a reference square of size $\lambda \times \lambda$:
   \begin{empheq}{align}
+    \nppw^2  &= \frac{\lambda^2}{a} \dof, \text{  where: } \lambda = \velocity / \fmax
+  \end{empheq}
+  }
+  \uncover<3->{
+  \begin{empheq}{align}
     \nppw^2  &= \frac{\lambda^2}{a} \frac{(\PolOrder + 1)(\PolOrder + 2)}{2}, \text{  where: } \lambda = \velocity / \fmax
   \end{empheq}
   }
-
-  \uncover<3->{
+  \uncover<4->{
   Isotropic cell hypothesis:
   \begin{empheq}{align}
     a = \frac{\sqrt{3}}{4} h^2
   \end{empheq}
   }
 
-  \uncover<4->{
+  \uncover<5->{
   \begin{block}{Heuristic size map formula:}
   \begin{empheq}{align}
   \forall x \in \Domain, \, \,  h(x)=2\frac{\lambda(x)}{\nppw}\sqrt{\frac{(\PolOrder+1)(\PolOrder+2)}{2\sqrt{3}}} \,.
@@ -424,11 +427,11 @@
 % ====== Frame : Find NPPW  ==================
 % ============================================
 
-\begin{frame}{Numerical assessement of the isotropic size map}{Determine the $\nppw$ value}
+\begin{frame}{Numerical assessment of the isotropic size map}{Determine the $\nppw$ value}
   \begin{multicols}{2}
     \begin{itemize}
     \item 2s simulation
-    \item 1 source: First order ricker $\fpeak=10$Hz
+    \item 1 source: First order Ricker $\fpeak=10$Hz
     \item 462 receivers
     \item Constant velocity model (to avoid errors from mis-representation of the model)
     \item compare numerical traces with analytic traces \footcite{gar6more}
@@ -438,7 +441,7 @@
   \begin{figure}[H]
   \centering
   \includegraphics[scale=0.31]{image/precision_test.pdf}
-  \caption{Experimental setup for the accuracy assessment.}
+  \caption*{Experimental setup for the accuracy assessment.}
   \label{homogeneous_prec}
   \end{figure}
   \end{multicols}
@@ -587,10 +590,10 @@
         \textbf{Polynomial order ($\PolOrder$)} & 2 & 3 & 4 & 5 & 6 \\ \hline
         $\boldsymbol{\nppw}$  & 13 & 10 & 10 & 9 & 9 \\ \hline
         \textbf{Ratio} $\boldsymbol{\lambda/h}$ & 3.49 & 2.08 & 1.70 & 1.29 & 1.12 \\ \hline
-        \textbf{Number of Element} & 303283 & 105788 & 69813 & 40012 & 29894 \\ \hline
+        \textbf{Number of Elements} & 303283 & 105788 & 69813 & 40012 & 29894 \\ \hline
         \textbf{Computational time (s)} & 5230 & 2764 & 1956 & 2017  & 1789\\ \hline
     \end{tabular}
-    \caption{Summary table for 1$\%$ relative error for 2D DG acoustic solver on triangular grid.}
+    \caption*{Summary table for 1$\%$ relative error for 2D DG acoustic solver on triangular grid.}
     \label{recap_ppw}
   \end{table}
   \uncover<2->{
@@ -633,7 +636,7 @@
         \hspace{-0.5cm}
          \centering
          \input{graph/skeleton_mesh}
-         \caption{Marmousi refined mesh at the interfaces (12809 elements).}
+         \caption*{Marmousi refined mesh at the interfaces (12809 elements).}
          \label{marmousi_mesh_padapt}
      \end{subfigure}
      \hspace{-1cm}
@@ -645,7 +648,7 @@
          \centering
          \input{graph/skeleton_order}
          \vspace{-0.9cm}
-         \caption{$p$-adaptivity map.}
+         \caption*{$p$-adaptivity map.}
          \label{marmousi_order_padapt}
      \end{subfigure}
 
@@ -692,7 +695,7 @@
         \hspace{-0.5cm}
          \centering
          \input{graph/skeleton_mesh}
-         \caption{Marmousi refined mesh at the interfaces (12809 elements).}
+         \caption*{Marmousi refined mesh at the interfaces (12809 elements).}
          \label{marmousi_mesh_padapt}
      \end{subfigure}
      \hspace{-1cm}
@@ -704,7 +707,7 @@
          \centering
          \input{graph/skeleton_order}
          \vspace{-0.9cm}
-         \caption{$p$-adaptivity map.}
+         \caption*{$p$-adaptivity map.}
          \label{marmousi_order_padapt}
      \end{subfigure}
 
@@ -742,14 +745,14 @@
       \begin{figure}[!htbp]
 \centering
 \includegraphics[scale=0.25]{image/grad_e.png}
-\caption{Interface detection.}
+\caption*{Interface detection.}
 \label{mesh_marmousi}
 \end{figure}
       \onslide<2>
 \begin{figure}[!htbp]
 \centering
 \includegraphics[scale=0.27]{image/marmousi_mesh.png}
-\caption{Example of adapted meshes obtained with respect to a size map and taking into account sharp interfaces (42K elements).}
+\caption*{Example of adapted meshes obtained with respect to a size map and taking into account sharp interfaces (42K elements).}
 \label{mesh_marmousi}
 \end{figure}
     \end{overprint}
@@ -808,101 +811,101 @@
 
 
 
-============================================
-====== Frame :  Marmousi constant model ====
-============================================
+%============================================
+%====== Frame :  Marmousi constant model ====
+%============================================
 
-\begin{frame}{Comparaison with Marmousi model}{Constant with constant model per element}
-    \vspace{-0.8cm}
-  \setlength{\modelwidth}{6.0cm}
-  \begin{figure}[!htbp]
-    \renewcommand{\modelfile}{image/mesh_adapt/adapt_vp_80}
-     \begin{subfigure}[!htbp]{0.5\textwidth}
-        \vspace{0.5cm}
-        \hspace{-0.5cm}
-         \centering
-         \input{graph/skeleton_mesh}
-         \caption*{Final model \textcolor{\mygreen}{\textbf{with mesh adaptation}}.}
-         \label{marmousi_mesh_padapt}
-     \end{subfigure}
-     \hspace{-1cm}
-     \renewcommand{\modelfile}{image/mesh_adapt/classic_vp_80}
-     \renewcommand{\cmapmin}{1500}
-     \renewcommand{\cmapmax}{5000}
-     \begin{subfigure}[!htbp]{0.5\textwidth}
-         \centering
-         \input{graph/skeleton_cp_paraview}
-         \vspace{-0.6cm}
-         \caption*{Final model \textcolor{blue}{\textbf{without mesh adaptation}}.}
-     \end{subfigure}
-       \end{figure}
+%% \begin{frame}{Comparaison with Marmousi model}{Constant with constant model per element}
+%%     \vspace{-0.8cm}
+%%   \setlength{\modelwidth}{6.0cm}
+%%   \begin{figure}[!htbp]
+%%     \renewcommand{\modelfile}{image/mesh_adapt/adapt_vp_80}
+%%      \begin{subfigure}[!htbp]{0.5\textwidth}
+%%         \vspace{0.5cm}
+%%         \hspace{-0.5cm}
+%%          \centering
+%%          \input{graph/skeleton_mesh}
+%%          \caption*{Final model \textcolor{\mygreen}{\textbf{with mesh adaptation}}.}
+%%          \label{marmousi_mesh_padapt}
+%%      \end{subfigure}
+%%      \hspace{-1cm}
+%%      \renewcommand{\modelfile}{image/mesh_adapt/classic_vp_80}
+%%      \renewcommand{\cmapmin}{1500}
+%%      \renewcommand{\cmapmax}{5000}
+%%      \begin{subfigure}[!htbp]{0.5\textwidth}
+%%          \centering
+%%          \input{graph/skeleton_cp_paraview}
+%%          \vspace{-0.6cm}
+%%          \caption*{Final model \textcolor{blue}{\textbf{without mesh adaptation}}.}
+%%      \end{subfigure}
+%%        \end{figure}
 
-  \uncover<2->{
-    \scriptsize
-\begin{table}[!htbp]
-\centering
-\begin{tabular}{|l|l|l|l|l|l|}
-\hline
-& 0-2Hz & 0-5Hz & 0-8Hz & 0-12Hz & 0-15Hz  \\ \hline
-\rowcolor{green!30}
-Number of elements   & 277    & 779     & 2090    & 4859     & 7065  \\
-\rowcolor{green!30}
-(with mesh adaptation)      &     &      &     &      &   \\ \hline
-\rowcolor{blue!30}
-Number of elements      & 7218    & 7218     & 7218    & 7218     & 7218  \\
-\rowcolor{blue!30}
-(without mesh adaptation)      &     &      &     &      &   \\ \hline
-\end{tabular}
-\caption{Comparison of the number of elements in the mesh for each frequency band for both strategies.}
-\label{nb_elem_mesh_adapt}
-\end{table}
-}
-\end{frame}
+%%   \uncover<2->{
+%%     \scriptsize
+%% \begin{table}[!htbp]
+%% \centering
+%% \begin{tabular}{|l|l|l|l|l|l|}
+%% \hline
+%% & 0-2Hz & 0-5Hz & 0-8Hz & 0-12Hz & 0-15Hz  \\ \hline
+%% \rowcolor{green!30}
+%% Number of elements   & 277    & 779     & 2090    & 4859     & 7065  \\
+%% \rowcolor{green!30}
+%% (with mesh adaptation)      &     &      &     &      &   \\ \hline
+%% \rowcolor{blue!30}
+%% Number of elements      & 7218    & 7218     & 7218    & 7218     & 7218  \\
+%% \rowcolor{blue!30}
+%% (without mesh adaptation)      &     &      &     &      &   \\ \hline
+%% \end{tabular}
+%% \caption*{Comparison of the number of elements in the mesh for each frequency band for both strategies.}
+%% \label{nb_elem_mesh_adapt}
+%% \end{table}
+%% }
+%% \end{frame}
 
 
-\begin{frame}[noframenumbering]{Comparaison with Marmousi model}{Constant with constant model per element}
-  \vspace{-0.8cm}
-  \setlength{\modelwidth}{6.0cm}
-  \begin{figure}[!htbp]
-    \renewcommand{\modelfile}{image/mesh_adapt/adapt_vp_80}
-     \begin{subfigure}[!htbp]{0.5\textwidth}
-        \vspace{0.5cm}
-        \hspace{-0.5cm}
-         \centering
-         \input{graph/skeleton_mesh}
-                  \caption*{Final model \textcolor{\mygreen}{\textbf{with mesh adaptation}}.}         \label{marmousi_mesh_padapt}
-     \end{subfigure}
-     \hspace{-1cm}
-     \renewcommand{\modelfile}{image/mesh_adapt/classic_vp_80}
-     \renewcommand{\cmapmin}{1500}
-     \renewcommand{\cmapmax}{5000}
-     \begin{subfigure}[!htbp]{0.5\textwidth}
-         \centering
-         \input{graph/skeleton_cp_paraview}
-         \vspace{-0.6cm}
-         \caption*{Final model \textcolor{blue}{\textbf{without mesh adaptation}}.}
-     \end{subfigure}
-     \end{figure}
+%% \begin{frame}{Comparaison with Marmousi model}{Constant with constant model per element}
+%%   \vspace{-0.8cm}
+%%   \setlength{\modelwidth}{6.0cm}
+%%   \begin{figure}[!htbp]
+%%     \renewcommand{\modelfile}{image/mesh_adapt/adapt_vp_80}
+%%      \begin{subfigure}[!htbp]{0.5\textwidth}
+%%         \vspace{0.5cm}
+%%         \hspace{-0.5cm}
+%%          \centering
+%%          \input{graph/skeleton_mesh}
+%%                   \caption*{Final model \textcolor{\mygreen}{\textbf{with mesh adaptation}}.}         \label{marmousi_mesh_padapt}
+%%      \end{subfigure}
+%%      \hspace{-1cm}
+%%      \renewcommand{\modelfile}{image/mesh_adapt/classic_vp_80}
+%%      \renewcommand{\cmapmin}{1500}
+%%      \renewcommand{\cmapmax}{5000}
+%%      \begin{subfigure}[!htbp]{0.5\textwidth}
+%%          \centering
+%%          \input{graph/skeleton_cp_paraview}
+%%          \vspace{-0.6cm}
+%%          \caption*{Final model \textcolor{blue}{\textbf{without mesh adaptation}}.}
+%%      \end{subfigure}
+%%      \end{figure}
 
-     \scriptsize
-\begin{table}[!htbp]
-\begin{tabular}{|m{3cm}|l|l|l|l|l|l|}
-\hline
-& 0-2Hz     & 0-5Hz     & 0-8Hz     & 0-12Hz    & 0-15Hz    & Total \\ \hline
-\rowcolor{green!30}
-CPU time (h)          & 3         & 11        & 60        & 230       & 408       & 712   \\
-\rowcolor{green!30}
-(with mesh adaptation)          &          &         &         &        &        &    \\ \hline
-\rowcolor{blue!30}
-CPU time (h)       & $\sim$432 & $\sim$432 & $\sim$432 & $\sim$432 & $\sim$432 & 2164  \\
-\rowcolor{blue!30}
- (without mesh adaptation)       &  &  &  &  &  &   \\ \hline
-CPU time ratio \newline (No mesh adapt/mesh adapt)  &  144.0   &    39.3    &   7.2     &    1.9    &   1.1     & \cellcolor{red!30} 3.0   \\ \hline
-\end{tabular}
-\caption{CPU time comparison between FWI with and without mesh adaptation.}
-\label{cpu_tab_1}
-\end{table}
-\end{frame}
+%%      \scriptsize
+%% \begin{table}[!htbp]
+%% \begin{tabular}{|m{3cm}|l|l|l|l|l|l|}
+%% \hline
+%% & 0-2Hz     & 0-5Hz     & 0-8Hz     & 0-12Hz    & 0-15Hz    & Total \\ \hline
+%% \rowcolor{green!30}
+%% CPU time (h)          & 3         & 11        & 60        & 230       & 408       & 712   \\
+%% \rowcolor{green!30}
+%% (with mesh adaptation)          &          &         &         &        &        &    \\ \hline
+%% \rowcolor{blue!30}
+%% CPU time (h)       & $\sim$432 & $\sim$432 & $\sim$432 & $\sim$432 & $\sim$432 & 2164  \\
+%% \rowcolor{blue!30}
+%%  (without mesh adaptation)       &  &  &  &  &  &   \\ \hline
+%% CPU time ratio \newline (No mesh adapt/mesh adapt)  &  144.0   &    39.3    &   7.2     &    1.9    &   1.1     & \cellcolor{red!30} 3.0   \\ \hline
+%% \end{tabular}
+%% \caption*{CPU time comparison between FWI with and without mesh adaptation.}
+%% \label{cpu_tab_1}
+%% \end{table}
+%% \end{frame}
 
 
 
@@ -943,20 +946,20 @@ CPU time ratio \newline (No mesh adapt/mesh adapt)  &  144.0   &    39.3    &   
 & 0-2Hz & 0-5Hz & 0-8Hz & 0-12Hz & 0-15Hz  \\ \hline
 \rowcolor{green!30}
 Number of elements \newline (with mesh adaptation)      & 277    & 754     & 1958    & 4465     & 6905  \\ \hline
+\rowcolor{blue!30}
+Number of elements \newline (without mesh adaptation)      & 7218    & 7218     & 7218    & 7218     & 7218  \\ \hline
 \rowcolor{green!30}
 Number of parameters \newline (with mesh adaptation)      & 5263    & 14326     &  37202   & 54340     & 131195  \\ \hline
 \rowcolor{blue!30}
-Number of elements \newline (without mesh adaptation)      & 7218    & 7218     & 7218    & 7218     & 7218  \\ \hline
-\rowcolor{blue!30}
 Number of parameters \newline (without mesh adaptation)      & 137142    & 137142     & 137142    & 137142     & 137142  \\ \hline
 \end{tabular}
-\caption{Number of elements and parameters for each frequency band.}
+\caption*{Number of elements and parameters for each frequency band.}
 \label{nb_elem_mesh_adapt_wadg}
 \end{table}
 \end{frame}
 
 
-\begin{frame}[noframenumbering]{Comparaison with Marmousi model}{Constant with WADG}
+\begin{frame}[noframenumbering]{Comparaison with Marmousi model}{With WADG parametrization}
     \vspace{-0.8cm}
   \setlength{\modelwidth}{6.0cm}
   \begin{figure}[!htbp]
@@ -996,7 +999,7 @@ CPU time (h)       & $\sim$730 & $\sim$730 & $\sim$730 & $\sim$730 & $\sim$730 &
 (without mesh adaptation)       &  &  &  &  &  &    \\ \hline
 CPU time ratio \newline (without/with mesh adaptation) &  146.0    &    33.2   &   10.0    &    2.2    &   1.3     & \cellcolor{red!30} 3.75   \\ \hline
 \end{tabular}
-\caption{CPU time comparison between FWI with and without mesh adaptation.}
+\caption*{CPU time comparison between FWI with and without mesh adaptation.}
 \label{wadg_cpu_tab}
 \end{table}
 \end{frame}
@@ -1057,21 +1060,41 @@ CPU time ratio \newline (without/with mesh adaptation) &  146.0    &    33.2   &
   \onslide<3>
 
   \vspace{-1.0cm}
-  \begin{block}{Animation of the reconstruction}
+  \begin{block}{Animation of the wavespeed model reconstruction}
       \begin{center}
       \movie[showcontrols,loop,autostart]
             {\includegraphics[scale=.3]{animation/overthrust/overthrust_adapt-00.png}}
             {animation/overthrust/out.avi}
       \end{center}
     \end{block}
-
+  Speed-up: \textcolor{red}{\textbf{3.4}} times faster
 \end{overprint}
 
 \end{frame}
 
 
 \begin{frame}{Conclusion}
+  \begin{itemize}
+  \item Develop a FWI workflow in Total industrial environnement.
+  \item Adapt all DG  existing features in the inverse problem.
+  \item Reconstruct 2D and 3D acoustic medium.
+  \item Extend the FWI workflow with mesh adaptation tools based on the model parameters.
+  \item Define rules for DG discretization.
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{Perspectives}
+  \begin{itemize}
+    \item Develop gradient computation for Elastic equation.
+    \item Implement Wasserstein \footcite{yangApplicationOptimalTransport2017} cost function.
+    \item Add regularization (Tikhonov, Total Variation).
+  \end{itemize}
+  \vspace{0.5cm}
+    \begin{itemize}
+    \item Add limited aperture.
+    \item Add GPU parallelism (OpenACC).
+    \item Define 3D criteria for mesh adaptation.
+    \item Enhance the interface detection.
+    \item Coupling DG with Spectral Element Method \footcite{citrainHybridFiniteElement2019}.
+  \end{itemize}
   \end{frame}

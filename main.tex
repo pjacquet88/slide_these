@@ -2,7 +2,7 @@
 
 
 \input{package.tex}
-%%%%%%% Packages et corrections ajoutés à la volée %%%%%%%%%%%%%ù
+%%%%%%% Packages et corrections ajoutés à la volée %%%%%%%%%%%%%
 \usepackage{graphicx,multimedia}
 \usepackage{xpatch}
 \usepackage{fourier-orns}
@@ -14,15 +14,18 @@
 \usepackage{colortbl}
 \renewcommand{\footnotesize}{\fontsize{7pt}{9pt}\selectfont}
 \usetikzlibrary{patterns}
+ \usetikzlibrary{arrows,automata,calc,shapes, positioning,shadows,shadows.blur,shapes.geometric}
+
+ \definecolor{col2}{HTML}{a11919}%couleur des barres de l'histo
 
 \input{setup.tex}
 \input{setup_manuscript.tex}
 
-\AtBeginSection[]
+\AtBeginSection[2]
 {
     \begin{frame}
-        \frametitle{Table of Contents}
-        \tableofcontents[currentsection]
+      \frametitle{Table of Contents}
+      \tableofcontents[currentsection, hideallsubsections]
     \end{frame}
 }
 
@@ -41,20 +44,16 @@
 \setbeamercolor*{palette primary}{fg=mainRed,bg=mainTitl2}  % up 2 + down 3
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%% TABLE OF CONTENT %%%%%%%%
-\begin{frame}{Overview}
-\tableofcontents
-\end{frame}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
- \input{section1/section1.tex}  %% intro FWI
- \input{section2/section2.tex}  %% AtD and DtA
-\input{section3/section3.tex}  %% Some results
- \input{section4/section4.tex}    %% Some results
+  \input{introduction.tex}  %% intro FWI
+  \input{pb_direct.tex}     %% Pb Direct
+  \input{adjoint_study.tex}  %% AtD and DtA
+  \input{results.tex}  %% Some results
+  \input{section4/section4.tex}    %% Some results
 
  \printbibliography
 
-%% \input{annexe/annexe.tex}
+%% \input{annexe.tex}
 
 
 \end{document}

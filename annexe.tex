@@ -1,8 +1,147 @@
 \begin{frame}[noframenumbering]
-
 \Large{\textbf{Appendices}}
+\end{frame}
+
+
+\begin{frame}[noframenumbering]
+\Large{\textbf{Bernstein-Bézier properties}}
+\end{frame}
+
+
+
+
+
+\begin{frame}[noframenumbering]{Bernstein-Bézier polynomial basis}
+\vspace{-0.2cm}
+\scriptsize
+\begin{block}{\scriptsize{Polynomial basis expression:}}
+In an arbitrary dimension, $\balpha \in \mathbb{N}^{\dim+1}$ with $\sum_{i=0}^N \alpha_i = N$
+and $\blambda \in [0,1]^{\dim+1}$ with $\sum_{i=0}^N \hat{\lambda}_i = 1$.
+For example, we have in 3D the following notation:
+\begin{equation}
+        B^\PolOrder_\balpha(\blambda) = B^\PolOrder_{ijkl}(\lzero,\lone,\ltwo,\lthree) = C^\PolOrder_{ijkl} \lzero^i \lone^j \ltwo^k \lthree^l = \frac{\PolOrder!}{i!j!k!l!}\lzero^i \lone^j \ltwo^k \lthree^l
+\end{equation}
+\end{block}
+\vspace{-0.1cm}
+\uncover<2->{
+\begin{block}{\scriptsize{Property 1: Sparse elevation order}}
+A Bernstein polynomial of order $N-1$
+can be represented with a linear combination of $\dim+1$ Bernstein polynomials
+of order $\PolOrder$ as follows:
+
+\begin{equation}
+B^{\PolOrder-1}_\balpha(\blambda) = \sum_{i=0}^\dim \frac{\alpha_i+1}{\PolOrder} B^\PolOrder_{\balpha + \ecan_i}(\blambda)\,. \label{elev_order_bb}
+\end{equation}
+\end{block}
+}
+\vspace{-0.1cm}
+\uncover<3->{
+\begin{block}{\scriptsize{Property 2: Sparse dervative operator}}
+The derivative of a Bernstein polynomial $B^\PolOrder_\balpha$ with respect to $\hat{\lambda}_i$ is given by:
+\begin{equation}
+\frac{\partial B^\PolOrder_\balpha}{\partial \hat{\lambda}_i} (\blambda)= N B^{\PolOrder-1}_{\balpha-\ecan_i} (\blambda)\,.
+\end{equation}
+\end{block}
+}
+\end{frame}
+
+
+
+\begin{frame}[noframenumbering]
+\Large{\textbf{WADG formula}}
+\end{frame}
+
+
+
+\begin{frame}[noframenumbering]{Weight Adjusted Discontinuous Galerkin (WADG)}
+  \scriptsize
+
+  \begin{equation}
+(\Mass^\element_\param)^{-1} \approx (\Mwadg^\element_\param)^{-1} = (\Mass^\element)^{-1} \Mass^\element_{1/\param} (\Mass^\element)^{-1}
+\label{inv_wadg}
+\end{equation}
+\begin{equation}
+\Mass^\element_{\frac{1}{\param}} = \detJK \, \Pquad\, diag(\weight \frac{1}{\coefParam^\element})\, \Pquad^\top \label{wadg_operator}
+\end{equation}
+
+
+\begin{itemize}
+\item $\coefParam^\element$: vector of size $\nquad$;
+\item $\Pquad$: Matrix of size $\dof \times \nquad$ such as $[Q]_{i,q} = \hat{\varphi_i}(\refx_q)$\,;
+\item $diag(\weight \frac{1}{\coefParam^\element})$: diagonal matrix of size $\nquad \times \nquad$ where $diag(\weight \frac{1}{\coefParam})_{q,q} = \sweight_q \frac{1}{\coefParam^\element_q}$\,.
+\item $\detJK$: Determinant of the Jacobian of the transformation from $\element$ to the reference element.
+\end{itemize}
+
+\uncover<2->{
+\tiny
+\begin{empheq}[left=\empheqlbrace]{align}
+  & \frac{\partial \textcolor{\myred}{\coefPolP}^\element}{\partial t}
+    = -  \MassRef^{-1} \, \Pquad\, diag(\weight \boldsymbol{\bm}^\element)\, \Pquad^\top  \left( \sum_{k=1}^\dim \sum_{d=1}^\dim [J_{T_\element}^{-\top}]_{k,d} \MassRef^{-1}\StiffRef_\refxd \textcolor{\myred}{\coefPolVd}
+  -  \sum_{d=1}^\dim \sum_{\Edge \in \element} \frac{\detJF}{\detJK} \MassRef^{-1}\MassRef_\Edge \textcolor{\myred}{\FluxP}^\Edge \right)
+  +  \coefpolSource^\element  \\
+  & \frac{\partial \textcolor{\myred}{\coefPolVd}^\element}{\partial t} =
+  -  \MassRef^{-1} \, \Pquad\, diag(\weight \boldsymbol{\frac{1}{\density}}^\element)\, \Pquad^\top  \left( \sum_{k=1}^\dim [J_{T_\element}^{-\top}]_{k,d} \MassRef^{-1}\StiffRef_\refxd \textcolor{\myred}{\coefPolP}^\element
+  - \sum_\Edge \frac{\detJF}{\detJK} \MassRef^{-1}\MassRef_\Edge \textcolor{\myred}{\FluxV}_d^\Edge \right)\,,
+  \label{semi_discrete_wadg_operator}
+\end{empheq}
+for $d=1\,\,\text{to}\,\,\dim$ \hfill.
+}
+\end{frame}
+
+
+\begin{frame}{WADG small experiment}
+
+  \setlength{\modelwidth}{6.0cm}
+\begin{figure}[htbp]
+\begin{subfigure}{1.0\textwidth}
+  \renewcommand{\modelfile}{image/num_exp_1/bicouche_model}
+     \renewcommand{\cmapmin}{1500}
+     \renewcommand{\cmapmax}{3000}
+     \centering
+     \input{graph/skeleton_cp_paraview}
+     \caption{Bi-layered wavespeed model (reference).}
+     \label{bicouche_model_with_mesh}
+\end{subfigure}
+
+\begin{subfigure}{0.45\textwidth}
+  \renewcommand{\modelfile}{image/num_exp_1/bicouche_p4q1}
+     \renewcommand{\cmapmin}{1500}
+     \renewcommand{\cmapmax}{3000}
+     \centering
+     \input{graph/skeleton_cp_2}
+     \caption{Bi-layered wavespeed model (P4 Q1).}
+     \label{bicouche_model_without_mesh}
+\end{subfigure}
+\hspace{0.5cm}
+\begin{subfigure}{0.45\textwidth}
+  \renewcommand{\modelfile}{image/num_exp_1/bicouche_p4q9}
+     \renewcommand{\cmapmin}{1500}
+     \renewcommand{\cmapmax}{3000}
+     \centering
+     \input{graph/skeleton_cp_2}
+     \caption{Bi-layered wavespeed model (P4 Q9).}
+     \label{bicouche_model_with_wadg}
+\end{subfigure}
+\caption{Illustration of the wavespeed model for three different configurations.}
+\label{bicouche_meshes}
+\end{figure}
+\end{frame}
+
+
+\begin{frame}[noframenumbering]{WADG small experiment}
+\vspace{-0.3cm}
+\begin{figure}[htbp]
+\includegraphics[scale=0.25]{image/flemme_wadg.png}
+\end{figure}
+
 
 \end{frame}
+
+
+
+
+
+
 
 
 \begin{frame}[noframenumbering]

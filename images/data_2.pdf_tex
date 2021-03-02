@@ -66,7 +66,7 @@
     \put(0,0){\includegraphics[width=\unitlength,page=4]{images/data_2.pdf}}%
     \put(0.99457691,0.07750344){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0.25}\smash{\begin{tabular}[t]{l}0\end{tabular}}}}%
     \put(0.99457691,0.1481317){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}%
-    \put(0.84057937,0.07207919){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0.5}\smash{\begin{tabular}[t]{l}Initial model (m)\end{tabular}}}}%
+    \put(0.84057937,0.07207919){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0.5}\smash{\begin{tabular}[t]{l}Synthetic model (m)\end{tabular}}}}%
     \put(0.12173724,0.15696178){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.08116577\unitlength}\raggedright \end{minipage}}}%
     \put(0.11770775,0.15235663){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.08634657\unitlength}\raggedright \end{minipage}}}%
     \put(0.14002232,0.12592658){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{0.2}\smash{\begin{tabular}[t]{l}Observations\end{tabular}}}}%

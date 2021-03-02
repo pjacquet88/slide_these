@@ -779,16 +779,7 @@
   title = {Multiscale Seismic Waveform Inversion},
   author = {Bunks, Carey and Saleck, Fatimetou M. and Zaleski, S. and Chavent, G.},
   year = {1995},
-  month = sep,
-  volume = {60},
-  pages = {1457--1473},
-  publisher = {{Society of Exploration Geophysicists}},
-  issn = {0016-8033},
-  doi = {10.1190/1.1443880},
-  abstract = {Iterative inversion methods have been unsuccessful at inverting seismic data obtained from complicated earth models (e.g. the Marmousi model), the primary difficulty being the presence of numerous local minima in the objective function. The presence of local minima at all scales in the seismic inversion problem prevent iterative methods of inversion from attaining a reasonable degree of convergence to the neighborhood of the global minimum. The multigrid method is a technique that improves the performance of iterative inversion by decomposing the problem by scale. At long scales there are fewer local minima and those that remain are further apart from each other. Thus, at long scales iterative methods can get closer to the neighborhood of the global minimum. We apply the multigrid method to a subsampled, low-frequency version of the Marmousi data set. Although issues of source estimation, source bandwidth, and noise are not treated, results show that iterative inversion methods perform much better when employed with a decomposition by scale. Furthermore, the method greatly reduces the computational burden of the inversion that will be of importance for 3-D extensions to the method.},
-  file = {/home/pierre/Zotero/storage/VHICHPF7/Bunks et al. - 1995 - Multiscale seismic waveform inversion.pdf;/home/pierre/Zotero/storage/EEPHG6F5/1.html},
   journal = {GEOPHYSICS},
-  number = {5}
 }
 
 @article{capdeville2003coupling,
@@ -924,11 +915,6 @@
   year = {2016},
   month = aug,
   abstract = {We evaluate the computational performance of the Bernstein-Bezier basis for discontinuous Galerkin (DG) discretizations and show how to exploit properties of derivative and lift operators specific to Bernstein polynomials for an optimal complexity quadrature-free evaluation of the DG formulation. Issues of efficiency and numerical stability are discussed in the context of a model wave propagation problem. We compare the performance of Bernstein-Bezier kernels to both a straightforward and a block-partitioned implementation of nodal DG kernels in a time-explicit GPU-accelerated DG solver. Computational experiments confirm the advantage of Bernstein-Bezier DG kernels over both straightforward and block-partitioned nodal DG kernels at high orders of approximation.},
-  archivePrefix = {arXiv},
-  eprint = {1512.06025},
-  eprinttype = {arxiv},
-  file = {/home/pierre/Zotero/storage/CSNWXWBZ/Chan et Warburton - 2016 - GPU-accelerated Bernstein-Bezier discontinuous Gal.pdf;/home/pierre/Zotero/storage/2UJ4BFQ2/1512.html},
-  journal = {arXiv:1512.06025 [math]},
   keywords = {Mathematics - Numerical Analysis},
   primaryClass = {math}
 }
@@ -939,14 +925,8 @@
   shorttitle = {Weight-Adjusted Discontinuous {{Galerkin}} Methods},
   author = {Chan, Jesse and Hewett, Russell J. and Warburton, T.},
   year = {2017},
-  month = jan,
   publisher = {{SIAM}},
   abstract = {Time-domain discontinuous Galerkin (DG) methods for wave propagation require accounting for the inversion of dense elemental mass matrices, where each mass matrix is computed with respect to a parameter-weighted L2 inner product. In applications where the wavespeed varies spatially at a sub-element scale, these matrices are distinct over each element, necessitating additional storage. In this work, we propose a weight-adjusted DG (WADG) method which reduces storage costs by replacing the weighted L2 inner product with a weight-adjusted inner product. This equivalent inner product results in an energy stable method, but does not increase storage costs for locally varying weights. A priori error estimates are derived, and numerical examples are given illustrating the application of this method to the acoustic wave equation with heterogeneous wavespeed.},
-  archivePrefix = {arXiv},
-  eprint = {1608.01944},
-  eprinttype = {arxiv},
-  file = {/home/pierre/Zotero/storage/JVD3V527/Chan et al. - 2017 - Weight-adjusted discontinuous Galerkin methods wa.pdf},
-  journal = {arXiv:1608.01944 [math]},
   keywords = {Mathematics - Numerical Analysis},
   language = {en},
   primaryClass = {math}
@@ -958,9 +938,6 @@
   year = {2010},
   edition = {First},
   publisher = {{Springer Netherlands}},
-  file = {/home/pierre/Zotero/storage/2HARDW45/Chavent - 2010 - Nonlinear least squares for inverse problems Theo.pdf},
-  isbn = {978-90-481-2784-9 978-90-481-2785-6},
-  series = {Scientific Computation}
 }
 
 @incollection{chen2015full,
@@ -1896,10 +1873,6 @@
   year = {2005},
   month = nov,
   volume = {194},
-  pages = {5068--5082},
-  issn = {0045-7825},
-  doi = {10.1016/j.cma.2004.11.025},
-  abstract = {Unstructured mesh adaptation is now widely used in numerical simulations to improve the accuracy of the solutions as well as to capture the behavior of physical phenomena. In this paper, we propose a general purpose error estimate based on the interpolation error that produces an anisotropic metric map used to govern the mesh element creation. Application examples of CFD computations are given to emphasize the efficiency of this approach.},
   file = {/home/pierre/Zotero/storage/WUZD3AZB/Frey et Alauzet - 2005 - Anisotropic mesh adaptation for CFD computations.pdf;/home/pierre/Zotero/storage/EY8G6MIN/S0045782505000794.html},
   journal = {Computer Methods in Applied Mechanics and Engineering},
   keywords = {A posteriori estimate,Anisotropic mesh generation,CFD,Metric},
@@ -2116,15 +2089,8 @@
   title = {Achieving Logarithmic Growth of Temporal and Spatial Complexity in Reverse Automatic Differentiation},
   author = {Griewank, Andreas},
   year = {1992},
-  month = jan,
   volume = {1},
-  pages = {35--54},
   publisher = {{Taylor \& Francis}},
-  issn = {1055-6788},
-  doi = {10.1080/10556789208805505},
-  abstract = {In its basic form the reverse mode of automatic differentiation yields gradient vectors at a small multiple of the computational work needed to evaluate the underlying scalar function. The practical applicability of this temporal complexity result, due originally to Linnainmaa, seemed to be severely limited by the fact that the memory requirement of the basic implementation is proportional to the run timeT, of the original evaluation program. It is shown here that, by a recursive scheme related to the multilevel differentiation approach of Volin and Ostrovskii, the growth in both temporal and spatial complexity can be limited to a fixed multiple of log(T). Other compromises between the run time and memory requirement are possible, so that the reverse mode becomes applicable to computational problems of virtually any size.},
-  annotation = {\_eprint: https://doi.org/10.1080/10556789208805505},
-  file = {/home/pierre/Zotero/storage/JBASL6GQ/Griewank - 1992 - Achieving logarithmic growth of temporal and spati.pdf;/home/pierre/Zotero/storage/DJ7GFVFJ/10556789208805505.html;/home/pierre/Zotero/storage/RF382RSF/10556789208805505.html},
   journal = {Optimization Methods and Software},
   keywords = {Adjoint,Checkpointing,Complexity,Gradient,Recursion},
   number = {1}
@@ -2305,7 +2271,6 @@
   abstract = {Mathematicsisplayinganevermoreimportantroleinthephysicalandbiol- ical sciences, provoking a blurring of boundaries between scienti?c disciplines and a resurgence of interest in the modern as well as the classical techniques of applied mathematics. This renewal of interest, both in research and tea- ing, has led to the establishment of the series Texts in Applied Mathematics (TAM). The development of new courses is a natural consequence of a high level of excitement on the research frontier as newer techniques, such as numerical and symbolic computer systems, dynamical systems, and chaos, mix with and reinforce the traditional methods of applied mathematics. Thus, the purpose ofthistextbookseriesistomeetthecurrentandfutureneedsoftheseadvances and to encourage the teaching of new courses. TAM will publish textbooks suitable for use in advanced undergraduate and beginning graduate courses, and will complement the Applied Mat- matical Sciences (AMS) series, which will focus on advanced textbooks and research-level monographs. Pasadena, California J.E. Marsden Providence, Rhode Island L. Sirovich College Park, Maryland S.S. Antman Preface The algorithms, methods, and Matlab implementations described in this text have been developed during almost a decade of collaboration. During this time we have worked to simplify the basic methods and make the ideas more accessible to a broad audience. Many people, both students and colleagues, have helped during the development of this project and we are grateful for all their suggestions and input.},
   file = {/home/pierre/Zotero/storage/SZG74W3Z/Hesthaven et Warburton - 2007 - Nodal Discontinuous Galerkin Methods Algorithms, .part},
   googlebooks = {0fNte\_5nQNwC},
-  isbn = {978-0-387-72067-8},
   keywords = {Computers / Intelligence (AI) \& Semantics,Mathematics / Algebra / General,Mathematics / Differential Equations / General,Mathematics / Number Systems,Mathematics / Numerical Analysis,Science / Physics / Mathematical \& Computational,Technology \& Engineering / Engineering (General)},
   language = {en}
 }
@@ -2321,7 +2286,6 @@
   address = {{New York, NY}},
   doi = {10.1007/978-0-387-72067-8},
   file = {/home/pierre/Zotero/storage/KLSVJL5Q/Hesthaven et Warburton - 2008 - Nodal Discontinuous Galerkin Methods.pdf;/home/pierre/Zotero/storage/SRNQZWUT/Hesthaven et Warburton - 2008 - Nodal Discontinuous Galerkin Methods.pdf;/home/pierre/Zotero/storage/TPHXZXBY/Hesthaven et Warburton - 2008 - Nodal Discontinuous Galerkin Methods.pdf;/home/pierre/Zotero/storage/VTB23HWD/Nodal Discontinuous Galerkin Methods Algorithms, Analysis, and Applications by Jan S. Hesthaven, Tim Warburton (auth.) (z-lib.org).pdf},
-  isbn = {978-0-387-72065-4 978-0-387-72067-8},
   series = {Texts in {{Applied Mathematics}}}
 }
 
@@ -2375,14 +2339,8 @@
   title = {Full-Waveform Inversion via Source-Receiver Extension},
   author = {Huang, Guanghui and Nammour, Rami and Symes, William},
   year = {2017},
-  month = mar,
   volume = {82},
-  pages = {R153-R171},
   publisher = {{Society of Exploration Geophysicists}},
-  issn = {0016-8033},
-  doi = {10.1190/geo2016-0301.1},
-  abstract = {Full-waveform inversion produces highly resolved images of the subsurface and quantitative estimation of seismic wave velocity, provided that its initial model is kinematically accurate at the longest data wavelengths. If this initialization constraint is not satisfied, iterative model updating tends to stagnate at kinematically incorrect velocity models producing suboptimal images. The source-receiver extension overcomes this ``cycle-skip'' pathology by modeling each trace with its own proper source wavelet, permitting a good data fit throughout the inversion process. Because source wavelets should be constant (or vary systematically) across a shot gather, a measure of source trace dependence, for example, the mean square of the signature-deconvolved wavelet scaled by time lag, can be minimized to update the velocity model. For kinematically simple data, such measures of wavelet variance are mathematically equivalent to traveltime misfit. Thus, the model obtained by source-receiver extended inversion is close to that produced by traveltime tomography, even though the process uses no picked times. For more complex data, in which energy travels from source to receiver by multiple raypaths, Green's function spectral notches may lead to slowly decaying trace-dependent wavelets with energy at time lags unrelated to traveltime error. Tikhonov regularization of the data-fitting problem suppresses these large-lag signals. Numerical examples suggest that this regularized formulation of source-receiver extended inversion is capable of recovering reasonably good velocity models from synthetic transmission and reflection data without stagnation at suboptimal models encountered by standard full-waveform inversion, but with essentially the same computational cost.},
-  file = {/home/pierre/Zotero/storage/TPXAD956/Huang et al. - 2017 - Full-waveform inversion via source-receiver extens.pdf;/home/pierre/Zotero/storage/S45IZ62B/geo2016-0301.html},
   journal = {GEOPHYSICS},
   number = {3}
 }
@@ -3019,11 +2977,7 @@
   title = {A Nodal High-Order Discontinuous {{Galerkin}} Method for Elastic Wave Propagation in Arbitrary Heterogeneous Media},
   author = {Mercerat, E. Diego and Glinsky, Nathalie},
   year = {2015},
-  month = mar,
   volume = {201},
-  pages = {1101--1118},
-  issn = {1365-246X},
-  doi = {10.1093/gji/ggv029},
   abstract = {We present an extension of the nodal discontinuous Galerkin method for elastic wave propagation to high interpolation orders and arbitrary heterogeneous media. The high-order lagrangian interpolation is based on a set of nodes with excellent interpolation properties in the standard triangular element. In order to take into account highly variable geological media, another set of suitable quadrature points is used where the physical and mechanical properties of the medium are defined. We implement the methodology in a 2-D discontinuous Galerkin solver. First, a convergence study confirms the hp-convergence of the method in a smoothly varying elastic medium. Then, we show the advantages of the present methodology, compared to the classical one with constant properties within the elements, in terms of the complexity of the mesh generation process by analysing the seismic amplification of a soft layer over an elastic half-space. Finally, to verify the proposed methodology in a more complex and realistic configuration, we compare the simulation results with the ones obtained by the spectral element method for a sedimentary basin with a realistic gradient velocity profile. Satisfactory results are obtained even for the case where the computational mesh does not honour the strong impedance contrast between the basin bottom and the bedrock.},
   file = {/home/pierre/Zotero/storage/QXYMDSYZ/Mercerat et Glinsky - 2015 - A nodal high-order discontinuous Galerkin method f.pdf;/home/pierre/Zotero/storage/YSLP9KLD/8188344.html},
   journal = {Geophysical Journal International},
@@ -3150,7 +3104,7 @@
 }
 
 @misc{MMG,
-  title = {Dopagny {{Charles}}, {{Dobrzynsci C\'ecile}}, {{Frey Pascal}}, {{Froehly Algiane}}},
+  title = {Dopagny {{Charles}}, {{Dobrzynski C\'ecile}}, {{Frey Pascal}}, {{Froehly Algiane}}},
   author = {{Mmg Software}},
   file = {/home/pierre/Zotero/storage/9AXINHGU/www.mmgtools.org.html},
   lccn = {MMG}
@@ -3340,7 +3294,6 @@
   author = {Operto, St{\'e}phane and Virieux, Jean and Amestoy, Patrick and L'Excellent, Jean-Yves and Giraud, Luc and Ali, Hafedh Ben Hadj},
   year = {2007},
   volume = {72},
-  pages = {SM195--SM211},
   publisher = {{Society of Exploration Geophysicists}},
   journal = {Geophysics},
   number = {5}
@@ -3774,11 +3727,7 @@
   booktitle = {{{SEG Technical Program Expanded Abstracts}} 1994},
   author = {Sei, Alain and Symes, William W.},
   year = {1994},
-  month = jan,
-  pages = {1351--1354},
   publisher = {{Society of Exploration Geophysicists}},
-  doi = {10.1190/1.1822780},
-  file = {/home/pierre/Zotero/storage/N4HCKBWK/Sei et Symes - 1994 - Gradient calculation of the traveltime cost functi.pdf;/home/pierre/Zotero/storage/KAZKB2EV/1.html},
   series = {{{SEG Technical Program Expanded Abstracts}}}
 }
 
@@ -3893,7 +3842,6 @@
   author = {Shragge, Jeffrey},
   year = {2016},
   volume = {81},
-  pages = {C265--C278},
   publisher = {{GeoScienceWorld}},
   journal = {Geophysics},
   number = {5}
@@ -4125,16 +4073,8 @@
   title = {Inversion of Seismic Reflection Data in the Acoustic Approximation},
   author = {Tarantola, Albert},
   year = {1984},
-  month = aug,
-  volume = {49},
-  pages = {1259--1266},
   publisher = {{Society of Exploration Geophysicists}},
-  issn = {0016-8033, 1942-2156},
-  doi = {10.1190/1.1441754},
-  abstract = {The nonlinear inverse problem for seismic reflection data is solved in the acoustic approximation. The method is based on the generalized least-squares criterion, and it can handle errors in the data set and a priori information on the model. Multiply reflected energy is naturally taken into account, as well as refracted energy or surface waves. The inverse problem can be solved using an iterative algorithm which gives, at each iteration, updated values of bulk modulus, density, and time source function. Each step of the iterative algorithm essentially consists of a forward propagation of the actual sources in the current model and a forward propagation (backward in time) of the data residuals. The correlation at each point of the space of the two fields thus obtained yields the corrections of the bulk modulus and density models. This shows, in particular, that the general solution of the inverse problem can be attained by methods strongly related to the methods of migration of unstacked data, and commercially competitive with them.},
-  file = {/home/pierre/Zotero/storage/4EZTM7J8/Tarantola - 1984 - Inversion of seismic reflection data in the acoust.pdf},
   journal = {GEOPHYSICS},
-  language = {en},
   number = {8}
 }
 
@@ -4435,13 +4375,6 @@
   title = {Discretely Exact Derivatives for Hyperbolic {{PDE}}-Constrained Optimization Problems Discretized by the Discontinuous {{Galerkin}} Method},
   author = {Wilcox, Lucas C. and Stadler, Georg and {Bui-Thanh}, Tan and Ghattas, Omar},
   year = {2013},
-  month = nov,
-  abstract = {This paper discusses the computation of derivatives for optimization problems governed by linear hyperbolic systems of partial differential equations (PDEs) that are discretized by the discontinuous Galerkin (dG) method. An efficient and accurate computation of these derivatives is important, for instance, in inverse problems and optimal control problems. This computation is usually based on an adjoint PDE system, and the question addressed in this paper is how the discretization of this adjoint system should relate to the dG discretization of the hyperbolic state equation. Adjoint-based derivatives can either be computed before or after discretization; these two options are often referred to as the optimize-then-discretize and discretize-then-optimize approaches. We discuss the relation between these two options for dG discretizations in space and Runge-Kutta time integration. Discretely exact discretizations for several hyperbolic optimization problems are derived, including the advection equation, Maxwell's equations and the coupled elastic-acoustic wave equation. We find that the discrete adjoint equation inherits a natural dG discretization from the discretization of the state equation and that the expressions for the discretely exact gradient often have to take into account contributions from element faces. For the coupled elastic-acoustic wave equation, the correctness and accuracy of our derivative expressions are illustrated by comparisons with finite difference gradients. The results show that a straightforward discretization of the continuous gradient differs from the discretely exact gradient, and thus is not consistent with the discretized objective. This inconsistency may cause difficulties in the convergence of gradient based algorithms for solving optimization problems.},
-  archivePrefix = {arXiv},
-  eprint = {1311.6900},
-  eprinttype = {arxiv},
-  file = {/home/pierre/Zotero/storage/HVQ2P7FH/Wilcox et al. - 2013 - Discretely exact derivatives for hyperbolic PDE-co.pdf;/home/pierre/Zotero/storage/ISYE3MEI/1311.html},
-  journal = {arXiv:1311.6900 [math]},
   keywords = {65M60; 65M70; 65M32,Mathematics - Numerical Analysis},
   primaryClass = {math}
 }
@@ -4582,12 +4515,6 @@
   title = {Application of Optimal Transport and the Quadratic {{Wasserstein}} Metric to Full-Waveform Inversion},
   author = {Yang, Yunan and Engquist, Bj{\"o}rn and Sun, Junzhe and Hamfeldt, Brittany F.},
   year = {2017},
-  month = oct,
-  volume = {83},
-  pages = {R43-R62},
-  publisher = {{Society of Exploration Geophysicists}},
-  issn = {0016-8033},
-  doi = {10.1190/geo2016-0663.1},
   abstract = {Conventional full-waveform inversion (FWI) using the least-squares norm as a misfit function is known to suffer from cycle-skipping issues that increase the risk of computing a local rather than the global minimum of the misfit. The quadratic Wasserstein metric has proven to have many ideal properties with regard to convexity and insensitivity to noise. When the observed and predicted seismic data are considered to be two density functions, the quadratic Wasserstein metric corresponds to the optimal cost of rearranging one density into the other, in which the transportation cost is quadratic in distance. Unlike the least-squares norm, the quadratic Wasserstein metric measures not only amplitude differences but also global phase shifts, which helps to avoid cycle-skipping issues. We have developed a new way of using the quadratic Wasserstein metric trace by trace in FWI and compare it with the global quadratic Wasserstein metric via the solution of the Monge-Amp\`ere equation. We incorporate the quadratic Wasserstein metric technique into the framework of the adjoint-state method and apply it to several 2D examples. With the corresponding adjoint source, the velocity model can be updated using a quasi-Newton method. Numerical results indicate the effectiveness of the quadratic Wasserstein metric in alleviating cycle-skipping issues and sensitivity to noise. The mathematical theory and numerical examples demonstrate that the quadratic Wasserstein metric is a good candidate for a misfit function in seismic inversion.},
   archivePrefix = {arXiv},
   eprint = {1612.05075},
@@ -4733,11 +4660,6 @@
   year = {2006},
   month = nov,
   volume = {167},
-  pages = {495--503},
-  issn = {0956-540X},
-  doi = {10.1111/j.1365-246X.2006.02978.x},
-  abstract = {Estimating the model parameters from measured data generally consists of minimizing an error functional. A classic technique to solve a minimization problem is to successively determine the minimum of a series of linearized problems. This formulation requires the Fr\'echet derivatives (the Jacobian matrix), which can be expensive to compute. If the minimization is viewed as a non-linear optimization problem, only the gradient of the error functional is needed. This gradient can be computed without the Fr\'echet derivatives. In the 1970s, the adjoint-state method was developed to efficiently compute the gradient. It is now a well-known method in the numerical community for computing the gradient of a functional with respect to the model parameters when this functional depends on those model parameters through state variables, which are solutions of the forward problem. However, this method is less well understood in the geophysical community. The goal of this paper is to review the adjoint-state method. The idea is to define some adjoint-state variables that are solutions of a linear system. The adjoint-state variables are independent of the model parameter perturbations and in a way gather the perturbations with respect to the state variables. The adjoint-state method is efficient because only one extra linear system needs to be solved.Several applications are presented. When applied to the computation of the derivatives of the ray trajectories, the link with the propagator of the perturbed ray equation is established.},
-  eprint = {https://academic.oup.com/gji/article-pdf/167/2/495/1492368/167-2-495.pdf},
   journal = {Geophysical Journal International},
   number = {2}
 }
